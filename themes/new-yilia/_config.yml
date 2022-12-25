@@ -1,10 +1,9 @@
 # Header
-author: 'new-yilia'
-subtitle: '一个简洁优雅的hexo主题'
-
+author: 'Victor Ye'
+subtitle: 'Trying to do better.'
 
 # 头像url
-avatar: '/img/avatar.png'
+avatar: '/img/avatar.jpg'
 # 头像是否旋转
 avatarrotation: true
 # 网站图标
@@ -20,39 +19,39 @@ menu:
   主页: /
   归档: /archives/index.html
   分类: /categories/index.html
-  相册: /photos/index.html
-  音乐: /music/index.html
+  # 相册: /photos/index.html
+  # 音乐: /music/index.html
 
   
 # SubNav
 subnav:
-  github: "#"
-  gitee: "#"
-  csdn: "#"
+  rss: "/atom.xml"
+  github: "https://github.com/yyxTheOracle"
+  bilibili: "https://space.bilibili.com/14164295"
+  instagram: "https://www.instagram.com/victorye0106/"
+  youtube: "https://www.youtube.com/channel/UCoW9ND_C4BGVTYHrHWM87qg"
+  twitter: "https://twitter.com/yyxTheOracle"
+  # mail: "mailto:yyxtheoracle@126.com"
+  # gitee: "#"
+  # csdn: "#"
   # weibo: "#"
-  zhihu: "#"
-  #qq: "#"
+  # zhihu: "#"
+  # qq: "#"
   #weixin: "#"
   #jianshu: "#"
   #douban: "#"
   #segmentfault: "#"
-  #bilibili: "#"
   #acfun: "#"
-  rss: "/atom.xml"
-  mail: "mailto:XXX@XXX.com"
   #facebook: "#"
   #google: "#"
-  #twitter: "#"
   #linkedin: "#"
   #steam: "#"
   #cc: "#"
   #wikipedia: "#"
   #gitlab: "#"
   #telegram: "#"
-  #youtube: "#"
   #stackoverflow: "#"
   #whatsapp: "#"
-  #instagram: "#"
 
   
 # 网易云音乐插件
@@ -84,10 +83,12 @@ snow:
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
   # 头像上面的背景颜色
-  #header: '#4d4d4d'
-  header: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  header: 'linear-gradient(200deg,#ccc,#000)'
+  # header: '#4d4d4d'
+  # header: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
   # 右滑板块背景
-  slider: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  # slider: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
   # 好看的背景颜色
   # 'linear-gradient(45deg, #2196f3, #c974f5)'
   # 'linear-gradient(200deg,#ccc,#000)'
@@ -106,12 +107,13 @@ slider:
 #smart_menu:
 #  friends: false
 smart_menu:
-  link:
+  link: false
     #随笔: /tags/随笔/
-    开往: https://www.foreverblog.cn/go.html
+    # 开往: https://www.foreverblog.cn/go.html
   menu:
     innerArchive: '所有文章'
-    friends: '友链'
+    friends: false
+    # friends: '友链'
     aboutme: '关于我'
 
 friends:
@@ -122,7 +124,7 @@ friends:
   友情链接5: http://localhost:4000/
   友情链接6: http://localhost:4000/
 
-aboutme: new-yilia<br>一个简洁优雅的hexo主题
+aboutme: 一名前端<br>会记录自己工作生活的所思所想
 
 # 一言
 yiyan:
@@ -161,9 +163,9 @@ reward:
   # 打赏wording
   wording: '感觉不错 支持一下'
   # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-  alipay: '/img/alipay-min.png'
+  alipay: '/img/alipay.jpg'
   # 微信二维码图片地址
-  weixin: '/img/wechatpay-min.png'
+  weixin: '/img/wechatpay.jpg'
 
 
 # 目录

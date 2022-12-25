@@ -9,13 +9,13 @@
 	  <font color="red">请在博客根目录“_config.yml”中填入正确的“author”</font>
 	<%}%>
 	
-	<!-- <br>
-	<strong class="create-time">发布时间：</strong>
-	<%- date(post.date, 'YYYY-MM-DD') %> -->
-	
 	<br>
+	<strong class="create-time">发布时间：</strong>
+	<%- date(post.date, 'YYYY年MM月DD日 HH:mm:ss') %>
+	
+	<!-- <br>
 	<strong class="update-time">最后更新：</strong>
-	<%- date(post.updated, 'YYYY年MM月DD日 HH:mm:ss') %>
+	<%- date(post.updated, 'YYYY年MM月DD日 HH:mm:ss') %> -->
 	
 	<!-- <br>
 	<strong class="article-titles">本文标题：</strong>

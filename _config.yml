@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 网站
-title: 'Hexo'
-subtitle: ''
+title: Victor 的自留地
+subtitle: 'Trying to do better.'
 description: ''
-keywords: ''
-author: 'John Doe'
+keywords:
+author: Victor Ye
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://yyxtheoracle.github.io/
 # permalink: :year/:month/:day/:title/
 permalink: post/:abbrlink.html
 abbrlink:
@@ -199,7 +199,7 @@ baidu_url_submit:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
 - type: 'git'
-  repo: git@github.com:XXX/XXX.github.io.git  #这里写github ssh地址, 不要写https地址
+  repo: git@github.com:yyxTheOracle/yyxTheOracle.github.io.git  #这里写github ssh地址, 不要写https地址
   branch: main
   # 发布时，同时进行百度推送
 - type: baidu_url_submitter
