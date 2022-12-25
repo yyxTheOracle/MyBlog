@@ -1,10 +1,9 @@
 # Header
-author: 'new-yilia'
-subtitle: '一个简洁优雅的hexo主题'
-
+author: 'Victor Ye'
+subtitle: 'Keep Your Childlike Innocence Alive!'
 
 # 头像url
-avatar: '/img/avatar.png'
+avatar: '/img/avatar.jpg'
 # 头像是否旋转
 avatarrotation: true
 # 网站图标
@@ -20,39 +19,39 @@ menu:
   主页: /
   归档: /archives/index.html
   分类: /categories/index.html
-  相册: /photos/index.html
-  音乐: /music/index.html
+  # 相册: /photos/index.html
+  # 音乐: /music/index.html
 
   
 # SubNav
 subnav:
-  github: "#"
-  gitee: "#"
-  csdn: "#"
+  rss: "/atom.xml"
+  github: "https://github.com/yyxTheOracle"
+  bilibili: "https://space.bilibili.com/14164295"
+  instagram: "https://www.instagram.com/victorye0106/"
+  youtube: "https://www.youtube.com/channel/UCoW9ND_C4BGVTYHrHWM87qg"
+  twitter: "https://twitter.com/yyxTheOracle"
+  # mail: "mailto:yyxtheoracle@126.com"
+  # gitee: "#"
+  # csdn: "#"
   # weibo: "#"
-  zhihu: "#"
-  #qq: "#"
+  # zhihu: "#"
+  # qq: "#"
   #weixin: "#"
   #jianshu: "#"
   #douban: "#"
   #segmentfault: "#"
-  #bilibili: "#"
   #acfun: "#"
-  rss: "/atom.xml"
-  mail: "mailto:XXX@XXX.com"
   #facebook: "#"
   #google: "#"
-  #twitter: "#"
   #linkedin: "#"
   #steam: "#"
   #cc: "#"
   #wikipedia: "#"
   #gitlab: "#"
   #telegram: "#"
-  #youtube: "#"
   #stackoverflow: "#"
   #whatsapp: "#"
-  #instagram: "#"
 
   
 # 网易云音乐插件
@@ -84,10 +83,12 @@ snow:
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
   # 头像上面的背景颜色
-  #header: '#4d4d4d'
-  header: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  header: 'linear-gradient(200deg,#ccc,#000)'
+  # header: '#4d4d4d'
+  # header: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
   # 右滑板块背景
-  slider: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  # slider: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
+  slider: 'linear-gradient(200deg,#ccc,#000)'
   # 好看的背景颜色
   # 'linear-gradient(45deg, #2196f3, #c974f5)'
   # 'linear-gradient(200deg,#ccc,#000)'
@@ -106,12 +107,13 @@ slider:
 #smart_menu:
 #  friends: false
 smart_menu:
-  link:
+  link: false
     #随笔: /tags/随笔/
-    开往: https://www.foreverblog.cn/go.html
+    # 开往: https://www.foreverblog.cn/go.html
   menu:
     innerArchive: '所有文章'
-    friends: '友链'
+    friends: false
+    # friends: '友链'
     aboutme: '关于我'
 
 friends:
@@ -122,7 +124,7 @@ friends:
   友情链接5: http://localhost:4000/
   友情链接6: http://localhost:4000/
 
-aboutme: new-yilia<br>一个简洁优雅的hexo主题
+aboutme: 我是 Victor ，<br>一名前端开发工程师，<br>同时也是一位中共党员。
 
 # 一言
 yiyan:
@@ -161,9 +163,9 @@ reward:
   # 打赏wording
   wording: '感觉不错 支持一下'
   # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-  alipay: '/img/alipay-min.png'
+  alipay: '/img/alipay.jpg'
   # 微信二维码图片地址
-  weixin: '/img/wechatpay-min.png'
+  weixin: '/img/wechatpay.jpg'
 
 
 # 目录
@@ -195,8 +197,8 @@ declare:
 #1、waline
 # [Waline](https://waline.js.org)
 waline:
-  enable: true
-  server_url: 'your_waline_comments_url'
+  enable: false
+  server_url: 'waline-ten-jade.vercel.app'
   login: 'enable'       # 'enable': 启用登录 (默认) 'disable': 禁用登录，用户只能填写信息评论 'force': 强制登录，用户必须注册并登录才可发布评论
   lang: 'zh-CN '        # 语言，默认'zh-CN', 'en'/ 'jp'可选
   dark: ''              # 设置 'auto' 会根据设备暗黑模式自适应。
@@ -208,11 +210,13 @@ waline:
 #2、gittalk
 gittalk: 
   enable: false
-  clientID: 'xxx'
-  clientSecret: 'xxx'
-  repo: 'Blog_Gittalk_Comments'
-  owner: 'github user name'
-  admin: ['github user name1', 'github user name2']
+  clientID: '89e5929a547fed23e2f3'
+  clientSecret: 'c55457108d3c0ecaca0369d9dccb2488cf9bf49d'
+  repo: 'yyxtheoracle.github.io'
+  owner: 'yyxtheoracle'
+  admin: ['yyxtheoracle']
+  admin_user: yyxtheoracle
+  distraction_free_mode: true
   
 
 #3、畅言
@@ -225,10 +229,10 @@ disqus: false
 
 #5、Gitment
 gitment_owner: false      #你的 GitHub ID
-gitment_repo: ''          #存储评论的 repo
+gitment_repo: 'yyxtheoracle.github.io' #存储评论的 repo
 gitment_oauth:
-  client_id: ''           #client ID
-  client_secret: ''       #client secret
+  client_id: '89e5929a547fed23e2f3' #client ID
+  client_secret: 'c55457108d3c0ecaca0369d9dccb2488cf9bf49d' #client secret
 
 
 # 页脚信息
