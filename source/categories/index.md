@@ -1,8 +1,10 @@
 ---
-title: categories
-date: 2022-06-14 20:38:33
-type: categories
-layout: "categories"
-toc: false
-comments: false
+title: 分类
+type: "categories"
+no_word_count: true
+no_date: true
+no_declare: true
+no_toc: true
+no_reward: true
+no_comments: false
 ---
