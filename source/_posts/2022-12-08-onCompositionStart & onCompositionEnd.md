@@ -1,7 +1,8 @@
 ---
-title: 拼音输入法还没输入完就触发搜索了?丨了解一下 onCompositionStart & onCompositionEnd
+title: 解决输入法尚未结束输入就触发搜索的问题丨onCompositionStart & onCompositionEnd
 tag:
   - 前端开发
+  - JavaScript
 categories:
   - 前端开发
 article_type: 0
@@ -19,7 +20,7 @@ date: 2022-12-08 14:17:45
 top:
 ---
 
-> 最近开发遇到了一个有趣问题，先直接上场景
+> 最近开发遇到了一个很 tricky 的问题，直接上 gif，看了就明白了🤣
 
 ![bug复现](https://s3.bmp.ovh/imgs/2022/12/27/aefc04929a1cded1.gif)
 

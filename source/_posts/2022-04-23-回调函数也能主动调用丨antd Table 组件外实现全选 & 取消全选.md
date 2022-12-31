@@ -3,6 +3,7 @@ title: 回调函数也能主动调用丨antd Table 组件外实现全选 & 取�
 tag:
   - antd
   - 前端开发
+  - JavaScript
 categories:
   - 前端开发
 article_type: 0
@@ -26,14 +27,14 @@ top:
 <div align=center>
   <img src="https://i.niupic.com/images/2022/12/26/aeiB.jpg" />
 </div>
-<center style="font-size:18px;color:#C0C0C0;">原型图</center><!-- more -->
+<center style="color:#C0C0C0;">原型图</center><!-- more -->
 
 　　然而，antd 官网给的例子里只有在组件中的实现方法（通过 `rowSelection` 配置），如下图:
 
 <div align=center>
   <img src="https://i.niupic.com/images/2022/12/27/aeiG.jpg" />
 </div>
-<center style="font-size:18px;color:#C0C0C0;">antd 提供的功能</center>
+<center style="color:#C0C0C0;">antd 提供的功能</center>
 
 　　如果想要做到原型图这样在组件外实现全选 & 取消全选，则需要更灵活地运用 `rowSelection` 这个配置项。
 # 代码实现

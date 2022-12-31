@@ -1,6 +1,6 @@
 # Header
 author: 'Victor Ye'
-subtitle: 'Trying to do better.'
+subtitle: 'Keep Your Childlike Innocence Alive!'
 
 # 头像url
 avatar: '/img/avatar.jpg'
@@ -88,7 +88,7 @@ style:
   # header: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
   # 右滑板块背景
   # slider: 'linear-gradient(55deg,#88ACDB,#49B1F5,#9534f1,#49b1f5)'
-  slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
+  slider: 'linear-gradient(200deg,#ccc,#000)'
   # 好看的背景颜色
   # 'linear-gradient(45deg, #2196f3, #c974f5)'
   # 'linear-gradient(200deg,#ccc,#000)'
@@ -124,7 +124,7 @@ friends:
   友情链接5: http://localhost:4000/
   友情链接6: http://localhost:4000/
 
-aboutme: 一名前端<br>会记录自己工作生活的所思所想
+aboutme: 我是 Victor ，<br>一名前端开发工程师，<br>同时也是一位中共党员。
 
 # 一言
 yiyan:
