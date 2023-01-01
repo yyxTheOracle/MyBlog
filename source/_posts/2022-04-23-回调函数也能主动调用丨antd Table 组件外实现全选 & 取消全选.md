@@ -32,7 +32,7 @@ top:
 　　然而，antd 官网给的例子里只有在组件中的实现方法（通过 `rowSelection` 配置），如下图:
 
 <div align=center>
-  <img src="https://i.niupic.com/images/2022/12/27/aeiG.jpg" />
+  <img src="https://i.niupic.com/images/2023/01/01/aeNs.jpg" />
 </div>
 <center style="color:#C0C0C0;">antd 提供的功能</center>
 

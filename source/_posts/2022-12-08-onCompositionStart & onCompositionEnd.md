@@ -22,7 +22,7 @@ top:
 
 > 最近开发遇到了一个很 tricky 的问题，直接上 gif，看了就明白了🤣
 
-![bug复现](https://s3.bmp.ovh/imgs/2022/12/27/aefc04929a1cded1.gif)
+![bug复现](https://s3.bmp.ovh/imgs/2023/01/01/9815a1854c8bffa4.gif)
 
 　　可以明显看到，在搜狗拼音输入法**还没有完成输入的时候**就已经触发搜索了，此时根据拼音内容(一些英文)去搜索，会搜索不到任何结果，导致 Table 内显示空信息。
 
@@ -33,14 +33,14 @@ top:
 
 　　这两个事件确实第一次接触，放上 compositionstart event 在 MDN 的截图：
 <div align=center>
-  <img src="https://i.niupic.com/images/2022/12/27/aejQ.jpg" />
+  <img src="https://s3.bmp.ovh/imgs/2023/01/01/577af882fddac58b.jpg" />
 </div>
 &nbsp;
 
 　　简单来说，搜狗拼音输入法就是图中所说的 `IME(Input Method Editor)` ，当开启一段 `composition session` 的时候就会触发这个事件，至于什么是 `composition session` 呢~
 
 <div align=center>
-  <img src="https://i.niupic.com/images/2022/12/27/aejT.jpg" />
+  <img src="https://s3.bmp.ovh/imgs/2023/01/01/a4202af698e488f7.jpg" />
 </div>  
 &nbsp;
 
@@ -62,7 +62,7 @@ top:
 ```
 
 # 最终效果
-![最终效果](https://s3.bmp.ovh/imgs/2022/12/27/265793f64952c3cc.gif)
+![最终效果](https://s3.bmp.ovh/imgs/2023/01/01/4e3fad241e7bdbe7.gif)
 
 # 总结
 　　之前我一直以为这不是个前端范畴的问题，是系统层面的，事实证明还是认知局限呀🤣今后还是要多多学习，多多记录。

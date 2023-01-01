@@ -197,8 +197,8 @@ declare:
 #1、waline
 # [Waline](https://waline.js.org)
 waline:
-  enable: true
-  server_url: 'your_waline_comments_url'
+  enable: false
+  server_url: 'waline-ten-jade.vercel.app'
   login: 'enable'       # 'enable': 启用登录 (默认) 'disable': 禁用登录，用户只能填写信息评论 'force': 强制登录，用户必须注册并登录才可发布评论
   lang: 'zh-CN '        # 语言，默认'zh-CN', 'en'/ 'jp'可选
   dark: ''              # 设置 'auto' 会根据设备暗黑模式自适应。
@@ -210,11 +210,13 @@ waline:
 #2、gittalk
 gittalk: 
   enable: false
-  clientID: 'xxx'
-  clientSecret: 'xxx'
-  repo: 'Blog_Gittalk_Comments'
-  owner: 'github user name'
-  admin: ['github user name1', 'github user name2']
+  clientID: '89e5929a547fed23e2f3'
+  clientSecret: 'c55457108d3c0ecaca0369d9dccb2488cf9bf49d'
+  repo: 'yyxtheoracle.github.io'
+  owner: 'yyxtheoracle'
+  admin: ['yyxtheoracle']
+  admin_user: yyxtheoracle
+  distraction_free_mode: true
   
 
 #3、畅言
@@ -227,10 +229,10 @@ disqus: false
 
 #5、Gitment
 gitment_owner: false      #你的 GitHub ID
-gitment_repo: ''          #存储评论的 repo
+gitment_repo: 'yyxtheoracle.github.io' #存储评论的 repo
 gitment_oauth:
-  client_id: ''           #client ID
-  client_secret: ''       #client secret
+  client_id: '89e5929a547fed23e2f3' #client ID
+  client_secret: 'c55457108d3c0ecaca0369d9dccb2488cf9bf49d' #client secret
 
 
 # 页脚信息
