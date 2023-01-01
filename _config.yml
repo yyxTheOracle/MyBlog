@@ -15,7 +15,8 @@ timezone: 'Asia/Shanghai'
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 # url: https://victor101.gitee.io/
 # url: https://victoryeah.com/
-url: https://yyxtheoracle.github.io/
+# url: https://yyxtheoracle.github.io/
+url: https://yyx-the-oracle-github-io-g1lc.vercel.app/
 # permalink: :year/:month/:day/:title/
 permalink: post/:abbrlink.html
 abbrlink:
