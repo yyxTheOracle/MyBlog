@@ -13,6 +13,8 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+# url: https://victor101.gitee.io/
+# url: https://victoryeah.com/
 url: https://yyxtheoracle.github.io/
 # permalink: :year/:month/:day/:title/
 permalink: post/:abbrlink.html
@@ -201,6 +203,8 @@ deploy:
 - type: 'git'
   repo: git@github.com:yyxTheOracle/yyxTheOracle.github.io.git  #这里写github ssh地址, 不要写https地址
   branch: main
+  # repo: https://gitee.com/Victor101/Victor101.git
+  # branch: pages
   # 发布时，同时进行百度推送
 - type: baidu_url_submitter
 

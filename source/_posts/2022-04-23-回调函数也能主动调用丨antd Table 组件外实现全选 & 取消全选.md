@@ -25,7 +25,7 @@ top:
 　　最近在做宝马的一个项目，遇到一个很常见的需求，上个图大家就懂了:
 
 <div align=center>
-  <img src="https://i.niupic.com/images/2022/12/26/aeiB.jpg" />
+  <img src="https://i.niupic.com/images/2023/01/01/aevg.jpg" />
 </div>
 <center style="color:#C0C0C0;">原型图</center><!-- more -->
 
