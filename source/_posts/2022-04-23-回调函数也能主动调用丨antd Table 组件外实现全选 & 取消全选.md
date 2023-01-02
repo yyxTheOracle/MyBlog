@@ -22,14 +22,14 @@ top:
 ---
 
 # 前言 
-　　最近在做宝马的一个项目，遇到一个很常见的需求，上个图大家就懂了:
+　　最近在做宝马的一个项目，需要实现 Table 的全选 & 取消全选，原型图如下:<!-- more -->
 
 <div align=center>
   <img src="https://i.niupic.com/images/2023/01/01/aevg.jpg" />
 </div>
-<center style="color:#C0C0C0;">原型图</center><!-- more -->
+<center style="color:#C0C0C0;">原型图</center>
 
-　　然而，antd 官网给的例子里只有在组件中的实现方法（通过 `rowSelection` 配置），如下图:
+　　然而，[antd 官网给的例子](https://ant.design/components/table-cn?theme=dark#components-table-demo-row-selection-custom)里只有在组件中的实现方法（自定义选择项——通过 `rowSelection.selections` 配置），如下图:
 
 <div align=center>
   <img src="https://i.niupic.com/images/2023/01/01/aeNs.jpg" />
@@ -37,7 +37,7 @@ top:
 <center style="color:#C0C0C0;">antd 提供的功能</center>
 
 　　如果想要做到原型图这样在组件外实现全选 & 取消全选，则需要更灵活地运用 `rowSelection` 这个配置项。
-# 代码实现
+# Talk is cheap, show me the code!
 ```jsx
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -84,5 +84,11 @@ top:
   />
 ```
 # 总结
-　　其实最关键的地方就是 `rowSelection` 里的 `onChange` ，通常的回调函数我们不会直接调用，而在这里，如果要实现在表格外全选，则需要手动调用这个 `onchange` 。
+　　其实最关键的地方在于 `rowSelection` 里的 `onChange` ，通常的回调函数我们不会直接调用，而在这里，如果要实现在表格外全选，则需要手动调用这个 `onChange` 。
+
+# 2023.1.21 更新
+　　最近做了个需求，需要在一个 form 中做三个字段间的联动:
+![搜索反馈 form 联动](https://s3.bmp.ovh/imgs/2023/01/21/b2126d6f58801b38.gif)
+
+　　期间遇到了`form.setFieldsValue 不会触发控件 onChange`的问题，找到了一个[解决方案](https://www.cnblogs.com/xinyouhunran/p/15578373.html)，和我这篇文章的思路挺像的，也是需要`手动触发一个回调函数`，在这里更新记录一下。
 
