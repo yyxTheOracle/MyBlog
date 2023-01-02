@@ -22,12 +22,12 @@ top:
 ---
 
 # 前言 
-　　最近在做宝马的一个项目，遇到一个很常见的需求，上个图大家就懂了:
+　　最近在做宝马的一个项目，遇到一个很常见的需求，上个图大家就懂了:<!-- more -->
 
 <div align=center>
   <img src="https://i.niupic.com/images/2023/01/01/aevg.jpg" />
 </div>
-<center style="color:#C0C0C0;">原型图</center><!-- more -->
+<center style="color:#C0C0C0;">原型图</center>
 
 　　然而，antd 官网给的例子里只有在组件中的实现方法（通过 `rowSelection` 配置），如下图:
 
