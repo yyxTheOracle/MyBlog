@@ -26,11 +26,11 @@ menu:
 # SubNav
 subnav:
   rss: "/atom.xml"
+  instagram: "https://www.instagram.com/victorye0106/"
   github: "https://github.com/yyxTheOracle"
   zhihu: "https://www.zhihu.com/people/ye-yu-xuan-41-84"
-  twitter: "https://twitter.com/yyxTheOracle"
-  instagram: "https://www.instagram.com/victorye0106/"
-  youtube: "https://www.youtube.com/channel/UCoW9ND_C4BGVTYHrHWM87qg"
+  # twitter: "https://twitter.com/yyxTheOracle"
+  # youtube: "https://www.youtube.com/channel/UCoW9ND_C4BGVTYHrHWM87qg"
   # bilibili: "https://space.bilibili.com/14164295"
   # mail: "mailto:yyxtheoracle@126.com"
   # gitee: "#"
@@ -124,7 +124,7 @@ friends:
   友情链接5: http://localhost:4000/
   友情链接6: http://localhost:4000/
 
-aboutme: 我是 Victor ，<br>一名前端开发工程师，<br>同时也是一位中共党员。
+aboutme: Hi there~<br>我是 Victor, <br>一位中共党员、<br>前端开发工程师 、 <br>霉粉、<br>库里球迷、<br>......
 
 # 一言
 yiyan:
