@@ -1,5 +1,5 @@
 ---
-title: 解决输入法尚未结束输入就触发搜索的问题丨onCompositionStart & onCompositionEnd
+title: 拼音输入法的神奇 API丨onCompositionStart & onCompositionEnd
 tag:
   - 前端开发
   - JavaScript
