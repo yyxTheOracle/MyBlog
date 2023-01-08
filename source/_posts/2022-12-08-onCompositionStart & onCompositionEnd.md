@@ -27,7 +27,7 @@ top:
 
 　　可以明显看到，在搜狗拼音输入法**还没有完成输入的时候**就已经触发搜索了，此时根据拼音内容(一些英文)去搜索，会搜索不到任何结果，导致 Table 内显示空信息。
 
-　　这明显不是我们想要的效果，我们所希望的应该是在输入法完成输入（按下空格或回车）后，再去触发搜索框的搜索。
+　　这明显不是我们想要的效果，我们所希望的应该是在**输入法完成输入（按下空格或回车）**后，再去触发搜索框的搜索。
 
 # 解决方案
 > onCompositionStart & onCompositionEnd
@@ -45,7 +45,7 @@ top:
 </div>  
 &nbsp;
 
-　　知道有这个 event 之后，一切也就豁然开朗了，我们可以引入一个 `lock` 变量，通过 `onCompositionStart` & `onCompositionEnd` 来维护这个 `lock` 变量，只有在 `lock` 为 `false` 的时候才触发搜索~
+　　知道有这个 event 之后，一切也就豁然开朗了，我们可以引入一个 `lock` 变量，通过 `onCompositionStart` & `onCompositionEnd` 来维护；当且仅当 `lock` 为 `false` 的时候才触发搜索~
 
 # （伪）代码
 ```jsx
