@@ -32,11 +32,11 @@ top:
 # 解决方案
 > onCompositionStart & onCompositionEnd
 
-　　这两个事件确实第一次接触，放上 compositionstart event 在 MDN 的截图：
+　　[这两个事件](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent)确实第一次接触，以 `compositionstart event` 为例：
 <div align=center>
   <img src="https://s3.bmp.ovh/imgs/2023/01/01/577af882fddac58b.jpg" />
 </div>
-&nbsp;
+<center style="color:#C0C0C0;">MDN 对 compositionstart event 的解释</center>
 
 　　简单来说，搜狗拼音输入法就是图中所说的 `IME(Input Method Editor)` ，当开启一段 `composition session` 的时候就会触发这个事件，至于什么是 `composition session` 呢~
 
