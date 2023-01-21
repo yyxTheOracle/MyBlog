@@ -86,3 +86,9 @@ top:
 # 总结
 　　其实最关键的地方就是 `rowSelection` 里的 `onChange` ，通常的回调函数我们不会直接调用，而在这里，如果要实现在表格外全选，则需要手动调用这个 `onchange` 。
 
+# 2023.1.21 更新
+　　最近做了个需求，需要在一个 form 中涉及三个字段间的联动。
+![搜索反馈 form 联动](https://s3.bmp.ovh/imgs/2023/01/21/b2126d6f58801b38.gif)
+
+　　期间遇到了`form.setFieldsValue 不会触发控件 onChange`的问题，找到了一个[解决方案](https://www.cnblogs.com/xinyouhunran/p/15578373.html)，和我这篇的思路挺像的，在这里更新记录一下。
+
