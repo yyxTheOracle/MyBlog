@@ -22,7 +22,7 @@ top:
 ---
 
 # 前言 
-　　最近在做宝马的一个项目，遇到一个很常见的需求，上个图大家就懂了:<!-- more -->
+　　最近在做宝马的一个项目，需要实现 Table 的全选 & 取消全选，原型图如下:<!-- more -->
 
 <div align=center>
   <img src="https://i.niupic.com/images/2023/01/01/aevg.jpg" />
