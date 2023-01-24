@@ -37,7 +37,7 @@ top:
 <center style="color:#C0C0C0;">antd 提供的功能</center>
 
 　　如果想要做到原型图这样在组件外实现全选 & 取消全选，则需要更灵活地运用 `rowSelection` 这个配置项。
-# 代码实现
+# Talk is cheap, show me the code!
 ```jsx
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
