@@ -90,5 +90,5 @@ top:
 　　最近做了个需求，需要在一个 form 中做三个字段间的联动:
 ![搜索反馈 form 联动](https://s3.bmp.ovh/imgs/2023/01/21/b2126d6f58801b38.gif)
 
-　　期间遇到了`form.setFieldsValue 不会触发控件 onChange`的问题，找到了一个[解决方案](https://www.cnblogs.com/xinyouhunran/p/15578373.html)，和我这篇的思路挺像的，同样也是需要手动触发一个回调函数，在这里更新记录一下。
+　　期间遇到了`form.setFieldsValue 不会触发控件 onChange`的问题，找到了一个[解决方案](https://www.cnblogs.com/xinyouhunran/p/15578373.html)，和我这篇的思路挺像的，也是需要手动触发一个回调函数，在这里更新记录一下。
 
