@@ -209,6 +209,11 @@ deploy:
   # 发布时，同时进行百度推送
 - type: baidu_url_submitter
 
+# Mermaid
+mermaid:
+  enable: true
+  version: "10.6.1"
+
 
 
     
