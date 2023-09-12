@@ -1,28 +1,46 @@
 <script>
 	var yiliaConfig = {
-		mathjax: <%=theme.mathjax%>,
+		mathjax: <%=theme.mathjax %>,
 		isHome: <%=is_home()%>,
 		isPost: <%=is_post()%>,
-		isArchive: <%=is_archive()%>,
-		isTag: <%=is_tag()%>,
-		isCategory: <%=is_category()%>,
-		open_in_new: <%=theme.open_in_new%>,
-		toc_hide_index: <%=theme.toc_hide_index%>,
-		root: "<%=config.root%>",
-		innerArchive: <%=theme.smart_menu.innerArchive ? true : false%>,
-		showTags: <%=(theme.slider && theme.slider.showTags) ? true : false%>
+			isArchive: <%=is_archive() %>,
+				isTag: <%=is_tag() %>,
+					isCategory: <%=is_category() %>,
+						open_in_new: <%=theme.open_in_new %>,
+							toc_hide_index: <%=theme.toc_hide_index %>,
+								root: "<%=config.root%>",
+									innerArchive: <%=theme.smart_menu.innerArchive ? true : false %>,
+										showTags: <%=(theme.slider && theme.slider.showTags) ? true : false %>
 	}
 </script>
 
 <%- partial('script') %>
 
-<!--添加鼠标特效-->
-<!-- https://blog.csdn.net/weixin_41287260/article/details/103050877 -->
-<% if (theme.mouse && theme.mouse.love){ %>
-  <%- partial('post/mouse_love') %>
-<% } %>
+	<!--添加鼠标特效-->
+	<!-- https://blog.csdn.net/weixin_41287260/article/details/103050877 -->
+	<% if (theme.mouse && theme.mouse.love){ %>
+		<%- partial('post/mouse_love') %>
+			<% } %>
 
-<% if (theme.mouse && theme.mouse.word){ %>
-  <%- partial('post/mouse_word') %>
-<% } %>
-<!--添加鼠标特效结束-->
+				<% if (theme.mouse && theme.mouse.word){ %>
+					<%- partial('post/mouse_word') %>
+						<% } %>
+							<!--添加鼠标特效结束-->
+
+							<% if (page.mermaid || (theme.mermaid && theme.mermaid.enable)) { %>
+								<script src='https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js'></script>
+								<script>
+									if (window.mermaid) {
+										mermaid.initialize({ theme: 'default' });
+									}
+								</script>
+								<style>
+									.mermaid {
+										background: white !important;
+										padding: 10px;
+										margin-bottom: 20px;
+										border-radius: 4px;
+										text-align: center;
+									}
+								</style>
+								<% } %>
