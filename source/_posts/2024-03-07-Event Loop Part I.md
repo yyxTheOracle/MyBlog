@@ -1,5 +1,5 @@
 ---
-title: 究竟什么是 Event Loop ？丨总结 Philip Roberts 在 JSConf 的演讲
+title: 究竟什么是 Event Loop丨总结 Philip Roberts 在 JSConf 的演讲
 tag:
   - 前端开发
   - JavaScript
@@ -19,7 +19,7 @@ abbrlink: 2a798ab5
 date: 2024-03-07 23:04:15
 top:
 ---
-  [26min 的视频](https://www.youtube.com/watch?v=8aGhZQkoFbQ&list=PLI-Ik-cyh3JN2usTBFpZAVVPezC2I-8gM&index=5)深入浅出地讲解了什么是 Event Loop 以及它与浏览器渲染的关系。<!-- more -->
+  [26 分钟的视频](https://www.youtube.com/watch?v=8aGhZQkoFbQ&list=PLI-Ik-cyh3JN2usTBFpZAVVPezC2I-8gM&index=5)深入浅出地讲解了什么是 Event Loop 以及它与浏览器渲染的关系。<!-- more -->
 
   ## 对 JavaScript Runtime 的正确认识
   对于 JavaScript，我们常说 JS 有一个调用栈 (call stack)、有一个事件循环机制 (Event Loop)、有一个任务/回调队列 (task/callback queue) 以及一些 WebAPI，但这等价于 V8 也拥有以上这些东西吗？
