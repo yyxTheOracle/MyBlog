@@ -25,14 +25,14 @@ top:
 　　最近在做宝马的一个项目，需要实现 Table 的全选 & 取消全选，原型图如下:<!-- more -->
 
 <div align=center>
-  <img src="https://i.niupic.com/images/2023/01/01/aevg.jpg" />
+  <img src="https://r.kezaihui.com/client/image/yeyuxuan/blog-assets/20220423-1.jpg" />
 </div>
 <center style="color:#C0C0C0;">原型图</center>
 
 　　然而，[antd 官网给的例子](https://ant.design/components/table-cn?theme=dark#components-table-demo-row-selection-custom)里只有在组件中的实现方法（自定义选择项——通过 `rowSelection.selections` 配置），如下图:
 
 <div align=center>
-  <img src="https://i.niupic.com/images/2023/01/01/aeNs.jpg" />
+  <img src="https://r.kezaihui.com/client/image/yeyuxuan/blog-assets/20220423-2.jpg" />
 </div>
 <center style="color:#C0C0C0;">antd 提供的功能</center>
 

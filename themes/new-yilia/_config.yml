@@ -1,6 +1,6 @@
 # Header
 author: 'Victor Ye'
-subtitle: "If you can't explain it simply, you don't understand it well enough."
+subtitle: "Junior Vibe Coder"
 
 # 头像url
 avatar: '/img/avatar.jpg'
@@ -28,7 +28,7 @@ subnav:
   rss: "/atom.xml"
   instagram: "https://www.instagram.com/victorye0106/"
   github: "https://github.com/yyxTheOracle"
-  zhihu: "https://www.zhihu.com/people/ye-yu-xuan-41-84"
+  # zhihu: "https://www.zhihu.com/people/ye-yu-xuan-41-84"
   # twitter: "https://twitter.com/yyxTheOracle"
   # youtube: "https://www.youtube.com/channel/UCoW9ND_C4BGVTYHrHWM87qg"
   # bilibili: "https://space.bilibili.com/14164295"
