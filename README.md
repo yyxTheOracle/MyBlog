@@ -112,8 +112,29 @@ npm install
 根据需求，修改hexo根目录下的 `_config.yml` 文件及`themes\new-yilia`目录下的`_config.yml`文件
 
 ```sh
-hexo clean # 清理
-hexo g # 构建
-hexo s # 启动本地sever服务
-hexo d # 部署
+hexo clean # 清理本地生成结果和缓存，主要会删除 public/ 和 db.json；不会影响远端
+hexo g     # 构建静态网站，把 source/、主题和资源生成到 public/；不会自动部署
+hexo s     # 启动本地 server 服务，默认访问 http://localhost:4000/ 预览博客
+hexo d     # 部署 public/ 里的静态文件到 _config.yml 配置的远端仓库；会改远端
+```
+
+常用本地预览流程：
+
+```sh
+npm ci
+npm run server
+```
+
+发布时建议先清理、再构建、最后部署，避免把旧的 `public/` 内容发布出去：
+
+```sh
+npm run clean
+npm run build
+npm run deploy
+```
+
+也可以用 Hexo 的一步生成并部署命令：
+
+```sh
+npx hexo clean && npx hexo deploy --generate
 ```
