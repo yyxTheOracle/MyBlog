@@ -109,6 +109,25 @@ npm install
 
 ### 配置
 
+#### 文章文件命名
+
+`source/_posts` 下的文章统一使用以下格式：
+
+```text
+YYYY-MM-DD-短标题.md
+```
+
+- 日期取文章 Front Matter 中 `date` 的发布日期，后续更新文章时不修改。
+- 短标题只使用中文、英文小写、数字和单个连字符，不使用空格、下划线、Emoji 或其他标点。
+- 短标题描述文章主题，不复制完整标题，也不包含分类；技术术语保留英文并使用小写。
+- 系列文章以 `part-N` 结尾，例如 `2024-03-07-event-loop-part-1.md`。
+
+创建文章时传入规范化的短标题，Hexo 会自动补全日期：
+
+```sh
+npx hexo new "event-loop-part-2"
+```
+
 根据需求，修改hexo根目录下的 `_config.yml` 文件及`themes\new-yilia`目录下的`_config.yml`文件
 
 ```sh

@@ -46,7 +46,8 @@ skip_render:
   #- "文件夹名/*"   #跳过文件夹下所有文件
 
 # Writing
-new_post_name: :title.md # File name of new posts
+# 新文章自动添加发布日期；调用 hexo new 时传入规范化的短标题。
+new_post_name: :year-:month-:day-:title.md
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
