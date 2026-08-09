@@ -144,7 +144,39 @@ npm ci
 npm run server
 ```
 
-发布时建议先清理、再构建、最后部署，避免把旧的 `public/` 内容发布出去：
+### 部署
+
+部署涉及两个 GitHub 仓库：
+
+| 仓库 | 用途 |
+| --- | --- |
+| `yyxTheOracle/MyBlog` | 保存 Hexo 源码、文章和主题配置 |
+| `yyxTheOracle/yyxTheOracle.github.io` | 保存 `public/` 中生成的静态网站 |
+
+Vercel 项目 `yyx-the-oracle-github-io-g1lc` 监听的是
+`yyxTheOracle.github.io` 的 `main` 分支，而不是当前的 `MyBlog` 源码仓库。
+
+```mermaid
+flowchart LR
+    A["MyBlog / main<br/>Hexo 源码"] -->|"git push"| B["GitHub 源码仓库"]
+    A -->|"hexo clean + generate"| C["public 静态文件"]
+    C -->|"hexo deploy"| D["yyxTheOracle.github.io / main"]
+    D -->|"Vercel Git Integration"| E["Vercel Production"]
+    E --> F["www.victoryeah.com"]
+```
+
+完整发布分为两步。
+
+第一步，提交并推送源码：
+
+```sh
+git status
+git add <本次修改的文件>
+git commit -m "<commit message>"
+git push origin main
+```
+
+第二步，清理旧产物、重新构建并部署：
 
 ```sh
 npm run clean
@@ -152,8 +184,22 @@ npm run build
 npm run deploy
 ```
 
-也可以用 Hexo 的一步生成并部署命令：
+`npm run deploy` 会根据 `_config.yml`：
+
+1. 将 `public/` 推送到 `yyxTheOracle.github.io/main`。
+2. 由 Vercel Git Integration 自动创建 production deployment。
+3. 同时尝试向百度提交最新文章 URL；百度提交失败不代表 Git 或 Vercel 部署失败。
+
+`yyxTheOracle.github.io` 是生成产物仓库，不要直接修改。`hexo deploy`
+可能强制更新它的 `main` 分支。
+
+部署完成后，到 Vercel 检查 deployment 状态为 `READY`，并访问
+[www.victoryeah.com](https://www.victoryeah.com) 验证线上页面。
+
+如果不需要单独执行构建，也可以使用 Hexo 的一步生成并部署命令：
 
 ```sh
 npx hexo clean && npx hexo deploy --generate
 ```
+
+这个命令只发布静态网站，不会替你提交或推送 `MyBlog` 源码仓库。
