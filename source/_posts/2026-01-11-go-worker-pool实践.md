@@ -33,7 +33,7 @@ mermaid: true
 
 # `Worker Pool` 的核心思想
 
-> Gemini 的一句话总结和举例，我觉得非常完美，做到了 “多则惑，少则缺”，因此直接照抄过来。 
+> Gemini 的一句话总结和举例，我觉得非常完美，做到了 “多则惑，少则缺”，因此直接照抄过来。
 
 　　`Worker Pool` 的核心思想是：提前创建固定数量的 `Goroutine`（工作协程），让它们竞争式地从一个任务队列中获取并处理任务。
 
@@ -60,23 +60,23 @@ mermaid: true
 ```mermaid
 graph LR
     Generator[Job Generator<br/>任务生成者] -->|Enqueue| JobQueue[Job Queue<br/>任务队列]
-    
+
     subgraph WorkerPool [Worker Pool 工作池]
         W1[Worker 1]
         W2[Worker 2]
         W3[Worker ...]
     end
-    
+
     JobQueue -->|Fetch| W1
     JobQueue -->|Fetch| W2
     JobQueue -->|Fetch| W3
-    
+
     W1 -->|Result| ResultQueue[Result Queue<br/>结果队列]
     W2 -->|Result| ResultQueue
     W3 -->|Result| ResultQueue
-    
+
     ResultQueue -->|Collect| Collector[Result Collector<br/>结果收集者]
-    
+
     style JobQueue fill:#ffeb3b,stroke:#333,stroke-width:2px;
     style ResultQueue fill:#4caf50,stroke:#333,stroke-width:2px;
     style WorkerPool fill:#e3f2fd,stroke:#333,stroke-dasharray: 5 5;
@@ -92,18 +92,18 @@ graph TD
     Init[1. 初始化通道] --> Start[2. 启动 5 个 Worker]
     Start --> Send[3. 发送 1000 个任务]
     Send --> CloseJobs[关闭 Job 通道]
-    
+
     %% 后台逻辑
     Start -.->|后台运行| Worker[Worker: 抢任务 -> 处理 -> 存结果]
-    
+
     %% 监控与收集
     CloseJobs --> Monitor[Monitor: 等待 Worker 全部结束]
     Monitor --> CloseRes[关闭 Result 通道]
     CloseRes --> Collect[4. 收集结果]
-    
+
     %% 数据流向示意
     Worker -.->|处理结果| Collect
-    
+
     style Worker fill:#e1f5fe,stroke:#01579b
     style Monitor fill:#fff9c4,stroke:#fbc02d
 ```
@@ -152,7 +152,7 @@ func main() {
 
     var wg sync.WaitGroup
 
-    // 1. 启动指定数量的 worker，目前数量是 5 
+    // 1. 启动指定数量的 worker，目前数量是 5
     // 此时工人已经就绪，但在 jobs 通道没数据前，他们都会阻塞在 range 那行 “待命”
     for w := 1; w <= numWorkers; w++ {
         wg.Add(1)
@@ -202,7 +202,7 @@ func main() {
 
 ## 3. 为什么 `wg.Wait()` 和 `close(results)` 要单独放在一个 `Goroutine` 里？
 
-　　**这是为了避免“死锁”。** 
+　　**这是为了避免“死锁”。**
 
 　　主程序运行到 `for res := range results` 时会一直等着拿数据。
 
@@ -214,7 +214,7 @@ func main() {
 
 ## 4. 多个 worker 并发从 `jobs` 里取数据，不会出现取到同一个任务的情况吗？
 
-　　**绝对不会。** 
+　　**绝对不会。**
 
 　　`Go` 的 `Channel` 底层有锁机制（加锁的环形链表），它是并发安全的。
 
@@ -226,10 +226,10 @@ func main() {
 
 ## 1. 如果其中一个任务导致 Worker Panic（崩溃）了怎么办？
 
-　　**问题：** 默认情况下，一个 `Goroutine` 崩溃会导致整个进程退出。 
+　　**问题：** 默认情况下，一个 `Goroutine` 崩溃会导致整个进程退出。
 **解决：** 在 worker 函数内部使用 `recover()`。在 `Worker Pool` 中，通常需要捕获异常，打印日志，并调用 `wg.Done()`，否则 `Wait()` 永远等不到结束，程序会死锁。
 
 ## 2. 如何优雅地“提前关闭” `Worker Pool`？
 
-　　**场景：** 比如用户点击了取消按钮，或者遇到了严重错误，不想跑剩下的 1 万个任务了。 
+　　**场景：** 比如用户点击了取消按钮，或者遇到了严重错误，不想跑剩下的 1 万个任务了。
 **技巧：** 仅仅 `close(jobs)` 是不够的，因为工人可能正阻塞在某个耗时操作上。这时候需要引入 `context.Context`。给工人传入一个 `ctx`，在函数内通过 `select { case <-ctx.Done(): return }` 来实现秒级的停止。
