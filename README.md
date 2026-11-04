@@ -215,6 +215,8 @@ Sitemap 地址也应保持一致。
   `https://www.victoryeah.com/sitemap.xml`；单篇文章可用网址检查请求编入索引。
 - 百度搜索资源平台：验证 `https://www.victoryeah.com/`，再按后台开放的入口
   提交站点地图或 `https://www.victoryeah.com/baidu_urls.txt` 中的文章链接。
+  文件验证使用 `source/baidu_verify_codeva-x0BqP1JVjT.html`，构建时原样复制到
+  网站根目录；验证后仍须保留，避免网站所有权验证失效。
 - 百度 API token 不应写进受 Git 管理的配置。启用自动推送前，先完成私有
   凭证配置并确认平台的实际提交额度。
 
