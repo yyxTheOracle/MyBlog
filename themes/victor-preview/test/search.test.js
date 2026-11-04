@@ -54,7 +54,7 @@ test('真实 Go 和 Electron 文章经 Hexo 6 渲染后可搜索，并定位正�
   }
 
   const go = await renderPost('2026-01-11-go-worker-pool实践.md');
-  const electron = await renderPost('2025-09-30-electron-tiangong.md');
+  const electron = await renderPost('2025-09-14-electron-tiangong.md');
   const generator = hexo.extend.generator.get('victor-search');
   const result = await generator.call(hexo, { posts: [go, electron] });
   assert.equal(result.path, 'search-index.json');

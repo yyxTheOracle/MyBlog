@@ -1,7 +1,6 @@
 ---
 title: '修改 antd 组件默认样式的坑丨:global 关键字'
 tag:
-  - antd
   - 前端开发
   - JavaScript
 categories:

@@ -2,7 +2,6 @@
 title: 用 Codex Computer Use 搞定小程序 E2E Test
 tag:
   - AI
-  - Codex
 categories:
   - AI
 article_type: 0

@@ -2,8 +2,6 @@
 title: Matt Pocock Skills v1.1 使用体验
 tag:
   - AI
-  - Codex
-  - Skills
 categories:
   - AI
 article_type: 0

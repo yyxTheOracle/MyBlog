@@ -1,7 +1,6 @@
 ---
 title: 回调函数也能主动调用丨antd Table 组件外实现全选 & 取消全选
 tag:
-  - antd
   - 前端开发
   - JavaScript
 categories:
