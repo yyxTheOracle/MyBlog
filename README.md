@@ -21,7 +21,7 @@
 
 - 增加文章置顶功能
 - 增加代码块复制功能
-- 增加waline评论功能(含valine后端部署)
+- 增加 Waline 评论与文章阅读量统计
 - 增加gittalk评论
 - 增加APlayer播放器(可导入歌单)
 - 增加live2d看板娘
@@ -204,6 +204,87 @@ npx hexo clean && npx hexo deploy --generate
 ```
 
 这个命令只发布静态网站，不会替你提交或推送 `MyBlog` 源码仓库。
+
+### Waline 评论与文章阅读量
+
+博客已接入 Waline v3 客户端。评论服务部署在 Vercel，评论、用户和阅读量
+保存在独立的 Neon PostgreSQL 数据库中；重新发布博客不会清空这些数据。
+
+| 入口 | 用途 |
+| --- | --- |
+| [Waline 管理后台](https://victor-waline.vercel.app/ui) | 使用管理员邮箱和密码登录，管理评论、用户及导入导出 |
+| [Vercel 评论服务项目](https://vercel.com/yyxtheoracles-projects/victor-waline) | 查看部署、运行日志和环境变量 |
+| `yyxTheOracle/victor-waline` | 独立的 Waline 服务源码仓库 |
+| `victor-waline-db` | 通过 Vercel Neon 集成创建的数据库 |
+
+```mermaid
+flowchart LR
+    A["博客文章页<br/>Waline v3 客户端"] -->|"评论与阅读量请求"| B["victor-waline.vercel.app<br/>Vercel 评论服务"]
+    B --> C["Neon PostgreSQL<br/>评论、用户、计数"]
+    D["管理员 /ui 后台"] --> B
+```
+
+#### 修改博客端配置
+
+编辑 [`themes/new-yilia/_config.yml`](themes/new-yilia/_config.yml) 中现有的
+`waline` 段，不要重复添加同名配置：
+
+```yaml
+waline:
+  enable: true # 是否显示评论区
+  server_url: 'https://victor-waline.vercel.app'
+  login: 'enable' # 允许登录，也允许游客评论
+  lang: 'zh-CN'
+  pageview: true # 是否显示并累加文章阅读量
+```
+
+- `enable` 与 `pageview` 是独立开关；只关评论时，阅读量仍可继续统计。
+- 只关闭某篇文章的评论，在该文章 Front Matter 中设置 `no_comments: true`。
+- 当前允许游客评论，昵称必填，图片上传关闭，每页显示 10 条评论。
+- 修改博客端配置后，按上面的流程重新构建并发布博客。
+
+眼睛图标旁的数字表示页面访问次数（PV），刷新文章会继续增加，不等于独立
+访客人数。首页列表不会计入单篇文章阅读量；尚未取得计数时显示 `—`。
+计数和评论按 `/post/<abbrlink>.html` 路径关联，不要随意修改已有文章的
+`abbrlink` 或全站 `permalink`。
+
+2026-11-04 曾为当时已发布的 15 篇文章添加一次性人工初始基数，原有读数保留。
+这些文章的显示值包含人工基数，不能当作真实历史访问量；逐篇调整记录和撤回
+方法保存在个人飞书维护文档中。之后新增文章没有这次人工基数。
+
+#### 管理服务与备份
+
+Waline 服务的站点环境变量设置在 `victor-waline` 项目中：
+
+```text
+SITE_NAME=Victor 的自留地
+SITE_URL=https://www.victoryeah.com
+SERVER_URL=https://victor-waline.vercel.app
+```
+
+修改服务环境变量后，需要在该项目的 Deployments 中重新部署，并确认
+Production 状态为 `READY`。数据库连接凭据由 Neon 集成管理，不写入源码。
+博客项目与评论服务项目分开部署；修改计数数据库本身无需重新发布博客。
+
+日常在后台的“已通过 / 待审核 / 垃圾”中查看评论。重要升级或迁移前，在
+“导入导出”页面导出备份。Waline 备份包含评论、计数和用户数据，应私密保存；
+**导入不是增量合并，会替换导入范围内的评论和阅读量**，恢复前先备份现状。
+管理员账号、密码和完整操作手册保存在个人文档中，不放进仓库。
+
+目前尚未配置 SMTP 邮件通知和 Waline 自定义域名。后台的 LeanCloud 停服提醒
+不涉及本项目使用的 Neon 数据库。更多配置见
+[Waline 官方文档](https://waline.js.org/guide/get-started/)。
+
+修改 Waline 模板后，在已安装项目依赖的仓库根目录运行：
+
+```sh
+node tests/waline.cjs
+npm run clean
+npm run build
+```
+
+检查通过后再发布，并确认文章阅读量和评论区正常加载。本地预览同样连接正式
+Waline 服务时，也会增加计数或写入评论，不应当作隔离测试环境。
 
 ### 搜索引擎收录
 
