@@ -1,0 +1,104 @@
+/* 只覆盖页脚：旧主题的整体透明度会降低徽章和文字的对比度。 */
+#footer {
+  bottom: 0;
+  padding: 32px 0 28px;
+  background: #eaeaea;
+  color: #616974;
+  font-family: inherit;
+  line-height: 1.8;
+  opacity: 1;
+  text-shadow: none;
+}
+
+#footer .footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#footer .footer-badge {
+  --badge-accent: #303840;
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid #cdd3d9;
+  border-radius: 6px;
+  background: #fff;
+  color: #424b55;
+  box-shadow: 0 1px 2px rgb(30 42 54 / 5%);
+  font-size: 12px;
+  line-height: 32px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+#footer .footer-badge-brand,
+#footer .footer-badge-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+}
+
+#footer .footer-badge-brand {
+  font-weight: 600;
+}
+
+#footer .footer-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+#footer .footer-badge-detail {
+  border-left: 1px solid #e1e5e9;
+  border-radius: 0 5px 5px 0;
+  background: #f5f7f9;
+  color: #586472;
+}
+
+#footer .footer-badge-hexo { --badge-accent: #087eae; }
+#footer .footer-badge-license { --badge-accent: #36735b; }
+#footer .footer-badge-rss { --badge-accent: #b65a20; }
+
+#footer .footer-badge:hover,
+#footer .footer-badge:focus-visible {
+  border-color: var(--badge-accent);
+  color: var(--badge-accent);
+  box-shadow: 0 3px 8px rgb(30 42 54 / 10%);
+  transform: translateY(-2px);
+}
+
+#footer a:focus-visible {
+  outline: 2px solid #087eae;
+  outline-offset: 4px;
+}
+
+#footer .post-meta-divider { margin: 0 10px; }
+#footer .footer-credits { margin-top: 4px; }
+#footer .footer-credit-divider { margin: 0 8px; }
+#footer .footer-credits a { color: #47738b; }
+#footer .footer-credits a:hover { text-decoration: underline; }
+
+/* 手机端保留浅底，并让徽章避开右下角原有的悬浮按钮。 */
+@media screen and (max-width: 600px) {
+  #footer { padding: 28px 0 64px; }
+  #footer .outer { padding: 0 20px; }
+  #footer .footer-badges {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 10px;
+  }
+  #footer .footer-badge { justify-content: space-between; }
+  #footer .footer-badge-brand,
+  #footer .footer-badge-detail { padding: 0 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #footer .footer-badge { transition: none; }
+  #footer .footer-badge:hover,
+  #footer .footer-badge:focus-visible { transform: none; }
+}
