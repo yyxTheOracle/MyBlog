@@ -1,21 +1,31 @@
 /* 只覆盖页脚：旧主题的整体透明度会降低徽章和文字的对比度。 */
 #footer {
   bottom: 0;
-  padding: 32px 0 28px;
+  padding: 25px 0 28px;
   background: #eaeaea;
-  color: #616974;
+  color: #697581;
   font-family: inherit;
   line-height: 1.8;
   opacity: 1;
   text-shadow: none;
 }
 
+/* 与评论内容共用 880px 上限和侧边留白，分隔线自然衔接同一块灰底。 */
+#footer .outer {
+  box-sizing: border-box;
+  width: calc(100% - 60px);
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 23px 0 0;
+  border-top: 1px solid #cdd3d9;
+}
+
 #footer .footer-badges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 13px;
 }
 
 #footer .footer-badge {
@@ -26,9 +36,8 @@
   border-radius: 6px;
   background: #fff;
   color: #424b55;
-  box-shadow: 0 1px 2px rgb(30 42 54 / 5%);
   font-size: 12px;
-  line-height: 32px;
+  line-height: 29px;
   text-decoration: none;
   white-space: nowrap;
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
@@ -80,13 +89,13 @@
 #footer .post-meta-divider { margin: 0 10px; }
 #footer .footer-credits { margin-top: 4px; }
 #footer .footer-credit-divider { margin: 0 8px; }
-#footer .footer-credits a { color: #47738b; }
+#footer .footer-credits a { color: inherit; }
 #footer .footer-credits a:hover { text-decoration: underline; }
 
 /* 手机端保留浅底，并让徽章避开右下角原有的悬浮按钮。 */
-@media screen and (max-width: 600px) {
-  #footer { padding: 28px 0 64px; }
-  #footer .outer { padding: 0 20px; }
+@media screen and (max-width: 580px) {
+  #footer { padding: 25px 0 64px; }
+  #footer .outer { width: calc(100% - 40px); }
   #footer .footer-badges {
     display: grid;
     grid-template-columns: repeat(2, max-content);
