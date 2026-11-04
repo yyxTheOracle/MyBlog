@@ -1,5 +1,6 @@
 ---
 title: Electron 实践丨用 Cursor + Claude 4 做一个自动化工具
+description: 记录用 Cursor + Claude 4 开发「天工」的过程，结合 Electron 与 Puppeteer，介绍美团开店宝的多账号管理、好评回复话术批量填写、报表自动下载，以及背后的进程通信、状态持久化和任务日志。
 tag:
   - 前端开发
   - Electron
