@@ -197,10 +197,10 @@ declare:
 #1、waline
 # [Waline](https://waline.js.org)
 waline:
-  enable: false
-  server_url: 'waline-ten-jade.vercel.app'
+  enable: true
+  server_url: 'https://victor-waline.vercel.app'
   login: 'enable'       # 'enable': 启用登录 (默认) 'disable': 禁用登录，用户只能填写信息评论 'force': 强制登录，用户必须注册并登录才可发布评论
-  lang: 'zh-CN '        # 语言，默认'zh-CN', 'en'/ 'jp'可选
+  lang: 'zh-CN'         # 语言，默认'zh-CN', 'en'/ 'jp'可选
   dark: ''              # 设置 'auto' 会根据设备暗黑模式自适应。
   word_limit: 0         # 评论字数限制，0为不限制，默认值为0
   page_size: 10         # 评论列表分页，数字为条数，默认值10

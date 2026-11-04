@@ -18,12 +18,13 @@
 	-->
 	
     <!-- waline阅读量统计 -->
-	<% if (theme.waline.pageview && !index){ %>
-	<span>
+	<% if (theme.waline && theme.waline.server_url && theme.waline.pageview && !index){ %>
+	<span title="文章阅读量">
 		&nbsp; &nbsp; &nbsp;
 		<i class="fa fa-eye" aria-hidden="true"></i>
 		&nbsp;
-		<span class="waline-pageview-count" data-path="/<%= post.path %>"><i class="fa fa-spinner fa-spin"></i></span>
+		<!-- 未返回计数时保留占位，避免服务异常时一直转圈。 -->
+		<span class="waline-pageview-count" data-path="/<%= post.path %>">—</span>
 	</span>
 	<% } %>
 

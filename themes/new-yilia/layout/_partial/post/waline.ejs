@@ -1,8 +1,11 @@
-<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet' />
-
+<% const showComments = theme.waline.enable && !post.no_comments; %>
+<% if (showComments){ %>
+<link href='https://unpkg.com/@waline/client@v3/dist/waline.css' rel='stylesheet' />
 <div id="waline"></div>
-<script>
+<% } %>
+<script type="module">
+	import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
 	// 中文默认
 	const locale = {
 	  nick: ' 昵称: ',
@@ -33,8 +36,9 @@
 	  wordHint: '评论字数应在 $0 到 $1 字之间！\n当前字数：$2',
 	};
 
-	Waline.init({
-	  el: '#waline',
+	init({
+	  // 只初始化一次；el 为 null 时保留阅读量统计，不创建评论区。
+	  el: <%- JSON.stringify(showComments ? '#waline' : null) %>,
 	  serverURL: '<%= theme.waline.server_url %>',
 	  locale,
 	  login: '<%= theme.waline.login %>',

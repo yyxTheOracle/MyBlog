@@ -162,12 +162,13 @@
 <!-- 添加回到顶部和文章目录 -->
 <%- partial('_partial/aside') %>
 
+<!-- 阅读量独立于评论开关，关闭评论的文章仍可计数。 -->
+<% if (!index && theme.waline && theme.waline.server_url && (theme.waline.pageview || (theme.waline.enable && !post.no_comments))){ %>
+  <%- partial('post/waline') %>
+<% } %>
+
 <!-- 添加评论 -->
 <% if (!index && !post.no_comments){ %>
-
-  <% if (theme.waline && theme.waline.enable && theme.waline.server_url){ %>
-  <%- partial('post/waline') %>
-  <% } %>
   
   <% if (theme.gittalk && theme.gittalk.enable && theme.gittalk.clientID && theme.gittalk.clientSecret && theme.gittalk.repo && theme.gittalk.owner && theme.gittalk.admin){ %>
   <%- partial('post/gittalk', {
