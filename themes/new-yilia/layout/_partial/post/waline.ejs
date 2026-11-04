@@ -1,7 +1,23 @@
 <% const showComments = theme.waline.enable && !post.no_comments; %>
+<% if (theme.waline.pageview){ %>
+<script>
+	// 在 CDN 模块加载前计时；Waline 成功会替换转圈图标，超时才显示占位。
+	setTimeout(() => {
+	  const count = document.querySelector('.waline-pageview-count');
+	  if (count && count.querySelector('.fa-spinner')) count.textContent = '—';
+	}, 15000);
+</script>
+<% } %>
 <% if (showComments){ %>
 <link href='https://unpkg.com/@waline/client@v3/dist/waline.css' rel='stylesheet' />
-<div id="waline"></div>
+<!-- 评论与正文使用相同的卡片边界，保留 Waline 自己管理的挂载容器。 -->
+<section class="article-comments" aria-labelledby="article-comments-title">
+  <header class="article-comments-header">
+    <h2 id="article-comments-title">留言</h2>
+    <p>欢迎交流想法，也欢迎指出文中的问题。</p>
+  </header>
+  <div id="waline"></div>
+</section>
 <% } %>
 <script type="module">
 	import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';

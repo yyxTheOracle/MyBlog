@@ -23,8 +23,7 @@
 		&nbsp; &nbsp; &nbsp;
 		<i class="fa fa-eye" aria-hidden="true"></i>
 		&nbsp;
-		<!-- 未返回计数时保留占位，避免服务异常时一直转圈。 -->
-		<span class="waline-pageview-count" data-path="/<%= post.path %>">—</span>
+		<span class="waline-pageview-count" data-path="/<%= post.path %>" aria-live="polite"><i class="fa fa-spinner fa-spin" role="status" aria-label="阅读量加载中"></i></span>
 	</span>
 	<% } %>
 

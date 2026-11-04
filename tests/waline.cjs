@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const ejs = require('ejs');
 const yaml = require('js-yaml');
 
@@ -31,7 +32,30 @@ assert.equal((article.match(/\binit\(\{/g) || []).length, 1);
 assert.match(article, /<div id="waline"><\/div>/);
 assert.match(article, /type="module"/);
 assert.match(article, /@waline\/client@v3\/dist\/waline\.js/);
-assert.match(article, /waline-pageview-count" data-path="\/post\/example\.html">—<\/span>/);
+assert.match(article, /waline-pageview-count" data-path="\/post\/example\.html" aria-live="polite"><i class="fa fa-spinner fa-spin" role="status" aria-label="阅读量加载中"><\/i><\/span>/);
+assert.ok(article.indexOf('setTimeout') < article.indexOf('dist/waline.css'), 'CDN 样式加载受阻时也能开始超时计时');
+
+// 在隔离 DOM 中推进超时，验证失败结束加载，同时不覆盖已成功的 0 或非零读数。
+function checkPageviewTimeout(value) {
+  let callback;
+  const count = {
+    textContent: value,
+    querySelector: () => count.textContent === '' ? {} : null,
+  };
+  const watchdog = article.match(/<script>([\s\S]*?)<\/script>/)[1];
+  vm.runInNewContext(watchdog, {
+    document: { querySelector: () => count },
+    setTimeout: (fn, delay) => {
+      assert.equal(delay, 15000);
+      callback = fn;
+    },
+  });
+  assert.equal(count.textContent, value, '请求完成前保留原来的加载状态');
+  callback();
+  assert.equal(count.textContent, value === '' ? '—' : value);
+}
+
+for (const value of ['', '0', '58']) checkPageviewTimeout(value);
 
 for (const options of [{ noComments: true }, { waline: { enable: false } }]) {
   const pageviewOnly = renderArticle(options);
@@ -50,4 +74,5 @@ const commentsOnly = renderArticle({ waline: { pageview: false } });
 assert.match(commentsOnly, /<div id="waline">/);
 assert.match(commentsOnly, /pageview: false/);
 assert.doesNotMatch(commentsOnly, /waline-pageview-count/);
+assert.doesNotMatch(commentsOnly, /setTimeout/);
 console.log('Waline template checks passed.');
