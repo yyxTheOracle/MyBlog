@@ -58,8 +58,8 @@
       wordLimit: <%- JSON.stringify(theme.waline.word_limit) %>,
       pageSize: <%- JSON.stringify(theme.waline.page_size) %>,
       imageUploader: <%- JSON.stringify(theme.waline.image_uploader) %>,
-      // 即使配置被误改，预览也不触发生产阅读量递增。
-      pageview: false,
+      // 仅正式域名累计阅读量，本地预览始终不递增。
+      pageview: location.hostname === 'www.victoryeah.com' || location.hostname === 'victoryeah.com',
       meta: ['nick', 'mail', 'link'],
       requiredMeta: ['nick'],
     });

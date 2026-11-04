@@ -100,7 +100,7 @@
 [2025-07-04 17:47:32.751] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622445670
 [2025-07-04 17:47:32.751] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:47:32.751] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:47:32.766] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622445670] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74289870/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_8868a2.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158452&Signature=WIQeE0p9DI%2FgsRhrzQXy4O%2FRcUg%3D
+[2025-07-04 17:47:32.766] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622445670] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74289870/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_8868a2.xlsx
 [2025-07-04 17:47:32.783] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622445670] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-9uvueymijfeleskh56b1_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_8868a2).xlsx
 [2025-07-04 17:47:32.837] [info]  [TaskContext] 创建文件任务: file_1751622452784_y4cwp8hr
 [2025-07-04 17:47:32.993] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622445670] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-9uvueymijfeleskh56b1_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_8868a2).xlsx
@@ -192,7 +192,7 @@
 [2025-07-04 17:47:47.294] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622460168
 [2025-07-04 17:47:47.295] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:47:47.295] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:47:47.307] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622460168] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74289870/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_c51059.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158466&Signature=VUrzh1a8w6zQHcOEZQayIyn9%2Bn8%3D
+[2025-07-04 17:47:47.307] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622460168] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74289870/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_c51059.xlsx
 [2025-07-04 17:47:47.322] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622460168] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-9uvueymijfeleskh56b1_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_c51059).xlsx
 [2025-07-04 17:47:47.337] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:47:47.367] [info]  [TaskContext] 创建文件任务: file_1751622467322_b3llyjyt
@@ -309,7 +309,7 @@
 [2025-07-04 17:48:04.585] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622475915
 [2025-07-04 17:48:04.585] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:48:04.585] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:48:04.602] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622475915] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/82052270/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_aa07d1.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158484&Signature=sGk5KdOskeFzYT25%2BbEymt%2F4hwc%3D
+[2025-07-04 17:48:04.602] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622475915] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/82052270/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_aa07d1.xlsx
 [2025-07-04 17:48:04.617] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622475915] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-cevzlj-ei9l54gunh9rb_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_aa07d1).xlsx
 [2025-07-04 17:48:04.659] [info]  [TaskContext] 创建文件任务: file_1751622484617_xjl2fcew
 [2025-07-04 17:48:04.721] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622475915] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-cevzlj-ei9l54gunh9rb_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_aa07d1).xlsx
@@ -410,7 +410,7 @@
 [2025-07-04 17:48:20.466] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622491769
 [2025-07-04 17:48:20.466] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:48:20.466] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:48:20.472] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622491769] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/82052270/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_509c46.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158499&Signature=MRieU5U%2Fh5kESArOpAXOYG2DDR0%3D
+[2025-07-04 17:48:20.472] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622491769] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/82052270/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_509c46.xlsx
 [2025-07-04 17:48:20.486] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622491769] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/-cevzlj-ei9l54gunh9rb_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_509c46).xlsx
 [2025-07-04 17:48:20.500] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:48:20.526] [info]  [TaskContext] 创建文件任务: file_1751622500487_t5obfdtc
@@ -527,7 +527,7 @@
 [2025-07-04 17:48:37.612] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622508980
 [2025-07-04 17:48:37.612] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:48:37.612] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:48:37.624] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622508980] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80156656/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_29e027.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158517&Signature=S5UR6A%2Bu%2FsPqD%2Bt3iou%2F5F1aQAo%3D
+[2025-07-04 17:48:37.624] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622508980] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80156656/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_29e027.xlsx
 [2025-07-04 17:48:37.639] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622508980] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/1pwv-mfyehskdhhw0x2lb_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_29e027).xlsx
 [2025-07-04 17:48:37.677] [info]  [TaskContext] 创建文件任务: file_1751622517640_3kxii85j
 [2025-07-04 17:48:37.755] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622508980] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/1pwv-mfyehskdhhw0x2lb_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_29e027).xlsx
@@ -628,7 +628,7 @@
 [2025-07-04 17:48:53.167] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622524589
 [2025-07-04 17:48:53.167] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:48:53.167] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:48:53.173] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622524589] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80156656/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_f22a16.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158532&Signature=Y6ovimW6MIGdFjH1DK9XnJz%2FgG8%3D
+[2025-07-04 17:48:53.173] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622524589] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80156656/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_f22a16.xlsx
 [2025-07-04 17:48:53.190] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622524589] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/1pwv-mfyehskdhhw0x2lb_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_f22a16).xlsx
 [2025-07-04 17:48:53.200] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:48:53.217] [info]  [TaskContext] 创建文件任务: file_1751622533191_gks39b6s
@@ -736,7 +736,7 @@
 [2025-07-04 17:49:08.218] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622541165
 [2025-07-04 17:49:08.218] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:49:08.218] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:49:08.232] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622541165] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72712220/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_6dcf4f.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158547&Signature=iMf8YY2t5%2FBsbqzJirNYfzQmCI8%3D
+[2025-07-04 17:49:08.232] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622541165] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72712220/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_6dcf4f.xlsx
 [2025-07-04 17:49:08.249] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622541165] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/无消耗_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_6dcf4f).xlsx
 [2025-07-04 17:49:08.287] [info]  [TaskContext] 创建文件任务: file_1751622548252_14taxr3a
 [2025-07-04 17:49:08.363] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622541165] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/无消耗_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_6dcf4f).xlsx
@@ -828,7 +828,7 @@
 [2025-07-04 17:49:22.672] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622555594
 [2025-07-04 17:49:22.673] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:49:22.673] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:49:22.682] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622555594] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72712220/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_e2339e.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158562&Signature=zxkKcCpVnpY2BQcd9QC4g591290%3D
+[2025-07-04 17:49:22.682] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622555594] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72712220/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_e2339e.xlsx
 [2025-07-04 17:49:22.696] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622555594] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/无消耗_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_e2339e).xlsx
 [2025-07-04 17:49:22.708] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:49:22.733] [info]  [TaskContext] 创建文件任务: file_1751622562697_2kvq1yhg
@@ -946,7 +946,7 @@
 [2025-07-04 17:49:33.707] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622571030
 [2025-07-04 17:49:33.707] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:49:33.707] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:49:33.715] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622571030] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74326599/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_249e11.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158573&Signature=vcqlXJQ%2BPGi5fOi6cpWnTPwNMsw%3D
+[2025-07-04 17:49:33.715] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622571030] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74326599/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_249e11.xlsx
 [2025-07-04 17:49:33.733] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622571030] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/3ixsrklcxqpsrm38eoa1v_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_249e11).xlsx
 [2025-07-04 17:49:33.775] [info]  [TaskContext] 创建文件任务: file_1751622573734_9x922s65
 [2025-07-04 17:49:33.895] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622571030] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/3ixsrklcxqpsrm38eoa1v_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_249e11).xlsx
@@ -1045,7 +1045,7 @@
 [2025-07-04 17:49:48.546] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622580898
 [2025-07-04 17:49:48.546] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:49:48.546] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:49:48.557] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622580898] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74326599/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_cfc596.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158588&Signature=9iL1r%2BiZ5fcFcawNLdlv%2ByZli9Y%3D
+[2025-07-04 17:49:48.557] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622580898] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74326599/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_cfc596.xlsx
 [2025-07-04 17:49:48.574] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622580898] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/3ixsrklcxqpsrm38eoa1v_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_cfc596).xlsx
 [2025-07-04 17:49:48.588] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:49:48.621] [info]  [TaskContext] 创建文件任务: file_1751622588575_byx6owz9
@@ -1160,7 +1160,7 @@
 [2025-07-04 17:50:04.082] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622596432
 [2025-07-04 17:50:04.082] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:50:04.082] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:50:04.094] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622596432] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79679701/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_61cb49.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158603&Signature=C83FPFIn%2BgLCuJmaki%2F%2FSMj4X6M%3D
+[2025-07-04 17:50:04.094] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622596432] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79679701/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_61cb49.xlsx
 [2025-07-04 17:50:04.110] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622596432] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/4fyuyvh1dgioxew2rfdim_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_61cb49).xlsx
 [2025-07-04 17:50:04.146] [info]  [TaskContext] 创建文件任务: file_1751622604110_h4q360i4
 [2025-07-04 17:50:04.218] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622596432] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/4fyuyvh1dgioxew2rfdim_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_61cb49).xlsx
@@ -1259,7 +1259,7 @@
 [2025-07-04 17:50:18.556] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622610925
 [2025-07-04 17:50:18.556] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:50:18.557] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:50:18.566] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622610925] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79679701/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_555528.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158618&Signature=EB5M3FeaQiEZSn80oCxCZrVLblc%3D
+[2025-07-04 17:50:18.566] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622610925] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79679701/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_555528.xlsx
 [2025-07-04 17:50:18.583] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622610925] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/4fyuyvh1dgioxew2rfdim_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_555528).xlsx
 [2025-07-04 17:50:18.595] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:50:18.610] [info]  [TaskContext] 创建文件任务: file_1751622618584_s3kxuad4
@@ -1374,7 +1374,7 @@
 [2025-07-04 17:50:33.052] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622624429
 [2025-07-04 17:50:33.052] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:50:33.052] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:50:33.065] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622624429] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75871383/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_5afb93.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158632&Signature=ZM6nzFKitglPU2qda8lx47srjsM%3D
+[2025-07-04 17:50:33.065] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622624429] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75871383/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_5afb93.xlsx
 [2025-07-04 17:50:33.081] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622624429] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/5bllpfnawbhahqutltc-q_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_5afb93).xlsx
 [2025-07-04 17:50:33.120] [info]  [TaskContext] 创建文件任务: file_1751622633082_f9amhg8d
 [2025-07-04 17:50:33.190] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622624429] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/5bllpfnawbhahqutltc-q_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_5afb93).xlsx
@@ -1473,7 +1473,7 @@
 [2025-07-04 17:50:48.455] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622639834
 [2025-07-04 17:50:48.455] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:50:48.455] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:50:48.466] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622639834] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75871383/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_e2824c.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158647&Signature=UxEXNsJU7wF3QM5Qa30IG0hDnmU%3D
+[2025-07-04 17:50:48.466] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622639834] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75871383/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_e2824c.xlsx
 [2025-07-04 17:50:48.485] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622639834] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/5bllpfnawbhahqutltc-q_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_e2824c).xlsx
 [2025-07-04 17:50:48.497] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:50:48.534] [info]  [TaskContext] 创建文件任务: file_1751622648485_2onrfne4
@@ -1583,7 +1583,7 @@
 [2025-07-04 17:51:04.572] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622656519
 [2025-07-04 17:51:04.572] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:51:04.573] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:51:04.582] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622656519] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75882185/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_55b3de.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158664&Signature=MOFe6SOL8B3EafQHHfoLSV5U4ig%3D
+[2025-07-04 17:51:04.582] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622656519] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75882185/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_55b3de.xlsx
 [2025-07-04 17:51:04.598] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622656519] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/6-pt-owmizf2yniiczyt0_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_55b3de).xlsx
 [2025-07-04 17:51:04.637] [info]  [TaskContext] 创建文件任务: file_1751622664599_etmu1o3e
 [2025-07-04 17:51:04.881] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622656519] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/6-pt-owmizf2yniiczyt0_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_55b3de).xlsx
@@ -1677,7 +1677,7 @@
 [2025-07-04 17:51:19.941] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622671897
 [2025-07-04 17:51:19.941] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:51:19.941] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:51:19.949] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622671897] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75882185/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_507a41.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158679&Signature=heQQ8me7PPI41TsYvIgyUGdId0c%3D
+[2025-07-04 17:51:19.949] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622671897] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75882185/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_507a41.xlsx
 [2025-07-04 17:51:19.964] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622671897] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/6-pt-owmizf2yniiczyt0_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_507a41).xlsx
 [2025-07-04 17:51:20.007] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:51:20.009] [info]  [TaskContext] 创建文件任务: file_1751622679965_trk49dtu
@@ -1792,7 +1792,7 @@
 [2025-07-04 17:51:36.615] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622688889
 [2025-07-04 17:51:36.615] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:51:36.615] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:51:36.625] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622688889] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/71634412/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_3e8225.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158696&Signature=tbyUN8qxGVNzbJvGk6yvHNq4R3s%3D
+[2025-07-04 17:51:36.625] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622688889] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/71634412/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_3e8225.xlsx
 [2025-07-04 17:51:36.639] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622688889] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 门店分析_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_3e8225).xlsx
 [2025-07-04 17:51:36.666] [info]  [TaskContext] 创建文件任务: file_1751622696640_fg3bto55
 [2025-07-04 17:51:36.716] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622688889] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 门店分析_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_3e8225).xlsx
@@ -1891,7 +1891,7 @@
 [2025-07-04 17:51:53.166] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622705485
 [2025-07-04 17:51:53.166] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:51:53.166] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:51:53.175] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622705485] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/71634412/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_f85ec0.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158712&Signature=IY5SJMWZ6Taeq7e8QiRy9kr%2FmKY%3D
+[2025-07-04 17:51:53.175] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622705485] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/71634412/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_f85ec0.xlsx
 [2025-07-04 17:51:53.190] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622705485] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 门店分析_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_f85ec0).xlsx
 [2025-07-04 17:51:53.201] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:51:53.236] [info]  [TaskContext] 创建文件任务: file_1751622713191_5anglp6j
@@ -2008,7 +2008,7 @@
 [2025-07-04 17:52:09.305] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622720593
 [2025-07-04 17:52:09.305] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:52:09.305] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:52:09.316] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622720593] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/81051093/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_91cd61.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158728&Signature=ecMAHY5q6ehHJykdD28SoespoPI%3D
+[2025-07-04 17:52:09.316] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622720593] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/81051093/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_91cd61.xlsx
 [2025-07-04 17:52:09.329] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622720593] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/8mnulillheyh9dupuzq_k_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_91cd61).xlsx
 [2025-07-04 17:52:09.351] [info]  [TaskContext] 创建文件任务: file_1751622729330_1yktf50p
 [2025-07-04 17:52:09.415] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622720593] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/8mnulillheyh9dupuzq_k_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_91cd61).xlsx
@@ -2109,7 +2109,7 @@
 [2025-07-04 17:52:25.150] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622736455
 [2025-07-04 17:52:25.150] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:52:25.150] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:52:25.158] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622736455] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/81051093/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_76ba0a.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158744&Signature=FU%2F%2F%2FUlQYeIkjGjz6acv2NqJI70%3D
+[2025-07-04 17:52:25.158] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622736455] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/81051093/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_76ba0a.xlsx
 [2025-07-04 17:52:25.172] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622736455] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/8mnulillheyh9dupuzq_k_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_76ba0a).xlsx
 [2025-07-04 17:52:25.182] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:52:25.212] [info]  [TaskContext] 创建文件任务: file_1751622745173_37evjuzp
@@ -2219,7 +2219,7 @@
 [2025-07-04 17:52:41.007] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622752962
 [2025-07-04 17:52:41.007] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:52:41.007] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:52:41.016] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622752962] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77931416/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_858a49.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158760&Signature=gylbdN14Pkl6lAWVh63sCZy1zEE%3D
+[2025-07-04 17:52:41.016] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622752962] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77931416/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_858a49.xlsx
 [2025-07-04 17:52:41.032] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622752962] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/9jxlzd8sihvbrmyb3-lfa_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_858a49).xlsx
 [2025-07-04 17:52:41.060] [info]  [TaskContext] 创建文件任务: file_1751622761033_xoqefbh0
 [2025-07-04 17:52:41.133] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622752962] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/9jxlzd8sihvbrmyb3-lfa_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_858a49).xlsx
@@ -2313,7 +2313,7 @@
 [2025-07-04 17:52:56.014] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622767952
 [2025-07-04 17:52:56.014] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:52:56.014] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:52:56.025] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622767952] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77931416/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_58e57b.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158775&Signature=lEGd2I9R1o6rB5g8cqMcn1Y5kGU%3D
+[2025-07-04 17:52:56.025] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622767952] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77931416/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_58e57b.xlsx
 [2025-07-04 17:52:56.041] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622767952] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/9jxlzd8sihvbrmyb3-lfa_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_58e57b).xlsx
 [2025-07-04 17:52:56.053] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:52:56.077] [info]  [TaskContext] 创建文件任务: file_1751622776042_886sbk8c
@@ -2428,7 +2428,7 @@
 [2025-07-04 17:53:11.440] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622783832
 [2025-07-04 17:53:11.440] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:53:11.441] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:53:11.449] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622783832] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78922559/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_395bcb.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158790&Signature=jZtnn7FWMkEvl67JtwalT3aN2kU%3D
+[2025-07-04 17:53:11.449] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622783832] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78922559/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_395bcb.xlsx
 [2025-07-04 17:53:11.462] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622783832] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/an6kkufbllzjediuusehd_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_395bcb).xlsx
 [2025-07-04 17:53:11.483] [info]  [TaskContext] 创建文件任务: file_1751622791463_p2ioinme
 [2025-07-04 17:53:11.541] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622783832] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/an6kkufbllzjediuusehd_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_395bcb).xlsx
@@ -2527,7 +2527,7 @@
 [2025-07-04 17:53:25.906] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622798267
 [2025-07-04 17:53:25.907] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:53:25.907] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:53:25.916] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622798267] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78922559/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_f2baa6.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158805&Signature=s9jfFcMHU12bSqcMICu3Gv8sEec%3D
+[2025-07-04 17:53:25.916] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622798267] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78922559/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_f2baa6.xlsx
 [2025-07-04 17:53:25.932] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622798267] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/an6kkufbllzjediuusehd_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_f2baa6).xlsx
 [2025-07-04 17:53:25.943] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:53:25.956] [info]  [TaskContext] 创建文件任务: file_1751622805932_ndm6g8a2
@@ -2645,7 +2645,7 @@
 [2025-07-04 17:53:37.223] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622814533
 [2025-07-04 17:53:37.223] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:53:37.223] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:53:37.233] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622814533] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74284083/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_140b66.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158816&Signature=rorXpeob1%2BFEF9ny1tzLJAZC6Os%3D
+[2025-07-04 17:53:37.233] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622814533] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74284083/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_140b66.xlsx
 [2025-07-04 17:53:37.248] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622814533] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/b9gacioycxzacdwv_wa2c_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_140b66).xlsx
 [2025-07-04 17:53:37.270] [info]  [TaskContext] 创建文件任务: file_1751622817248_cdz35ix4
 [2025-07-04 17:53:37.392] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622814533] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/b9gacioycxzacdwv_wa2c_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_140b66).xlsx
@@ -2744,7 +2744,7 @@
 [2025-07-04 17:53:52.400] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622824827
 [2025-07-04 17:53:52.400] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:53:52.401] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:53:52.410] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622824827] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74284083/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_fb66bb.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158831&Signature=RkxTnRjBkLjTi0wH7VVXRvsd1FQ%3D
+[2025-07-04 17:53:52.410] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622824827] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74284083/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_fb66bb.xlsx
 [2025-07-04 17:53:52.430] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622824827] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/b9gacioycxzacdwv_wa2c_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_fb66bb).xlsx
 [2025-07-04 17:53:52.448] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:53:52.456] [info]  [TaskContext] 创建文件任务: file_1751622832430_n9fvkz52
@@ -2861,7 +2861,7 @@
 [2025-07-04 17:54:07.203] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622838570
 [2025-07-04 17:54:07.203] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:54:07.203] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:54:07.208] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622838570] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79298620/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_3b5a74.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158846&Signature=0%2BgvF3AmHivjvioWVuCYH0gcow4%3D
+[2025-07-04 17:54:07.208] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622838570] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79298620/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_3b5a74.xlsx
 [2025-07-04 17:54:07.222] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622838570] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/be76z-tlfrfv2en-cp6je_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_3b5a74).xlsx
 [2025-07-04 17:54:07.258] [info]  [TaskContext] 创建文件任务: file_1751622847223_vm4qgn6e
 [2025-07-04 17:54:07.334] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622838570] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/be76z-tlfrfv2en-cp6je_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_3b5a74).xlsx
@@ -2962,7 +2962,7 @@
 [2025-07-04 17:54:24.196] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622855533
 [2025-07-04 17:54:24.196] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:54:24.196] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:54:24.208] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622855533] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79298620/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_15919e.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158863&Signature=zqsHIXiMZ7kNyJPdlf88iCub0V4%3D
+[2025-07-04 17:54:24.208] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622855533] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79298620/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_15919e.xlsx
 [2025-07-04 17:54:24.222] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622855533] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/be76z-tlfrfv2en-cp6je_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_15919e).xlsx
 [2025-07-04 17:54:24.231] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:54:24.256] [info]  [TaskContext] 创建文件任务: file_1751622864222_91e0u372
@@ -3070,7 +3070,7 @@
 [2025-07-04 17:54:39.202] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622872204
 [2025-07-04 17:54:39.202] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:54:39.202] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:54:39.209] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622872204] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/73862673/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_b06108.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158878&Signature=N6h6BgzFDuOge4rK%2FelcFW1h3TA%3D
+[2025-07-04 17:54:39.209] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622872204] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/73862673/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_b06108.xlsx
 [2025-07-04 17:54:39.224] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622872204] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bh98sgjmuuvv9kjmedsma_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_b06108).xlsx
 [2025-07-04 17:54:39.246] [info]  [TaskContext] 创建文件任务: file_1751622879224_v2m3en0d
 [2025-07-04 17:54:39.353] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622872204] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bh98sgjmuuvv9kjmedsma_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_b06108).xlsx
@@ -3162,7 +3162,7 @@
 [2025-07-04 17:54:54.004] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622886537
 [2025-07-04 17:54:54.004] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:54:54.004] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:54:54.016] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622886537] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/73862673/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_21d24e.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158893&Signature=1BLD4BXComOsh558dd3xkSI8vQU%3D
+[2025-07-04 17:54:54.016] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622886537] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/73862673/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_21d24e.xlsx
 [2025-07-04 17:54:54.032] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622886537] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bh98sgjmuuvv9kjmedsma_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_21d24e).xlsx
 [2025-07-04 17:54:54.049] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:54:54.058] [info]  [TaskContext] 创建文件任务: file_1751622894032_86oyahnv
@@ -3272,7 +3272,7 @@
 [2025-07-04 17:55:09.690] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622901544
 [2025-07-04 17:55:09.690] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:55:09.690] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:55:09.700] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622901544] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74129962/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_eaa0ba.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158909&Signature=P8XuxwcJ%2BqvKW9%2BlnXpRgzwCtw8%3D
+[2025-07-04 17:55:09.700] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622901544] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74129962/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_eaa0ba.xlsx
 [2025-07-04 17:55:09.716] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622901544] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bhjs7tumkvnhamd6jilwe_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_eaa0ba).xlsx
 [2025-07-04 17:55:09.743] [info]  [TaskContext] 创建文件任务: file_1751622909717_b1glieyh
 [2025-07-04 17:55:09.814] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622901544] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bhjs7tumkvnhamd6jilwe_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_eaa0ba).xlsx
@@ -3366,7 +3366,7 @@
 [2025-07-04 17:55:24.772] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622916682
 [2025-07-04 17:55:24.772] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:55:24.772] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:55:24.792] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622916682] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74129962/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_2732d5.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158924&Signature=Z66%2FABnogf9id59v3Jsfte%2B9pQ8%3D
+[2025-07-04 17:55:24.792] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622916682] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74129962/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_2732d5.xlsx
 [2025-07-04 17:55:24.806] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622916682] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/bhjs7tumkvnhamd6jilwe_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_2732d5).xlsx
 [2025-07-04 17:55:24.815] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:55:24.837] [info]  [TaskContext] 创建文件任务: file_1751622924806_o73oa7wz
@@ -3481,7 +3481,7 @@
 [2025-07-04 17:55:40.882] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751622933128
 [2025-07-04 17:55:40.882] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:55:40.882] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:55:40.893] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622933128] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72069100/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_13a7d8.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783158940&Signature=LIHEXbl5ndwGMXiyDw2ydiIuEXc%3D
+[2025-07-04 17:55:40.893] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622933128] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/72069100/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_13a7d8.xlsx
 [2025-07-04 17:55:40.906] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622933128] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/cmaa0h6vc1juf5cqlhymm_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_13a7d8).xlsx
 [2025-07-04 17:55:40.928] [info]  [TaskContext] 创建文件任务: file_1751622940907_mqrfuz6i
 [2025-07-04 17:55:41.000] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751622933128] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/cmaa0h6vc1juf5cqlhymm_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_13a7d8).xlsx
@@ -5119,7 +5119,7 @@
 [2025-07-04 17:57:03.770] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623015692
 [2025-07-04 17:57:03.770] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:57:03.770] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:57:03.775] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623015692] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80658284/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_efccfc.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159023&Signature=6LonKYxO4T8vqI5CgT7Dkv49UDU%3D
+[2025-07-04 17:57:03.775] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623015692] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80658284/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_efccfc.xlsx
 [2025-07-04 17:57:03.789] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623015692] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/d1vs7sjntzcloeih5ode7_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_efccfc).xlsx
 [2025-07-04 17:57:03.818] [info]  [TaskContext] 创建文件任务: file_1751623023789_p90yp5n5
 [2025-07-04 17:57:03.889] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623015692] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/d1vs7sjntzcloeih5ode7_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_efccfc).xlsx
@@ -5213,7 +5213,7 @@
 [2025-07-04 17:57:18.588] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623030550
 [2025-07-04 17:57:18.588] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:57:18.588] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:57:18.601] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623030550] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80658284/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_371937.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159038&Signature=AZ9j7Cou0LJAF6uR9G62roHrjew%3D
+[2025-07-04 17:57:18.601] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623030550] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80658284/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_371937.xlsx
 [2025-07-04 17:57:18.614] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623030550] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/d1vs7sjntzcloeih5ode7_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_371937).xlsx
 [2025-07-04 17:57:18.629] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:57:18.642] [info]  [TaskContext] 创建文件任务: file_1751623038615_1yjvjwlj
@@ -5326,7 +5326,7 @@
 [2025-07-04 17:57:33.820] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623046258
 [2025-07-04 17:57:33.820] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:57:33.820] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:57:33.835] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623046258] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75515483/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_a15f13.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159053&Signature=kYNCU5gqm%2FSEZKz%2B%2BGGQs9c902c%3D
+[2025-07-04 17:57:33.835] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623046258] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75515483/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_a15f13.xlsx
 [2025-07-04 17:57:33.853] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623046258] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/drw-fqmreqdtpimvd-yms_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_a15f13).xlsx
 [2025-07-04 17:57:33.895] [info]  [TaskContext] 创建文件任务: file_1751623053854_fyv3gggx
 [2025-07-04 17:57:33.973] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623046258] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/drw-fqmreqdtpimvd-yms_2025-06-23至2025-06-29_美团(原文件名_门店报表_20250623_20250629_a15f13).xlsx
@@ -5423,7 +5423,7 @@
 [2025-07-04 17:57:48.021] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623060511
 [2025-07-04 17:57:48.022] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:57:48.022] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:57:48.034] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623060511] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75515483/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_d65f36.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159067&Signature=8krO%2BJKDns1UjXl1DQDisOr5uWc%3D
+[2025-07-04 17:57:48.034] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623060511] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/75515483/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_d65f36.xlsx
 [2025-07-04 17:57:48.049] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623060511] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/drw-fqmreqdtpimvd-yms_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_d65f36).xlsx
 [2025-07-04 17:57:48.065] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:57:48.090] [info]  [TaskContext] 创建文件任务: file_1751623068050_xpbi24h3
@@ -5533,7 +5533,7 @@
 [2025-07-04 17:58:03.699] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623075610
 [2025-07-04 17:58:03.699] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:58:03.699] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:58:03.709] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623075610] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78714208/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_063ae4.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159083&Signature=I6pCbtlywxnOQsNlBgk52pptRIo%3D
+[2025-07-04 17:58:03.709] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623075610] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78714208/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_063ae4.xlsx
 [2025-07-04 17:58:03.725] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623075610] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/f_soqtrzided0gcsly2b6_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_063ae4).xlsx
 [2025-07-04 17:58:03.750] [info]  [TaskContext] 创建文件任务: file_1751623083726_qi7ptuhr
 [2025-07-04 17:58:03.835] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623075610] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/f_soqtrzided0gcsly2b6_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_063ae4).xlsx
@@ -5627,7 +5627,7 @@
 [2025-07-04 17:58:18.591] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623090563
 [2025-07-04 17:58:18.591] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:58:18.591] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:58:18.602] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623090563] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78714208/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_c4b85b.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159098&Signature=X2LWHxvru2u2oPNztOMVpJzRRSA%3D
+[2025-07-04 17:58:18.602] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623090563] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/78714208/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_c4b85b.xlsx
 [2025-07-04 17:58:18.617] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623090563] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/f_soqtrzided0gcsly2b6_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_c4b85b).xlsx
 [2025-07-04 17:58:18.655] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:58:18.673] [info]  [TaskContext] 创建文件任务: file_1751623098618_nhgo88gz
@@ -5744,7 +5744,7 @@
 [2025-07-04 17:58:34.890] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623106320
 [2025-07-04 17:58:34.890] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:58:34.890] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:58:34.901] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623106320] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79809357/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_6995c9.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159114&Signature=2LzbraF6YJdcCfdLp%2Bp71SiGEEA%3D
+[2025-07-04 17:58:34.901] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623106320] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79809357/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_6995c9.xlsx
 [2025-07-04 17:58:34.915] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623106320] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fkk2sm_odbmaxapulm-t9_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_6995c9).xlsx
 [2025-07-04 17:58:34.943] [info]  [TaskContext] 创建文件任务: file_1751623114916_p7gzt4n2
 [2025-07-04 17:58:34.998] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623106320] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fkk2sm_odbmaxapulm-t9_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_6995c9).xlsx
@@ -5845,7 +5845,7 @@
 [2025-07-04 17:58:48.457] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623119804
 [2025-07-04 17:58:48.458] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:58:48.458] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:58:48.468] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623119804] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79809357/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_43cf9d.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159127&Signature=L95N7JpqVRGnzvb%2Bf1RhIB5Cdgo%3D
+[2025-07-04 17:58:48.468] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623119804] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/79809357/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_43cf9d.xlsx
 [2025-07-04 17:58:48.483] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623119804] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fkk2sm_odbmaxapulm-t9_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_43cf9d).xlsx
 [2025-07-04 17:58:48.494] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:58:48.517] [info]  [TaskContext] 创建文件任务: file_1751623128483_p1fxzt0s
@@ -5955,7 +5955,7 @@
 [2025-07-04 17:59:04.453] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623136364
 [2025-07-04 17:59:04.453] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:59:04.453] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:59:04.459] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623136364] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80479251/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_14d389.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159143&Signature=fKXlNsXOQuZzlsOYja0FEwvgoLw%3D
+[2025-07-04 17:59:04.459] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623136364] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80479251/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_14d389.xlsx
 [2025-07-04 17:59:04.478] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623136364] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fktfbtjh6yvhvocmfyc9z_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_14d389).xlsx
 [2025-07-04 17:59:04.505] [info]  [TaskContext] 创建文件任务: file_1751623144479_7kpo9une
 [2025-07-04 17:59:04.573] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623136364] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fktfbtjh6yvhvocmfyc9z_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_14d389).xlsx
@@ -6049,7 +6049,7 @@
 [2025-07-04 17:59:17.406] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623149329
 [2025-07-04 17:59:17.406] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:59:17.406] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:59:17.418] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623149329] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80479251/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_6bc3a3.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159156&Signature=t3qJq8nNeS2YcqAwHTV3H61NoPg%3D
+[2025-07-04 17:59:17.418] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623149329] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/80479251/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_6bc3a3.xlsx
 [2025-07-04 17:59:17.433] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623149329] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/fktfbtjh6yvhvocmfyc9z_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_6bc3a3).xlsx
 [2025-07-04 17:59:17.445] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:59:17.468] [info]  [TaskContext] 创建文件任务: file_1751623157433_341o3fln
@@ -6231,7 +6231,7 @@
 [2025-07-04 17:59:39.984] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623172361
 [2025-07-04 17:59:39.985] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:59:39.985] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:59:39.993] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623172361] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74943463/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_c36f8b.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159179&Signature=%2BVGoVLwNT0ITO0SQqRVuUCtOsps%3D
+[2025-07-04 17:59:39.993] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623172361] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/74943463/%E9%97%A8%E5%BA%97%E6%8A%A5%E8%A1%A8_20250623_20250629_c36f8b.xlsx
 [2025-07-04 17:59:40.009] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623172361] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/g9qzvqga0x1ocfks1zl6a_2025-06-23至2025-06-29_点评(原文件名_门店报表_20250623_20250629_c36f8b).xlsx
 [2025-07-04 17:59:40.020] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 17:59:40.041] [info]  [TaskContext] 创建文件任务: file_1751623180009_ui6puhbu
@@ -6348,7 +6348,7 @@
 [2025-07-04 17:59:55.529] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623186835
 [2025-07-04 17:59:55.529] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 17:59:55.529] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 17:59:55.534] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623186835] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77916870/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_587b62.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159195&Signature=Y1fDSRgfViCZAceqUN%2FycfzmaO4%3D
+[2025-07-04 17:59:55.534] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623186835] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77916870/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_587b62.xlsx
 [2025-07-04 17:59:55.551] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623186835] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 无门店分析_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_587b62).xlsx
 [2025-07-04 17:59:55.583] [info]  [TaskContext] 创建文件任务: file_1751623195551_5pgjwmog
 [2025-07-04 17:59:55.664] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623186835] 文件下载成功: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 无门店分析_2025-06-23至2025-06-29_美团(原文件名_推广报表_20250623_20250629_587b62).xlsx
@@ -6449,7 +6449,7 @@
 [2025-07-04 18:00:11.644] [info]  [TaskContext] 设置下载上下文: 业务线=promotion, 操作ID=download_1751623202997
 [2025-07-04 18:00:11.644] [info]  [TaskContext] 下载上下文设置成功，开始执行下载流程
 [2025-07-04 18:00:11.644] [info]  [TaskContext] 找到第一条记录的下载按钮，执行点击操作
-[2025-07-04 18:00:11.651] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623202997] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77916870/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_2245b7.xlsx?AWSAccessKeyId=rmdb9x57gzq4scbp0000000000128a50&Expires=1783159211&Signature=LJX%2FDUy6ztk%2FLNUKL3kgH8cumY8%3D
+[2025-07-04 18:00:11.651] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623202997] 开始下载文件: https://mss-shon.sankuai.com/report-file/3/77916870/%E6%8E%A8%E5%B9%BF%E6%8A%A5%E8%A1%A8_20250623_20250629_2245b7.xlsx
 [2025-07-04 18:00:11.665] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya/Op:download_1751623202997] 文件将保存为: /Users/victor/Downloads/推广产品/2025-07-04 17时47分17秒-推广产品/推广中心 - 无门店分析_2025-06-23至2025-06-29_点评(原文件名_推广报表_20250623_20250629_2245b7).xlsx
 [2025-07-04 18:00:11.684] [info]  [TaskContext] [Task:推广产品下载_2025-06-23至2025-06-29_1751622437813_2zsvj0ya] Headless 下载执行完成.
 [2025-07-04 18:00:11.687] [info]  [TaskContext] 创建文件任务: file_1751623211666_ad6qudi0

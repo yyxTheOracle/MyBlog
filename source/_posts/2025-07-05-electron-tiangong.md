@@ -1,5 +1,6 @@
 ---
 title: 给运营支持团队做提效工具，做着做着，这个团队没了
+description: 记录用 Cursor + Claude 4 开发「天工」的过程，结合 Electron 与 Puppeteer，介绍美团开店宝的多账号管理、好评回复话术批量填写、报表自动下载，以及背后的进程通信、状态持久化和任务日志。
 tag:
   - 前端开发
   - Electron
@@ -552,7 +553,7 @@ await taskContext.run(mainTaskId, async () => {
 
 ![Metabase 中的任务日志查询：创建时间、用户、版本、操作名称和日志下载地址](https://s3.bmp.ovh/2026/11/04/65UzaCZv.png)
 
-　　原分享里还附了一份[推广产品下载的日志样例](/assets/electron-tiangong/promotion-download-example.txt)，可以看看一次任务实际记录了哪些步骤。
+　　原分享里还附了一份[推广产品下载的日志样例](/assets/electron-tiangong/promotion-download-example.txt)，可以看看一次任务实际记录了哪些步骤。样例中的历史下载签名参数已移除。
 
 ### 报错时，把页面也留下来
 

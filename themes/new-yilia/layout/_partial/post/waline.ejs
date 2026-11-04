@@ -1,17 +1,38 @@
-<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet' />
-
-<div id="waline"></div>
+<% const showComments = theme.waline.enable && !post.no_comments; %>
+<% if (theme.waline.pageview){ %>
 <script>
+	// 在 CDN 模块加载前计时；Waline 成功会替换转圈图标，超时才显示占位。
+	setTimeout(() => {
+	  const count = document.querySelector('.waline-pageview-count');
+	  if (count && count.querySelector('.fa-spinner')) count.textContent = '—';
+	}, 15000);
+</script>
+<% } %>
+<% if (showComments){ %>
+<link href='https://unpkg.com/@waline/client@v3/dist/waline.css' rel='stylesheet' />
+<!-- 外层灰底衔接页脚，内层控制阅读宽度；挂载容器仍由 Waline 管理。 -->
+<section class="article-comments" aria-labelledby="article-comments-title">
+  <div class="article-comments-inner">
+    <header class="article-comments-header">
+      <h2 id="article-comments-title">留言</h2>
+      <p>欢迎交流想法，也欢迎指出文中的问题。</p>
+    </header>
+    <div id="waline"></div>
+  </div>
+</section>
+<% } %>
+<script type="module">
+	import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
 	// 中文默认
 	const locale = {
-	  nick: ' 昵称: ',
+	  nick: '昵称',
 	  nickError: '昵称不能少于3个字符',
-	  mail: '邮箱: ',
+	  mail: '邮箱',
 	  mailError: '请填写正确的邮件地址',
-	  link: '网址: ',
-	  placeholder: ' 客官留个言吧(◕ˇ∀ˇ◕)',
-	  sofa: '评论区空空荡荡，客官快来评论吧~',
+	  link: '网址',
+	  placeholder: '写下你的想法…',
+	  sofa: '还没有留言，欢迎第一个参与。',
 	  submit: '提交',
 	  reply: '回复',
 	  cancelReply: '取消回复',
@@ -33,8 +54,9 @@
 	  wordHint: '评论字数应在 $0 到 $1 字之间！\n当前字数：$2',
 	};
 
-	Waline.init({
-	  el: '#waline',
+	init({
+	  // 只初始化一次；el 为 null 时保留阅读量统计，不创建评论区。
+	  el: <%- JSON.stringify(showComments ? '#waline' : null) %>,
 	  serverURL: '<%= theme.waline.server_url %>',
 	  locale,
 	  login: '<%= theme.waline.login %>',

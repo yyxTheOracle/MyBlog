@@ -23,6 +23,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta http-equiv="Content-Language" content="zh-cn">
   <link rel="dns-prefetch" href="<%= config.url %>">
+  <!-- 多个域名访问同一页面时，以正式域名下的地址作为规范网址。 -->
+  <link rel="canonical" href="<%= full_url_for(page.canonical_path) %>">
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:image" content="https://i.niupic.com/images/2022/12/31/aeu4.jpg">
@@ -30,7 +32,7 @@
   <%- open_graph({twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
   
   <% if (theme.subnav.rss){ %>
-    <link rel="alternative" href="<%- theme.subnav.rss %>" title="<%= config.title %>" type="application/atom+xml">
+    <link rel="alternate" href="<%- theme.subnav.rss %>" title="<%= config.title %>" type="application/atom+xml">
   <% } %>
   <% if (theme.favicon){ %>
     <link rel="icon" type="image/x-icon" href="<%- theme.favicon %>">

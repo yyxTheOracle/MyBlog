@@ -3609,19 +3609,161 @@ to {
 }
 
 
-/*waline comment*/
-#waline {
-	margin: 0 0 20px;
-    padding: 0 22px 20px;
-	--waline-theme-color: #49b1f5;
-	--waline-active-color: #0088CC;
+/* 浅灰同底：外层覆盖手机主题背景，只有输入表单保留白色。 */
+.article-comments {
+	margin: 0;
+	padding: 30px 30px 0;
+	background: #eaeaea;
+	color: #424b55;
+	color-scheme: light;
+	--waline-theme-color: #0088cc;
+	--waline-active-color: #087eae;
+	--waline-color: #424b55;
+	--waline-dark-grey: #697581;
+	--waline-light-grey: #697581;
+	--waline-bg-color: #fff;
+	--waline-bg-color-light: #f5f7f9;
+	--waline-border-color: #cdd3d9;
 }
 
-@media screen and (max-width:800px) {
-	#waline {
-    padding: 0 5px 20px;
-	--waline-theme-color: #0088cc;
-	--waline-active-color: #0088CC;
+.article-comments-inner {
+	max-width: 880px;
+	margin: 0 auto;
+}
+
+.article-comments-header {
+	margin: 0 0 18px;
+}
+
+.article-comments-header h2 {
+	margin: 0 0 4px;
+	font-size: 21px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.article-comments-header p {
+	margin: 0;
+	color: var(--waline-dark-grey);
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+#waline {
+	margin: 0;
+	padding: 0;
+}
+
+/* 保留三个资料字段和全部工具，只压缩默认表单与空状态的留白。 */
+#waline .wl-panel {
+	min-width: 0;
+	margin: 0;
+	border-radius: 6px;
+}
+
+#waline .wl-login-info {
+	margin-inline-end: 12px;
+}
+
+#waline .wl-header {
+	border-bottom: 1px solid #dde2e7;
+	border-radius: 6px 6px 0 0;
+	background: var(--waline-bg-color-light);
+}
+
+#waline .wl-header-item {
+	min-width: 0;
+}
+
+#waline .wl-header-item + .wl-header-item {
+	border-left: 1px solid #dde2e7;
+}
+
+#waline .wl-header label {
+	padding: 10px 8px 10px 12px;
+	white-space: nowrap;
+	color: var(--waline-dark-grey);
+}
+
+#waline .wl-header input {
+	min-width: 0;
+	font-size: 13px;
+}
+
+#waline .wl-editor {
+	width: calc(100% - 28px);
+	height: 96px;
+	min-height: 96px;
+	margin: 14px;
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+#waline .wl-footer {
+	gap: 8px;
+	margin: 0 12px 12px;
+}
+
+#waline .wl-actions {
+	flex: 1 1 auto;
+}
+
+#waline .wl-info {
+	flex: 0 1 auto;
+	margin-inline-start: auto;
+}
+
+#waline .wl-info > .wl-btn {
+	border-radius: 6px;
+	font-size: 12px;
+}
+
+#waline .wl-meta-head {
+	gap: 8px;
+	flex-wrap: wrap;
+	padding: 20px 0 8px;
+}
+
+#waline .wl-count {
+	font-size: 13px;
+}
+
+#waline .wl-empty {
+	padding: 18px 0;
+	color: var(--waline-dark-grey);
+	font-size: 13px;
+}
+
+#waline .wl-meta-foot {
+	margin-top: 4px;
+}
+
+@media screen and (max-width:580px) {
+	/* 手机沿用 Waline 的纵向字段排列，缩小分隔和间距，避免横向挤压输入。 */
+	.article-comments {
+		padding: 24px 20px 0;
+	}
+
+	#waline .wl-header-item:not(:last-child) {
+		border-bottom: 1px solid #dde2e7;
+	}
+
+	#waline .wl-header-item + .wl-header-item {
+		border-left: 0;
+	}
+
+	#waline .wl-header label {
+		min-width: 5.5em;
+		padding: 8px 12px;
+		text-align: left;
+	}
+
+	#waline .wl-header input {
+		font-size: 16px;
+	}
+
+	#waline .wl-sort li + li {
+		margin-inline-start: 8px;
 	}
 }
 

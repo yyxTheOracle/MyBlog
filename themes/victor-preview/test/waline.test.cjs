@@ -15,14 +15,14 @@ function render(waline = theme.waline, post = { path: 'post/12e2a8de.html' }) {
 }
 
 // 仅替换模块加载边界，用真实生成的脚本检查 init 参数和失败反馈。
-async function execute(html, loadWaline) {
-  const dom = new JSDOM(html, { url: 'http://localhost:4302/preview/post/12e2a8de.html' });
+async function execute(html, loadWaline, url = 'http://localhost:4302/preview/post/12e2a8de.html') {
+  const dom = new JSDOM(html, { url });
   const script = dom.window.document.querySelector('script[type="module"]').textContent;
   const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-  const run = new AsyncFunction('document', 'loadWaline', script.replace(
+  const run = new AsyncFunction('document', 'location', 'loadWaline', script.replace(
     "import('https://unpkg.com/@waline/client@v3/dist/waline.js')", 'loadWaline()'
   ));
-  await run(dom.window.document, loadWaline);
+  await run(dom.window.document, dom.window.location, loadWaline);
   return dom;
 }
 
@@ -54,5 +54,13 @@ test('关闭全站或单篇留言时不输出挂载节点、资源和初始化�
 test('Waline 模块加载失败时显示简短提示，不重复初始化', async () => {
   const dom = await execute(render(), async () => { throw new Error('CDN unavailable'); });
   assert.equal(dom.window.document.querySelector('#waline').textContent, '评论加载失败，请刷新重试。');
+  dom.window.close();
+});
+
+// 上线后恢复已有的阅读量统计，预览仍使用上面的隔离检查。
+test('正式域名启用阅读量统计', async () => {
+  let options;
+  const dom = await execute(render(), async () => ({ init(value) { options = value; } }), 'https://www.victoryeah.com/post/12e2a8de.html');
+  assert.equal(options.pageview, true);
   dom.window.close();
 });
