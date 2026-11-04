@@ -1,0 +1,13 @@
+<% const tocContent = toc(page.content, {list_number:false}); %>
+<div class="reading-layout">
+  <article class="reading-article" id="post-<%= page.slug %>">
+    <header class="post-header"><a class="back-link" href="/archives/">← 所有文章</a><div class="article-tags"><% page.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %></a><% }); %></div><h1><%= page.title %></h1><div class="post-meta"><span>Victor Ye</span><time datetime="<%= date(page.date,'YYYY-MM-DD') %>"><%= date(page.date,'YYYY.MM.DD') %></time><span>预计阅读 <%= min2read(page.content) %> 分钟</span></div></header>
+    <% if (tocContent && !page.no_toc) { %><details class="mobile-toc"><summary>本文目录</summary><nav aria-label="手机文章目录"><%- tocContent %></nav></details><% } %>
+    <div id="article-content" class="article-prose"><%- page.content %></div>
+    <% if (!page.no_declare) { %><aside class="article-license"><p>本文由 Victor Ye 撰写，采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。转载请注明出处。</p></aside><% } %>
+    <nav class="article-neighbors" aria-label="相邻文章"><% if (page.prev) { %><a href="<%= url_for(page.prev.path) %>"><span>上一篇</span><strong><%= page.prev.title %></strong></a><% } %><% if (page.next) { %><a href="<%= url_for(page.next.path) %>"><span>下一篇</span><strong><%= page.next.title %></strong></a><% } %></nav>
+    <%- partial('_partial/waline', {post: page}) %>
+  </article>
+  <% if (tocContent && !page.no_toc) { %><aside class="desktop-toc"><nav aria-label="文章目录"><h2>本文目录</h2><%- tocContent %></nav><a class="back-top" href="#main">回到顶部 ↑</a></aside><% } %>
+</div>
+<% if (page.mathjax) { %><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><% } %>

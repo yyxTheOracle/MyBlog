@@ -1,0 +1,5 @@
+# 仅用于本地评审；默认构建仍使用 new-yilia，不会切换正式主题。
+theme: victor-preview
+url: http://localhost:4302
+public_dir: ../after
+description: 前端开发、AI Coding 与生活记录。Victor 的个人博客。

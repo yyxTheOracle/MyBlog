@@ -27,7 +27,7 @@ mermaid: true
 
 　　对接第三方接口需要遵守他们的规则。小红书接口单页允许的 `page_size` 最大为 100，这就意味着，如果有 100 万条数据，那么就需要做 1 万次 “拉取-落库” 的动作。单线程去做的话会非常耗时，因此需要利用 Go 并发编程的特性去多线程并发。
 
-![redbook_report_api_screenshot](https://r.kezaihui.com/client/2026-01-11/image/yeyuxuan/redbook_report_api_screenshot.png)
+![redbook_report_api_screenshot](https://s3.bmp.ovh/2026/11/04/BO3s3fUd.png)
 
 　　让 Claude 4.5 Opus 实现功能之后，发现它使用了一种叫 `Worker Pool` (工作池) 的并发模式，通过 Gemini 进行学习了解后，发现这是 Go 中一种非常经典且高效的并发设计模式，正好最近刚学习完 `Goroutine`、`Channel`、`sync.WaitGroup` 等概念，`Worker Pool` 是一个综合的实践，而且 `Worker Pool` 的示例代码虽然看上去一眼就懂，但其实有很多细节我发现自己并没有完全理解（记录在了最后的 FAQ 章节），因此打算做一个记录~
 

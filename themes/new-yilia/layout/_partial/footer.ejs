@@ -3,13 +3,46 @@
  
   <div class="outer">
     <div id="footer-info">
-	  <br>
+      <!-- 内嵌 Simple Icons（CC0）品牌图标，避免页脚依赖外部图片请求。 -->
+      <nav class="footer-badges" aria-label="站点技术与订阅">
+        <a class="footer-badge footer-badge-vercel" href="https://vercel.com/" target="_blank" rel="noopener noreferrer" title="由 Vercel 托管并提供 CDN 加速">
+          <span class="footer-badge-brand">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 1.608 12 20.784H0Z"/></svg>
+            Vercel
+          </span>
+          <span class="footer-badge-detail">托管</span>
+        </a>
+        <a class="footer-badge footer-badge-hexo" href="https://hexo.io/" target="_blank" rel="noopener noreferrer" title="使用 Hexo 构建静态博客">
+          <span class="footer-badge-brand">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.02 0L1.596 6.02l-.02 12L11.978 24l10.426-6.02.02-12zm4.828 17.14l-.96.558-.969-.574V12.99H9.081v4.15l-.96.558-.969-.574V6.854l.964-.552.965.563v4.145h5.838V6.86l.965-.552.964.563z"/></svg>
+            Hexo
+          </span>
+          <span class="footer-badge-detail">驱动</span>
+        </a>
+        <% if (theme.declare && theme.declare.enable) { %>
+        <a class="footer-badge footer-badge-license" href="<%= theme.declare.licensee_url %>" target="_blank" rel="noopener noreferrer" aria-label="原创文章许可：<%= theme.declare.licensee_name %>" title="原创文章采用 <%= theme.declare.licensee_name %> 许可，单独声明的内容除外">
+          <span class="footer-badge-brand"><i class="fa fa-creative-commons" aria-hidden="true"></i> CC</span>
+          <span class="footer-badge-detail"><%= theme.declare.licensee_name.replace(/^CC\s+/, '') %></span>
+        </a>
+        <% } %>
+        <% if (theme.subnav.rss) { %>
+        <a class="footer-badge footer-badge-rss" href="<%= url_for(theme.subnav.rss) %>" title="通过 RSS 订阅博客更新">
+          <span class="footer-badge-brand"><i class="fa fa-rss" aria-hidden="true"></i> RSS</span>
+          <span class="footer-badge-detail">订阅</span>
+        </a>
+        <% } %>
+      </nav>
 	  <div class="footer-center">
 	    <i class="fa fa-file-word-o" aria-hidden="true"></i>
 		<span> <%=site.posts.length%> 篇</span>
 		<span class="post-meta-divider">|</span>
 		<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-		<span> <span class="post-count"><%= totalcount(site, '0,0.0a') %></span></span>
+		<span> 累计 <span class="post-count"><%= totalcount(site, '0,0.0a') %></span> 字</span>
+      </div>
+      <div class="footer-credits">
+        <span>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %></span>
+        <span class="footer-credit-divider" aria-hidden="true">·</span>
+        <span>Theme <a href="https://github.com/jackhanyuan/hexo-theme-new-yilia" target="_blank" rel="noopener noreferrer">new-yilia</a></span>
       </div>
 	  
 	  <!-- 添加不蒜子统计 -->

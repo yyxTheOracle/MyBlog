@@ -30,7 +30,7 @@ top:
 　　正好最近爆火的 Matt Pocock Skills 也更新到了 v1.1，于是蹬的时候尝试了他的 grill-with-docs -> to-spec -> to-tickets -> implement -> code-review 工作流，效果非常棒，尤其是最热门的 grill-with-docs / grill-me，会顺着你的想法一路往下挖，通过多轮的追问，把没说清楚的规则、没意识到的分支和藏在脑子里的隐含判断一个个拷打出来并收敛成一份 spec 文档，这个过程实在值得记录一下。
 
 <div style="text-align:center; margin:24px 0;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/02-matt-pocock-skills.jpg" alt="Matt Pocock Skills v1.1" style="width:100%; max-width:520px; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/04/RJILqpE0.jpg" alt="Matt Pocock Skills v1.1" style="width:100%; max-width:520px; height:auto;">
 </div>
 
 #  不是模型能力不行，而是需求根本没对齐
@@ -44,7 +44,7 @@ top:
       <li>你以为自己已经说清楚了，Agent 也以为自己听懂了，但看到结果才发现双方对目标的理解根本没有对齐，因为 “No-one knows exactly what they want.” ——《The Pragmatic Programmer》</li>
     </ul>
     <div style="text-align:center; margin:16px 0 24px;">
-      <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/03-agent-alignment.png" alt="The Agent Didn't Do What I Want" style="width:100%; max-width:560px; height:auto;">
+      <img src="https://s3.bmp.ovh/2026/11/04/42QeynfT.png" alt="The Agent Didn't Do What I Want" style="width:100%; max-width:560px; height:auto;">
     </div>
   </li>
   <li>

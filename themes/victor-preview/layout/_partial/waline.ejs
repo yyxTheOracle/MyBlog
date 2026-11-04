@@ -1,0 +1,70 @@
+<% if (theme.waline && theme.waline.enable && theme.waline.server_url && !post.no_comments) { %>
+<link href="https://unpkg.com/@waline/client@v3/dist/waline.css" rel="stylesheet">
+<section class="article-comments" aria-labelledby="article-comments-title">
+  <div class="article-comments-inner">
+    <header class="article-comments-header">
+      <h2 id="article-comments-title">留言</h2>
+      <p>欢迎交流想法，也欢迎指出文中的问题。</p>
+    </header>
+    <div id="waline"></div>
+  </div>
+</section>
+<script type="module">
+  // 沿用主站的提示和字段要求，预览不另设一套留言规则。
+  const locale = {
+    nick: '昵称',
+    nickError: '昵称不能少于3个字符',
+    mail: '邮箱',
+    mailError: '请填写正确的邮件地址',
+    link: '网址',
+    placeholder: '写下你的想法…',
+    sofa: '还没有留言，欢迎第一个参与。',
+    submit: '提交',
+    reply: '回复',
+    cancelReply: '取消回复',
+    comment: '评论',
+    more: '加载更多...',
+    preview: '预览',
+    emoji: '表情',
+    uploadImage: '上传图片',
+    seconds: '秒前',
+    minutes: '分钟前',
+    hours: '小时前',
+    days: '天前',
+    now: '刚刚',
+    uploading: '正在上传',
+    login: '登录',
+    logout: '退出',
+    admin: '博主',
+    word: '字',
+    wordHint: '评论字数应在 $0 到 $1 字之间！\n当前字数：$2',
+  };
+
+  try {
+    const { init } = await import('https://unpkg.com/@waline/client@v3/dist/waline.js');
+    init({
+      el: '#waline',
+      serverURL: <%- JSON.stringify(theme.waline.server_url).replace(/</g, '\\u003c') %>,
+      // 评论按文章路径归属，不能用 localhost 域名或预览目录建立另一组评论。
+      path: <%- JSON.stringify('/' + post.path.replace(/^\/+/, '')).replace(/</g, '\\u003c') %>,
+      locale,
+      login: <%- JSON.stringify(theme.waline.login) %>,
+      lang: <%- JSON.stringify(theme.waline.lang) %>,
+      dark: <%- JSON.stringify(theme.waline.dark) %>,
+      emoji: [
+        'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+        'https://unpkg.com/@waline/emojis@1.1.0/bilibili',
+      ],
+      wordLimit: <%- JSON.stringify(theme.waline.word_limit) %>,
+      pageSize: <%- JSON.stringify(theme.waline.page_size) %>,
+      imageUploader: <%- JSON.stringify(theme.waline.image_uploader) %>,
+      // 即使配置被误改，预览也不触发生产阅读量递增。
+      pageview: false,
+      meta: ['nick', 'mail', 'link'],
+      requiredMeta: ['nick'],
+    });
+  } catch {
+    document.querySelector('#waline').textContent = '评论加载失败，请刷新重试。';
+  }
+</script>
+<% } %>

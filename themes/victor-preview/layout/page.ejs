@@ -1,0 +1,7 @@
+<% if (page.type === 'categories') { %>
+<div class="list-shell"><header class="list-heading"><h1>文章分类</h1></header><div class="category-grid"><% site.categories.each(category => { %><a href="<%= url_for(category.path) %>"><h2><%= category.name %></h2><span><%= category.length %> 篇文章 ↗</span></a><% }); %></div><h2 class="tags-heading">标签</h2><div class="tag-links"><% site.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %><span><%= tag.length %></span></a><% }); %></div></div>
+<% } else if (page.path.startsWith('archives/')) { %>
+<%- partial('_partial/list', {posts: site.posts, title: '文章归档', paginated: false}) %>
+<% } else { %>
+<div class="standalone-page"><h1><%= page.title %></h1><div class="article-prose"><%- page.content %></div></div>
+<% } %>

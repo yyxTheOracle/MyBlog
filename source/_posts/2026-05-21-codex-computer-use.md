@@ -35,14 +35,14 @@ top:
 </div>
 
 <figure style="text-align:center; margin:24px 0;">
-  <img src="/images/2026-05-21/e2e_prompt.jpg" alt="Playwright E2E Agent Prompt Template" style="width:75%; max-width:760px;">
+  <img src="https://s3.bmp.ovh/2026/11/04/BRHz9lI8.jpg" alt="Playwright E2E Agent Prompt Template" style="width:75%; max-width:760px;">
   <figcaption style="color:#888;">这个年代，做的东西可能突然就一文不值了🤣</figcaption>
 </figure>
 
 　　想起 4 月底 OpenAI 出的 [GPT-5.5 提示词指南](https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5) 有个很明显的转向：对于 GPT-5.5 这个级别的强推理模型，不用再像以前那样面向过程一步步告诉它怎么做，最佳实践反而是提示词越简单越好，只需要给 Expected Outcome、Constraints 和 Success Criteria，让模型自己去选择实现路径。
 
 <div style="text-align:center; margin:24px 0;">
-  <img src="/images/2026-05-21/GPT-5.5-prompt-guidance.png" alt="GPT-5.5 prompting guide" style="width:85%; max-width:900px;">
+  <img src="https://s3.bmp.ovh/2026/11/04/02MGIkg0.png" alt="GPT-5.5 prompting guide" style="width:85%; max-width:900px;">
 </div>
 
 　　就像上面的视频一样，我把原视频丢给 Codex，Prompt 就一句话：给我生成一个 16 倍速版本。Codex 直接用一段 Swift 脚本解决了。
