@@ -188,7 +188,8 @@ npm run deploy
 
 1. 将 `public/` 推送到 `yyxTheOracle.github.io/main`。
 2. 由 Vercel Git Integration 自动创建 production deployment。
-3. 同时尝试向百度提交最新文章 URL；百度提交失败不代表 Git 或 Vercel 部署失败。
+百度 API 推送暂未启用；完成搜索平台的网站验证并配置私有凭证后再接入，
+不影响正常发布。构建仍会生成包含全部文章的 `baidu_urls.txt`，供手动提交使用。
 
 `yyxTheOracle.github.io` 是生成产物仓库，不要直接修改。`hexo deploy`
 可能强制更新它的 `main` 分支。
@@ -203,3 +204,18 @@ npx hexo clean && npx hexo deploy --generate
 ```
 
 这个命令只发布静态网站，不会替你提交或推送 `MyBlog` 源码仓库。
+
+### 搜索引擎收录
+
+正式域名统一使用 `https://www.victoryeah.com/`。Hexo 的 `url` 配置用于生成
+canonical、Open Graph、RSS 和站点地图中的绝对地址；`source/robots.txt` 中的
+Sitemap 地址也应保持一致。
+
+- Google Search Console：验证 `victoryeah.com` 网域归属后，提交
+  `https://www.victoryeah.com/sitemap.xml`；单篇文章可用网址检查请求编入索引。
+- 百度搜索资源平台：验证 `https://www.victoryeah.com/`，再按后台开放的入口
+  提交站点地图或 `https://www.victoryeah.com/baidu_urls.txt` 中的文章链接。
+- 百度 API token 不应写进受 Git 管理的配置。启用自动推送前，先完成私有
+  凭证配置并确认平台的实际提交额度。
+
+构建产物可正常访问、提交成功，都不代表文章已收录；实际状态以搜索平台后台为准。

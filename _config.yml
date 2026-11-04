@@ -16,7 +16,7 @@ timezone: 'Asia/Shanghai'
 # url: https://victor101.gitee.io/
 # url: https://victoryeah.com/
 # url: https://yyxtheoracle.github.io/
-url: https://yyx-the-oracle-github-io-g1lc.vercel.app/
+url: https://www.victoryeah.com/
 # permalink: :year/:month/:day/:title/
 permalink: post/:abbrlink.html
 abbrlink:
@@ -192,11 +192,11 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
   
-# 百度主动推送
+# 百度链接清单；完成站点验证后再启用 API 推送。
 baidu_url_submit:
-  count: 2  # 提交最新的两个链接
-  host: ''  # 在百度站长平台中注册的域名
-  token: ''  # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  # 省略 count，让插件生成所有文章链接，避免漏掉补发的旧日期文章。
+  host: www.victoryeah.com
+  token: ''  # 推送凭证只放在本地私有配置中，不提交到 Git。
   path: baidu_urls.txt  # 文本文档的地址， 新链接会保存在此文本文档里
   
 # Deployment
@@ -207,8 +207,7 @@ deploy:
   branch: main
   # repo: https://gitee.com/Victor101/Victor101.git
   # branch: pages
-  # 发布时，同时进行百度推送
-- type: baidu_url_submitter
+  # 百度尚未完成站点验证，默认发布流程不执行 baidu_url_submitter。
 
 # Mermaid
 mermaid:
