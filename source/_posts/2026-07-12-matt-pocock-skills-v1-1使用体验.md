@@ -22,7 +22,7 @@ top:
 　　因为 GPT-5.6 的发布，前两天每天都会有一次额度重置，这两次重置是到点直接重置的，没法存到 reset bank 里，加上台风天没法出门，于是我开着 5.6 Sol xHigh/Ultra 疯狂蹬，蹬掉了 7.5 亿 Token。<!-- more -->
 
 <div style="text-align:center; margin:24px 0;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/01-gpt-5-6-reset.jpg" alt="GPT-5.6 Sol 额度重置与 Token 使用记录" style="width:100%; max-width:480px; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/ivNjuZze.webp" alt="GPT-5.6 Sol 额度重置与 Token 使用记录" style="width:100%; max-width:480px; height:auto;">
 </div>
 
 　　正好最近爆火的 Matt Pocock Skills 也更新到了 v1.1，于是蹬的时候尝试了他的 grill-with-docs -> to-spec -> to-tickets -> implement -> code-review 工作流，效果非常棒，尤其是最热门的 grill-with-docs / grill-me，会顺着你的想法一路往下挖，通过多轮的追问，把没说清楚的规则、没意识到的分支和藏在脑子里的隐含判断一个个拷打出来并收敛成一份 spec 文档，这个过程实在值得记录一下。
@@ -51,7 +51,7 @@ top:
       <li>开发和业务对同一个概念的口径可能不一致 & Agent 经常要在代码库中面对很多“黑话”，这两点会导致它的输出晦涩、冗余、漂移</li>
     </ul>
     <div style="text-align:center; margin:16px 0 24px;">
-      <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/04-shared-language.png" alt="The Agent Is Way Too Verbose" style="width:100%; max-width:560px; height:auto;">
+      <img src="https://s3.bmp.ovh/2026/11/05/KTapt8Hg.png" alt="The Agent Is Way Too Verbose" style="width:100%; max-width:560px; height:auto;">
     </div>
   </li>
 </ol>
@@ -71,7 +71,7 @@ top:
 　　公司的需求大概是在某个中间节点增加一道审批，复杂点在于它会联动前面的订单数据和后续的入选履约流程，还要正确处理各种审批状态。
 
 <div style="text-align:center; margin:24px 0;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/05-company-requirement-grilling.png" alt="公司需求的 Grilling Session" style="width:100%; max-width:680px; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/BMRea65e.png" alt="公司需求的 Grilling Session" style="width:100%; max-width:680px; height:auto;">
 </div>
 
 　　整个 grilling session 加上我的几次 challenge，一共进行了 20 多轮，我的感受是：提出的这些问题都切在非常关键的节点，要么关系到核心流程，要么藏在细节里但迟早会在开发或上线后暴露出来，并且 90% 以上的 case，给出的推荐方案就是我心中的最优想法，我直接确认就好了。
@@ -79,9 +79,9 @@ top:
 　　即使是那 90% 我直接确认的 case，那些问题也非常有价值，因为 grilling 的价值并不只在于发现分歧，也在于确认共识。很多细节不可能全部体现在 PRD 中，如果不被主动问出来，就只能以隐含假设的形式存在。把它们逐一说清楚，再带到技术评审中和 PM 确认，可以显著减少开发过程中的理解偏差。
 
 <div style="display:grid; gap:16px; max-width:560px; margin:24px auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/06-approval-status-grilling.png" alt="审批状态问题" style="width:100%; height:auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/07-selection-rules-grilling.png" alt="入选规则问题" style="width:100%; height:auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/08-context-md-created.png" alt="Grilling Session 创建 CONTEXT.md" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/sGdyN3R4.png" alt="审批状态问题" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/FFbvnPfo.png" alt="入选规则问题" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/y4GvsqYK.png" alt="Grilling Session 创建 CONTEXT.md" style="width:100%; height:auto;">
 </div>
 
 # 一个 CONTEXT.md，解决业务和代码的口径差异
@@ -97,7 +97,7 @@ top:
 　　难怪 Matt 会说：It's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see. 统一语言的价值很难在第一次看到 `CONTEXT.md` 时感受到，但只要经历过几轮 chat，就很难再回到没有它的时候。
 
 <div style="text-align:center; margin:24px 0;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/09-context-md-glossary.png" alt="CONTEXT.md 业务术语定义" style="width:100%; max-width:680px; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/PRdGU6hO.png" alt="CONTEXT.md 业务术语定义" style="width:100%; max-width:680px; height:auto;">
 </div>
 
 # 只有一句“监控机票”，AI 能问出什么？
@@ -105,9 +105,9 @@ top:
 　　我自己的需求只有一句非常模糊的描述：“我想监控机票价格。” Grilling 随后用 15 个问题，一步步拆出了监控范围、触发条件、通知机制和筛选标准，甚至把我自己都无法准确描述的“合适机票”，变成了一组可以实现和验证的规则。
 
 <div style="display:grid; gap:16px; max-width:560px; margin:24px auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/10-flight-monitor-grilling.png" alt="监控机票价格的 Grilling Session" style="width:100%; height:auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/11-flight-rules.png" alt="机票监控规则" style="width:100%; height:auto;">
-  <img src="https://r.kezaihui.com/client/2026-08-09/image/yyx/12-flight-feedback.png" alt="机票筛选反馈" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/Jetl2QG0.png" alt="监控机票价格的 Grilling Session" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/YwjvufxF.png" alt="机票监控规则" style="width:100%; height:auto;">
+  <img src="https://s3.bmp.ovh/2026/11/05/v6HrUGMq.png" alt="机票筛选反馈" style="width:100%; height:auto;">
 </div>
 
 # The End
