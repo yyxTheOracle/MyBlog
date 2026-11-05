@@ -1,0 +1,25 @@
+<%
+// 年份导航需要完整集合，不能使用已经按页截断的 page.posts。
+const archivePosts = site.posts.sort('date', -1).toArray().filter(post =>
+  (!page.year || post.date.year() === page.year) &&
+  (!page.month || post.date.month() + 1 === page.month) &&
+  (!page.day || post.date.date() === page.day)
+);
+const years = [...new Set(archivePosts.map(post => date(post.date, 'YYYY')))];
+%>
+<div class="browse-shell archive-index">
+  <header class="browse-heading"><h1>文章归档</h1></header>
+  <div class="archive-layout">
+    <nav class="archive-years" aria-label="按年份浏览文章">
+      <% years.forEach(year => { %><a href="#archive-year-<%= year %>"><span><%= year %></span><span class="archive-year-count"><%= archivePosts.filter(post => date(post.date, 'YYYY') === year).length %> 篇</span></a><% }); %>
+    </nav>
+    <div class="archive-content">
+      <% years.forEach(year => { %>
+        <section class="archive-group" id="archive-year-<%= year %>" aria-labelledby="archive-title-<%= year %>">
+          <h2 id="archive-title-<%= year %>"><%= year %></h2>
+          <div class="browse-list"><div class="browse-marker" aria-hidden="true"></div><% archivePosts.filter(post => date(post.date, 'YYYY') === year).forEach(post => { %><%- partial('browse-row', {post, dateFormat: 'MM.DD'}) %><% }); %></div>
+        </section>
+      <% }); %>
+    </div>
+  </div>
+</div>

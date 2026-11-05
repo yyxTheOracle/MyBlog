@@ -1,0 +1,5 @@
+<% /* 日期显示随分组变化，datetime 和文章链接始终保留完整原值。 */ %>
+<a class="browse-row" data-browse-row href="<%= url_for(post.path) %>" aria-label="<%= post.title %>">
+  <div class="browse-copy"><h3><%= post.title %></h3><p class="browse-meta"><time datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, dateFormat) %></time><span><%= post.tags.toArray().map(tag => tag.name).join(' · ') %></span></p></div>
+  <svg class="browse-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+</a>

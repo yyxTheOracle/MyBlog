@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <% const pageTitle = is_archive() ? '文章归档' : is_category() ? '分类：' + page.category : is_tag() ? '标签：' + page.tag : page.title; %>
+  <% const archivePage = is_archive() || page.path.startsWith('archives/');
+  const pageTitle = archivePage ? '文章归档' : is_category() ? '分类：' + page.category : is_tag() ? '标签：' + page.tag : page.title; %>
   <title><%= pageTitle ? pageTitle + ' | ' : '' %><%= config.title %></title>
   <% /* 过滤文章内嵌样式，防止分享摘要把 CSS 当成正文。 */
   const description = is_post() ? truncate(strip_html((page.excerpt || page.content || '').replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, '')).replace(/\s+/g,' ').trim(), {length:150}) : config.description; %>
@@ -19,6 +20,12 @@
     } catch (_) { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
   </script>
   <link rel="stylesheet" href="/css/site.css">
+  <% /* 仅浏览入口需要宋体目录与反馈脚本，文章阅读页继续使用原有样式。 */ %>
+  <% if (is_home() || archivePage || is_category() || is_tag() || page.type === 'categories') { %>
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/browse.css">
+    <script defer src="/js/article-list.js"></script>
+  <% } %>
   <script defer src="/js/site.js"></script>
 </head>
 <body>
@@ -27,8 +34,8 @@
     <a class="brand" href="/" aria-label="Victor 的自留地首页"><img src="/img/avatar.jpg" width="36" height="36" alt=""><span>Victor 的自留地<span class="brand-dot">.</span></span></a>
     <nav class="site-nav" aria-label="主导航">
       <a href="/" <%- is_home() ? 'aria-current="page"' : '' %>>主页</a>
-      <a href="/archives/" <%- is_archive() ? 'aria-current="page"' : '' %>>归档</a>
-      <a href="/categories/" <%- is_category() || page.type === 'categories' ? 'aria-current="page"' : '' %>>分类</a>
+      <a href="/archives/" <%- archivePage ? 'aria-current="page"' : '' %>>归档</a>
+      <a href="/categories/" <%- is_category() || is_tag() || page.type === 'categories' ? 'aria-current="page"' : '' %>>分类</a>
     </nav>
     <div class="header-actions">
       <button type="button" class="search-trigger" data-open-search aria-label="搜索全文"><span>搜索</span><kbd>⌘ K</kbd></button>

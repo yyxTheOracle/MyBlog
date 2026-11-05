@@ -47,7 +47,16 @@
   <% } %>
   <section id="latest" class="latest-section" aria-labelledby="latest-title">
     <div class="section-heading"><h2 id="latest-title">最近更新</h2><a href="/archives/">全部 <%= posts.length %> 篇 ↗</a></div>
-    <div class="post-list"><% posts.slice(0,6).forEach(post => { %><%- partial('_partial/post-row', {post}) %><% }); %></div>
+    <div class="cursor-list">
+      <% /* 共享底色只跟随当前鼠标或键盘焦点；文章仍是普通链接。 */ %>
+      <div class="cursor-marker" aria-hidden="true"></div>
+      <% posts.slice(0,6).forEach(post => { %>
+      <a class="cursor-row" href="<%= url_for(post.path) %>" aria-label="<%= post.title %>">
+        <div class="cursor-copy"><h3><%= post.title %></h3><p class="cursor-meta"><time datetime="<%= date(post.date,'YYYY-MM-DD') %>"><%= date(post.date,'YYYY.MM.DD') %></time><span><%= post.tags.toArray().map(tag => tag.name).join(' · ') %></span></p></div>
+        <span class="cursor-open" aria-hidden="true"><span>阅读全文</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <% }); %>
+    </div>
   </section>
 </div>
 <% } %>

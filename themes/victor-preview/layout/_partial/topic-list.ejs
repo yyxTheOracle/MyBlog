@@ -1,0 +1,10 @@
+<% /* 同名分类与标签各自保留文章归属，篇数取主题总数而不是当前页长度。 */
+const topic = siblings.toArray().find(item => item.name === title);
+%>
+<div class="browse-shell browse-detail">
+  <nav class="browse-breadcrumb" aria-label="当前位置"><a href="/categories/">全部分类与标签</a> / <%= kind %></nav>
+  <header class="browse-heading"><h1><%= title %></h1><p><%= kind %> · <%= topic.length %> 篇文章，按发布时间排列。</p></header>
+  <nav class="browse-topic-links" aria-label="切换<%= kind %>"><% siblings.each(item => { %><a href="<%= url_for(item.path) %>" <%- item.name === title ? 'aria-current="page"' : '' %>><%= item.name %><span><%= item.length %></span></a><% }); %></nav>
+  <div class="browse-list"><div class="browse-marker" aria-hidden="true"></div><% page.posts.sort('date', -1).each(post => { %><%- partial('browse-row', {post, dateFormat: 'YYYY.MM.DD'}) %><% }); %></div>
+  <% if (page.total > 1) { %><nav class="pagination" aria-label="文章分页"><%- paginator({prev_text:'上一页',next_text:'下一页'}) %></nav><% } %>
+</div>

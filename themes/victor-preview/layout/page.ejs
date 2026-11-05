@@ -1,7 +1,22 @@
 <% if (page.type === 'categories') { %>
-<div class="list-shell"><header class="list-heading"><h1>文章分类</h1></header><div class="category-grid"><% site.categories.each(category => { %><a href="<%= url_for(category.path) %>"><h2><%= category.name %></h2><span><%= category.length %> 篇文章 ↗</span></a><% }); %></div><h2 class="tags-heading">标签</h2><div class="tag-links"><% site.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %><span><%= tag.length %></span></a><% }); %></div></div>
+<div class="browse-shell category-cards">
+  <header class="browse-heading"><h1>文章分类</h1></header>
+  <% /* 分类入口只展示名称和篇数，文章列表留在各自的详情页。 */ %>
+  <div class="category-links">
+    <% site.categories.each(category => { %>
+      <a class="category-link" href="<%= url_for(category.path) %>">
+        <h2><%= category.name %></h2>
+        <span class="category-tail"><span class="category-count"><%= category.length %> 篇文章</span><svg class="category-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    <% }); %>
+  </div>
+  <section class="category-tags" aria-labelledby="category-tags-title">
+    <h2 id="category-tags-title">标签</h2>
+    <div class="category-tag-links"><% site.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %><span><%= tag.length %></span></a><% }); %></div>
+  </section>
+</div>
 <% } else if (page.path.startsWith('archives/')) { %>
-<%- partial('_partial/list', {posts: site.posts, title: '文章归档', paginated: false}) %>
+<%- partial('_partial/archive-index') %>
 <% } else { %>
 <div class="standalone-page"><h1><%= page.title %></h1><div class="article-prose"><%- page.content %></div></div>
 <% } %>
