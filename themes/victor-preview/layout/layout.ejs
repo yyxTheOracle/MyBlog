@@ -20,6 +20,10 @@
     } catch (_) { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
   </script>
   <link rel="stylesheet" href="/css/site.css">
+  <% if (page.type === 'about') { %>
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/about.css">
+  <% } %>
   <% /* 仅浏览入口需要宋体目录与反馈脚本，文章阅读页继续使用原有样式。 */ %>
   <% if (is_home() || archivePage || is_category() || is_tag() || page.type === 'categories') { %>
     <link rel="stylesheet" href="/css/fonts.css">
@@ -36,6 +40,7 @@
       <a href="/" <%- is_home() ? 'aria-current="page"' : '' %>>主页</a>
       <a href="/archives/" <%- archivePage ? 'aria-current="page"' : '' %>>归档</a>
       <a href="/categories/" <%- is_category() || is_tag() || page.type === 'categories' ? 'aria-current="page"' : '' %>>分类</a>
+      <a href="/about/" <%- page.type === 'about' ? 'aria-current="page"' : '' %>>关于</a>
     </nav>
     <div class="header-actions">
       <button type="button" class="search-trigger" data-open-search aria-label="搜索全文"><span>搜索</span><kbd>⌘ K</kbd></button>
