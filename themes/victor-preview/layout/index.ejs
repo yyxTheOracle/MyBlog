@@ -2,7 +2,7 @@
   <%- partial('_partial/list', {posts: page.posts, title: '更多文章', paginated: true}) %>
 <% } else {
   const posts = site.posts.sort('date', -1).toArray();
-  const featured = ['12e2a8de', 'db62fe35', '2a798ab5'].map(id => posts.find(post => String(post.abbrlink) === id)).filter(Boolean);
+  const featured = ['12e2a8de', 'db62fe35'].map(id => posts.find(post => String(post.abbrlink) === id)).filter(Boolean);
   const project = posts.find(post => String(post.abbrlink) === '2733f88e');
 %>
 <div class="home-shell">
@@ -13,29 +13,36 @@
   <section class="featured-section" aria-labelledby="featured-title">
     <div class="section-heading"><h2 id="featured-title">精选文章</h2></div>
     <div class="featured-grid">
-    <% featured.forEach((post, index) => { %>
+    <% if (project) { %>
+      <article class="featured-post featured-main">
+        <% /* 演示独立于文章链接，原生控件仅作为脚本不可用时的兜底。 */ %>
+        <figure class="project-demo">
+          <video id="project-demo" width="2560" height="1550" muted loop playsinline controls preload="none" poster="/assets/electron-tiangong/reply-demo-poster.jpg" aria-label="天工批量填写好评回复的操作演示">
+            <source src="/assets/electron-tiangong/reply-demo.mp4" type="video/mp4">
+            <a href="/assets/electron-tiangong/reply-demo.mp4">查看操作演示</a>
+          </video>
+        </figure>
+        <a class="featured-main-copy" href="<%= url_for(project.path) %>" aria-labelledby="project-title">
+          <p class="post-topic">Electron / React / AI Coding</p>
+          <h3 id="project-title">给运营支持团队做提效工具，做着做着，这个团队没了</h3>
+          <p class="post-summary">当效率被提到了极致，最先被优化的，恰恰是原本需要被减负的人。</p>
+          <div class="post-meta"><time datetime="<%= date(project.date,'YYYY-MM-DD') %>"><%= date(project.date,'YYYY.MM.DD') %></time><span>约 <%= wordcount(project.content) %> 字</span><span>预计阅读 <%= min2read(project.content) %> 分钟</span><span class="read-link" aria-hidden="true">↗</span></div>
+        </a>
+      </article>
+    <% } %>
+    <% featured.forEach(post => { %>
       <% /* 整张卡片使用一个原生链接，保留键盘、右键和新标签页打开行为。 */ %>
-      <a class="featured-post <%= index === 0 ? 'featured-main' : '' %>" href="<%= url_for(post.path) %>" aria-label="<%= post.title %>">
+      <a class="featured-post" href="<%= url_for(post.path) %>" aria-label="<%= post.title %>">
         <p class="post-topic"><%= post.tags.toArray().map(tag => tag.name).slice(0, 2).join(' / ') %></p>
         <h3><%= post.title %></h3>
-        <% /* 摘录保留正文原话，只移除“背景”等小标题，避免它们混入卡片摘要。 */ %>
-        <p class="post-summary"><%= truncate(strip_html((post.excerpt || '').replace(/<h([1-6])\b[^>]*>[\s\S]*?<\/h\1>/gi, '')).replace(/\s+/g, ' ').trim(), {length: index === 0 ? 110 : 65}) %></p>
-        <div class="post-meta"><time datetime="<%= date(post.date,'YYYY-MM-DD') %>"><%= date(post.date,'YYYY.MM.DD') %></time><span>预计阅读 <%= min2read(post.content) %> 分钟</span><span class="read-link" aria-hidden="true">↗</span></div>
+        <% /* 完整展示文章已有导语；只移除小标题和 HTML，不按字数截断或改写。 */ %>
+        <p class="post-summary"><%= strip_html((post.excerpt || '').replace(/<h([1-6])\b[^>]*>[\s\S]*?<\/h\1>/gi, '')).replace(/\s+/g, ' ').trim() %></p>
+        <div class="post-meta"><time datetime="<%= date(post.date,'YYYY-MM-DD') %>"><%= date(post.date,'YYYY.MM.DD') %></time><span>约 <%= wordcount(post.content) %> 字</span><span>预计阅读 <%= min2read(post.content) %> 分钟</span><span class="read-link" aria-hidden="true">↗</span></div>
       </a>
     <% }); %>
     </div>
   </section>
   <% if (project) { %>
-  <section class="project-section" aria-labelledby="project-title">
-    <figure class="project-image project-demo">
-      <video id="project-demo" width="2560" height="1550" muted loop playsinline controls preload="none" poster="https://s3.bmp.ovh/2026/11/04/tHgXhaGP.jpg" aria-label="天工批量填写好评回复的操作演示">
-        <source src="/assets/electron-tiangong/reply-demo.mp4" type="video/mp4">
-        <a href="/assets/electron-tiangong/reply-demo.mp4">查看操作演示</a>
-      </video>
-      <button id="project-demo-toggle" type="button" aria-controls="project-demo" hidden>播放演示</button>
-    </figure>
-    <a class="project-copy" href="<%= url_for(project.path) %>" aria-labelledby="project-title"><p class="post-topic">项目手记 · Electron / React / AI Coding</p><h2 id="project-title">给运营支持团队做提效工具，<br>做着做着，这个团队没了</h2><p>当效率被提到了极致，最先被优化的，恰恰是原本需要被减负的人</p><span class="text-link" aria-hidden="true">↗</span></a>
-  </section>
   <script defer src="/js/project-video.js"></script>
   <% } %>
   <section id="latest" class="latest-section" aria-labelledby="latest-title">
