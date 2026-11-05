@@ -5,6 +5,7 @@ const { test } = require('node:test');
 const ejs = require('ejs');
 const moment = require('moment');
 const { JSDOM } = require('jsdom');
+const orderedTopics = require('../scripts/topic-order');
 
 // 仅模拟 Hexo Query 接口；模板仍从真实文件逐层渲染。
 function collection(items) {
@@ -25,10 +26,11 @@ const categories = collection([['随笔', 5], ['前端开发', 7], ['后端开�
 const tags = collection([['随笔', 5], ['前端开发', 7], ['JavaScript', 6], ['AI', 3], ['后端开发', 1], ['Go', 1]].map(([name, length]) => ({ name, length, path: `tags/${name}/` })));
 
 // 局部模板继承页面数据，保留真实的分类、标签和分页调用链。
-function render(template, page) {
+function render(template, page, topics = {}) {
   const layout = path.resolve(__dirname, '../layout');
   const locals = {
-    site: { posts: collection([...posts].reverse()), categories, tags }, page,
+    site: { posts: collection([...posts].reverse()), categories, tags, ...topics }, page,
+    ordered_topics: orderedTopics,
     url_for: value => '/' + value.replace(/^\/+/, ''),
     date: (value, format) => value.format(format),
     paginator: () => '<a href="page/2/">下一页</a>',
@@ -92,4 +94,25 @@ test('同名分类与标签保留各自集合和总数，分页只列当前页�
     assert.equal(document.querySelector('a[href*="browse-preview"]'), null);
     dom.window.close();
   }
+});
+
+test('分类与标签从乱序数据构建仍保持选定顺序，新增主题在入口和同级导航末尾保留', () => {
+  const topics = {
+    categories: collection([{ name: '读书', length: 1, path: 'categories/读书/' }, ...categories.toArray().reverse()]),
+    tags: collection([{ name: 'TypeScript', length: 1, path: 'tags/TypeScript/' }, ...tags.toArray().reverse()]),
+  };
+  const expected = {
+    categories: [...categories.toArray(), { path: 'categories/读书/' }].map(item => '/' + item.path),
+    tags: [...tags.toArray(), { path: 'tags/TypeScript/' }].map(item => '/' + item.path),
+  };
+  const overview = render('page', { type: 'categories', path: 'categories/index.html' }, topics);
+  assert.deepEqual([...overview.window.document.querySelectorAll('.category-link')].map(link => link.getAttribute('href')), expected.categories);
+  assert.deepEqual([...overview.window.document.querySelectorAll('.category-tag-links a')].map(link => link.getAttribute('href')), expected.tags);
+  overview.window.close();
+  for (const [template, key] of [['category', 'categories'], ['tag', 'tags']]) {
+    const dom = render(template, { path: `${key}/AI/`, [template]: 'AI', posts: collection([]), total: 1 }, topics);
+    assert.deepEqual([...dom.window.document.querySelectorAll('.browse-topic-links a')].map(link => link.getAttribute('href')), expected[key]);
+    dom.window.close();
+  }
+  assert.equal(topics.categories.toArray()[0].name, '读书', '排序不能改写原始数据集合');
 });
