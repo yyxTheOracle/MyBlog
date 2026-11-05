@@ -6,6 +6,7 @@ const { JSDOM } = require('jsdom');
 
 const script = readFileSync(require.resolve('../source/js/site.js'), 'utf8');
 const layout = readFileSync(require.resolve('../layout/layout.ejs'), 'utf8');
+const postTemplate = readFileSync(require.resolve('../layout/post.ejs'), 'utf8');
 const theme = layout.match(/<fieldset class="theme-picker">[\s\S]*?<\/fieldset>/)[0];
 const hero = ejs.render(readFileSync(require.resolve('../layout/_partial/hero-title.ejs'), 'utf8'));
 const search = '<button data-open-search>搜索</button><dialog id="search-dialog"><button data-close-search>关闭</button><input id="site-search"><div id="search-results"></div></dialog>';
@@ -30,6 +31,128 @@ function page(body = '', configure = () => {}) {
 async function settle() {
   await new Promise(setImmediate);
 }
+
+// 渲染真实文章入口，避免测试 fixture 与按钮模板各自变化后仍误通过。
+function renderPost(overrides = {}, tocContent = '') {
+  return ejs.render(postTemplate, {
+    page: {
+      slug: 'reading-test', title: '测试文章', path: 'post/reading-test.html',
+      content: '<p>正文内容</p>', tags: { each() {} }, ...overrides,
+    },
+    theme: {}, toc: () => tocContent, partial: () => '',
+    date: () => '2026.11.05', min2read: () => 3, wordcount: () => 800, url_for: value => value,
+  });
+}
+
+test('回顶入口独立于文章目录，保留可见文字，首页不输出入口', () => {
+  const toc = '<ol class="toc"><li><a class="toc-link" href="#section">章节</a></li></ol>';
+  for (const [options, contents] of [[{}, toc], [{}, ''], [{ no_toc: true }, toc]]) {
+    const dom = new JSDOM(renderPost(options, contents));
+    const buttons = dom.window.document.querySelectorAll('.back-top');
+    assert.equal(buttons.length, 1);
+    assert.equal(buttons[0].tagName, 'BUTTON');
+    assert.equal(buttons[0].type, 'button');
+    assert.equal(buttons[0].closest('.desktop-toc, .mobile-toc'), null);
+    assert.equal(buttons[0].textContent.trim(), '回到顶部');
+    assert.ok(buttons[0].querySelector('.back-top-icon'));
+    dom.window.close();
+  }
+  const body = ejs.render(readFileSync(require.resolve('../layout/index.ejs'), 'utf8'), {
+    page: { current: 1 }, site: { posts: { sort: () => ({ toArray: () => [] }) } }, partial: () => '',
+  });
+  const dom = new JSDOM(ejs.render(layout, {
+    body, page: { path: '' }, config: { title: '博客', description: '博客介绍' },
+    is_home: () => true, is_post: () => false, is_archive: () => false,
+    is_category: () => false, is_tag: () => false, open_graph: () => '', date: () => '2026',
+  }));
+  assert.equal(dom.window.document.querySelector('.back-top'), null);
+  dom.window.close();
+});
+
+test('回顶始终保留，滚动时进度只计正文并限制在 0% 到 100%', () => {
+  let articleTop = 300;
+  const p = page(renderPost(), (window) => {
+    window.innerHeight = 800;
+    window.document.querySelector('#article-content').getBoundingClientRect = () => ({
+      top: articleTop, height: 2400, bottom: articleTop + 2400,
+    });
+  });
+  const button = p.document.querySelector('.back-top');
+  assert.equal(button.style.getPropertyValue('--reading-progress'), '0%');
+
+  // 使用可见正文位置作为事实，页面标题与评论区的长度不能影响阅读进度。
+  for (const [top, expected] of [[100, '0%'], [-800, '50%'], [-1600, '100%'], [-3000, '100%']]) {
+    articleTop = top;
+    p.window.dispatchEvent(new p.window.Event('scroll'));
+    assert.equal(button.style.getPropertyValue('--reading-progress'), expected);
+  }
+  p.window.scrollY = 0;
+  articleTop = 300;
+  p.window.dispatchEvent(new p.window.Event('scroll'));
+  assert.equal(button.style.getPropertyValue('--reading-progress'), '0%');
+  p.close();
+});
+
+test('窗口和正文尺寸变化刷新进度，短文仅在全文进入视口后完成', () => {
+  let rect = { top: -800, height: 2400, bottom: 1600 };
+  let resized;
+  const observed = [];
+  const p = page(renderPost(), (window) => {
+    window.scrollY = 900;
+    window.innerHeight = 800;
+    window.document.querySelector('#article-content').getBoundingClientRect = () => rect;
+    window.ResizeObserver = class {
+      constructor(callback) { resized = callback; }
+      observe(element) { observed.push(element); }
+    };
+  });
+  const button = p.document.querySelector('.back-top');
+  assert.equal(button.style.getPropertyValue('--reading-progress'), '50%');
+  assert.ok(observed.includes(p.document.querySelector('#article-content')));
+  p.window.innerHeight = 1600;
+  p.window.dispatchEvent(new p.window.Event('resize'));
+  assert.equal(button.style.getPropertyValue('--reading-progress'), '100%');
+  p.window.innerHeight = 800;
+  rect = { top: -800, height: 4000, bottom: 3200 };
+  resized();
+  assert.equal(button.style.getPropertyValue('--reading-progress'), '25%', '图片加载撑高正文后更新圆环');
+  for (const [bottom, expected] of [[900, '0%'], [800, '100%'], [-100, '100%']]) {
+    rect = { top: bottom - 500, height: 500, bottom };
+    resized();
+    assert.equal(button.style.getPropertyValue('--reading-progress'), expected);
+  }
+  p.close();
+});
+
+test('回顶到页面起点，并尊重减少动态效果设置', () => {
+  const scrolls = [];
+  const reducedMotion = { matches: false };
+  const p = page(renderPost(), (window, media) => {
+    window.matchMedia = query => query.includes('reduced-motion') ? reducedMotion : media;
+    window.scrollTo = options => scrolls.push({ top: options.top, behavior: options.behavior });
+  });
+  p.document.querySelector('.back-top').click();
+  reducedMotion.matches = true;
+  p.document.querySelector('.back-top').click();
+  assert.deepEqual(scrolls, [{ top: 0, behavior: 'smooth' }, { top: 0, behavior: 'instant' }]);
+  p.close();
+});
+
+test('没有回顶入口时不注册相关滚动监听或尺寸观察', () => {
+  for (const body of ['', '<div id="article-content">普通页面正文</div>']) {
+    const events = [];
+    let observers = 0;
+    const p = page(body, (window) => {
+      const listen = window.addEventListener.bind(window);
+      window.addEventListener = (type, ...args) => { events.push(type); listen(type, ...args); };
+      window.ResizeObserver = class { constructor() { observers++; } observe() {} };
+    });
+    assert.equal(events.includes('scroll'), false);
+    assert.equal(events.includes('resize'), false);
+    assert.equal(observers, 0);
+    p.close();
+  }
+});
 
 test('主题偏好持久化，system 跟随系统，禁止存储时仍能工作', () => {
   const p = page();
