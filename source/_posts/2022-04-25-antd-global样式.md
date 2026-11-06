@@ -16,6 +16,7 @@ no_share: false
 no_footer: false
 mathjax: false
 abbrlink: 30ad5bee
+url_slug: antd-style-overrides
 date: 2022-04-25 14:43:55
 top:
 ---

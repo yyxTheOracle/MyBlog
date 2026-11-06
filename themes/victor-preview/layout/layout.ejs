@@ -9,7 +9,8 @@
   <title><%= pageTitle ? pageTitle + ' | ' : '' %><%= config.title %></title>
   <% /* 过滤文章内嵌样式，防止分享摘要把 CSS 当成正文。 */
   const description = is_post() ? truncate(strip_html((page.excerpt || page.content || '').replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, '')).replace(/\s+/g,' ').trim(), {length:150}) : config.description; %>
-  <%- open_graph({title:pageTitle || config.title, description, image:'/img/avatar.jpg'}) %>
+  <%- open_graph({title:pageTitle || config.title, description, image:'/img/avatar.jpg', url:is_post() ? page.permalink : undefined}) %>
+  <% if (is_post()) { %><link rel="canonical" href="<%= page.permalink %>"><% } %>
   <link rel="icon" href="/img/favicon.ico">
   <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
   <% if (is_home() && (!page.current || page.current === 1)) { %>

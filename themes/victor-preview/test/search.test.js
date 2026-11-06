@@ -49,7 +49,7 @@ test('真实 Go 和 Electron 文章经 Hexo 6 渲染后可搜索，并定位正�
     const source = path.join(root, 'source/_posts', filename);
     const post = parse(readFileSync(source, 'utf8'));
     return hexo.post.render(source, {
-      ...post, content: post._content, path: `post/${post.abbrlink}.html`
+      ...post, content: post._content, path: `post/${post.url_slug}/`
     });
   }
 

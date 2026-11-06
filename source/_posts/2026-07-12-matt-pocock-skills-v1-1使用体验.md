@@ -15,6 +15,7 @@ no_share: false
 no_footer: false
 mathjax: false
 abbrlink: db62fe35
+url_slug: matt-pocock-skills-v1-1
 date: 2026-07-12 19:58:37
 top:
 ---

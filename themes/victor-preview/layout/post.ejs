@@ -1,7 +1,13 @@
-<% const tocContent = toc(page.content, {list_number:false}); %>
+<%
+const tocContent = toc(page.content, {list_number:false});
+// 语义化链接迁移后沿用旧数据标识，评论初始化与阅读量查询必须使用同一路径。
+const walinePath = page.abbrlink != null && page.abbrlink !== ''
+  ? '/post/' + page.abbrlink + '.html'
+  : '/' + page.path.replace(/^\/+/, '');
+%>
 <div class="reading-layout">
   <article class="reading-article" id="post-<%= page.slug %>">
-    <header class="post-header"><a class="back-link" href="/archives/">← 所有文章</a><div class="article-tags"><% page.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %></a><% }); %></div><h1><%= page.title %></h1><div class="post-meta"><span>Victor Ye</span><time datetime="<%= date(page.date,'YYYY-MM-DD') %>"><%= date(page.date,'YYYY.MM.DD') %></time><span>约 <%= wordcount(page.content) %> 字</span><span>预计阅读 <%= min2read(page.content) %> 分钟</span><% if (theme.waline && theme.waline.enable) { %><span>阅读量 <span class="waline-pageview-count" data-path="/<%= page.path %>" aria-live="polite"><span class="pageview-loading" role="status" aria-label="阅读量加载中"></span></span></span><% } %></div></header>
+    <header class="post-header"><a class="back-link" href="/archives/">← 所有文章</a><div class="article-tags"><% page.tags.each(tag => { %><a href="<%= url_for(tag.path) %>"><%= tag.name %></a><% }); %></div><h1><%= page.title %></h1><div class="post-meta"><span>Victor Ye</span><time datetime="<%= date(page.date,'YYYY-MM-DD') %>"><%= date(page.date,'YYYY.MM.DD') %></time><span>约 <%= wordcount(page.content) %> 字</span><span>预计阅读 <%= min2read(page.content) %> 分钟</span><% if (theme.waline && theme.waline.enable) { %><span>阅读量 <span class="waline-pageview-count" data-path="<%= walinePath %>" aria-live="polite"><span class="pageview-loading" role="status" aria-label="阅读量加载中"></span></span></span><% } %></div></header>
     <% if (theme.waline && theme.waline.enable) { %>
     <script>
       // 在 CDN 资源加载前开始计时；成功读数会替换 spinner，超时不覆盖已显示的数字。
@@ -15,7 +21,7 @@
     <div id="article-content" class="article-prose"><%- page.content %></div>
     <% if (!page.no_declare) { %><aside class="article-license"><p>本文由 Victor Ye 撰写，采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可。转载请注明出处。</p></aside><% } %>
     <nav class="article-neighbors" aria-label="相邻文章"><% if (page.prev) { %><a href="<%= url_for(page.prev.path) %>"><span>上一篇</span><strong><%= page.prev.title %></strong></a><% } %><% if (page.next) { %><a href="<%= url_for(page.next.path) %>"><span>下一篇</span><strong><%= page.next.title %></strong></a><% } %></nav>
-    <%- partial('_partial/waline', {post: page}) %>
+    <%- partial('_partial/waline', {post: page, walinePath}) %>
   </article>
   <% if (tocContent && !page.no_toc) { %><aside class="desktop-toc"><nav aria-label="文章目录"><h2>本文目录</h2><%- tocContent %></nav></aside><% } %>
 </div>

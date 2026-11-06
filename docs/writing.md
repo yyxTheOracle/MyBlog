@@ -22,7 +22,9 @@ npx hexo new "event-loop-part-2"
 现有分类为「随笔、前端开发、后端开发、AI」；标签另有 JavaScript、Go。分类和标签是独立的文章集合，同名不代表同一批文章。
 导航顺序在 [`topic-order.js`](../themes/victor-preview/scripts/topic-order.js) 中固定，新增分类或标签会保留入口并排在后面。
 
-文章永久链接使用 `/post/<abbrlink>.html`。不要为改标题或文件名而重置已发布文章的 `abbrlink`；评论与阅读量也按此路径归属。
+文章永久链接使用 `/post/<url_slug>/`，在 Front Matter 中显式填写 `url_slug`（小写英文、数字和连字符，例如 `go-worker-pool`），不要使用 Hexo 会从文件名覆盖的 `slug` 字段。`hexo new` 会以传入的短标题初始化 `url_slug`；发布前检查它有效且不重复。
+
+已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变。现有 15 篇文章的旧 `/post/<abbrlink>.html` 地址由 [`source/vercel.json`](../source/vercel.json) 永久重定向；评论和阅读量继续以旧路径作为固定标识，不随公开 URL 改变。以后若必须更改公开 URL，需追加旧地址重定向并保留评论标识。
 发布前本地检查标题、日期、分类标签、代码、图片和链接；发布步骤见 [README](../README.md#验证与发布)。
 
 ## 图片、视频与附件

@@ -18,6 +18,7 @@ no_footer: false
 mathjax: false
 mermaid: true
 abbrlink: 2733f88e
+url_slug: electron-workflow-automation
 date: 2025-09-14 12:00:00
 ---
 

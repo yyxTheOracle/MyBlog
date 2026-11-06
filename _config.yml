@@ -18,7 +18,8 @@ timezone: 'Asia/Shanghai'
 # url: https://yyxtheoracle.github.io/
 url: https://www.victoryeah.com/
 # permalink: :year/:month/:day/:title/
-permalink: post/:abbrlink.html
+# url_slug 固定保存于 Front Matter，修改标题或文件名不改变公开链接。
+permalink: post/:url_slug/
 abbrlink:
   alg: crc32  # 算法
   rep: hex    # 进制

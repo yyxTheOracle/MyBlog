@@ -27,7 +27,7 @@ npx hexo new "event-loop-part-2"
 
 文件名自动带上日期，例如 `2026-11-05-event-loop-part-2.md`。编辑 Front Matter 中的标题、日期、分类和标签，再编写正文。
 
-已发布文章保持 `date` 和 `abbrlink` 不变；永久链接、评论和阅读量按 `/post/<abbrlink>.html` 关联。
+已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变；公开链接为 `/post/<url_slug>/`，评论和阅读量继续按旧 `/post/<abbrlink>.html` 标识关联，旧链接永久跳转到新地址。
 图片、视频和附件保留原件备份。完整规则见 [写作与资源管理](docs/writing.md)。
 
 ## 验证与发布

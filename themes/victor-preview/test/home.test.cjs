@@ -7,7 +7,7 @@ const { stripHTML } = require('hexo-util');
 
 test('精选摘要去掉小标题，保留正文里的“背景”和行内技术词', () => {
   const post = {
-    abbrlink: '12e2a8de', title: 'Worker Pool', path: 'post/12e2a8de.html',
+    abbrlink: '12e2a8de', title: 'Worker Pool', path: 'post/go-worker-pool/',
     excerpt: '<h1 id="背景"><a class="headerlink"></a>背景</h1>' +
       '<p>背景任务用 <code>Channel</code> 传递数据。</p><h2>前言</h2><p>这是原文。</p>',
     content: '', tags: { toArray: () => [] },
@@ -30,11 +30,11 @@ test('精选完整保留摘要和字数，视频不显示外置按钮且独立�
   const skillsExcerpt = '因为 GPT-5.6 的发布，前两天每天都会有一次额度重置，这两次重置是到点直接重置的，没法存到 reset bank 里，加上台风天没法出门，于是我开着 5.6 Sol xHigh/Ultra 疯狂蹬，蹬掉了 7.5 亿 Token。';
   // 放入四篇真实候选，确认 Event Loop 只退出精选，不会因 fixture 缺失而误通过。
   const posts = [
-    { abbrlink: '2733f88e', title: '给运营支持团队做提效工具，做着做着，这个团队没了', excerpt: '<p>天工桌面自动化工具的开发过程。</p>' },
-    { abbrlink: '12e2a8de', title: '对接小红书海量数据丨Go 并发利器 Worker Pool 实践', excerpt: `<h1>背景</h1><p>${workerSummary}</p>` },
-    { abbrlink: 'db62fe35', title: 'Matt Pocock Skills v1.1 使用体验', excerpt: `<p>${skillsExcerpt}</p>` },
-    { abbrlink: '2a798ab5', title: '究竟什么是 Event Loop丨总结 Philip Roberts 在 JSConf 的演讲', excerpt: '<p>Event Loop 与浏览器渲染的关系。</p>' },
-  ].map(post => ({ ...post, path: `/post/${post.abbrlink}.html`, content: '', tags: { toArray: () => [] } }));
+    { abbrlink: '2733f88e', url_slug: 'electron-workflow-automation', title: '给运营支持团队做提效工具，做着做着，这个团队没了', excerpt: '<p>天工桌面自动化工具的开发过程。</p>' },
+    { abbrlink: '12e2a8de', url_slug: 'go-worker-pool', title: '对接小红书海量数据丨Go 并发利器 Worker Pool 实践', excerpt: `<h1>背景</h1><p>${workerSummary}</p>` },
+    { abbrlink: 'db62fe35', url_slug: 'matt-pocock-skills-v1-1', title: 'Matt Pocock Skills v1.1 使用体验', excerpt: `<p>${skillsExcerpt}</p>` },
+    { abbrlink: '2a798ab5', url_slug: 'philip-roberts-event-loop', title: '究竟什么是 Event Loop丨总结 Philip Roberts 在 JSConf 的演讲', excerpt: '<p>Event Loop 与浏览器渲染的关系。</p>' },
+  ].map(post => ({ ...post, path: `/post/${post.url_slug}/`, content: '', tags: { toArray: () => [] } }));
   const html = ejs.render(readFileSync(require.resolve('../layout/index.ejs'), 'utf8'), {
     page: { current: 1 }, site: { posts: { sort: () => ({ toArray: () => posts }) } },
     partial: () => '', url_for: value => value, date: () => '2026.01.11',
@@ -48,7 +48,7 @@ test('精选完整保留摘要和字数，视频不显示外置按钮且独立�
     const featured = sections[0];
     const links = [...featured.querySelectorAll('a[href^="/post/"]')];
     assert.deepEqual(links.map(link => link.getAttribute('href')), [
-      '/post/2733f88e.html', '/post/12e2a8de.html', '/post/db62fe35.html',
+      '/post/electron-workflow-automation/', '/post/go-worker-pool/', '/post/matt-pocock-skills-v1-1/',
     ]);
     assert.equal(document.querySelector('.project-section'), null);
     assert.doesNotMatch(document.body.textContent, /项目手记/);

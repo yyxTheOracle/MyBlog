@@ -15,6 +15,7 @@ no_share: false
 no_footer: false
 mathjax: false
 abbrlink: 2979ee1c
+url_slug: codex-computer-use-e2e
 date: 2026-05-21 22:47:36
 top:
 ---

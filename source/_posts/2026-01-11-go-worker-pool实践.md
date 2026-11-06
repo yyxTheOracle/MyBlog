@@ -16,6 +16,7 @@ no_share: false
 no_footer: false
 mathjax: false
 abbrlink: 12e2a8de
+url_slug: go-worker-pool
 date: 2026-01-11 16:45:18
 top:
 mermaid: true

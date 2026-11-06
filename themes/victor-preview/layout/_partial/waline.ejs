@@ -45,8 +45,8 @@
     init({
       el: '#waline',
       serverURL: <%- JSON.stringify(theme.waline.server_url).replace(/</g, '\\u003c') %>,
-      // 评论按文章路径归属，不能用 localhost 域名或预览目录建立另一组评论。
-      path: <%- JSON.stringify('/' + post.path.replace(/^\/+/, '')).replace(/</g, '\\u003c') %>,
+      // 使用文章模板传入的稳定标识，改标题、改链接或预览都不拆分已有评论与计数。
+      path: <%- JSON.stringify(walinePath).replace(/</g, '\\u003c') %>,
       locale,
       login: <%- JSON.stringify(theme.waline.login) %>,
       lang: <%- JSON.stringify(theme.waline.lang) %>,

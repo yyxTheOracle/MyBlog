@@ -11,8 +11,8 @@ const postTemplate = readFileSync(path.join(__dirname, '../layout/post.ejs'), 'u
 const theme = yaml.load(readFileSync(path.join(__dirname, '../_config.yml'), 'utf8'));
 
 // 只渲染预览模板，不启动 Hexo 构建或访问真实评论服务。
-function render(waline = theme.waline, post = { path: 'post/12e2a8de.html' }) {
-  return ejs.render(template, { theme: { waline }, post });
+function render(waline = theme.waline, post = { path: 'post/12e2a8de.html' }, walinePath = '/post/12e2a8de.html') {
+  return ejs.render(template, { theme: { waline }, post, walinePath });
 }
 
 // 连同标题里的阅读量一起渲染，避免只测评论 partial 而漏掉首次显示状态。
@@ -21,7 +21,7 @@ function renderPost(waline = theme.waline, post = {}) {
     theme: { waline },
     page: { path: 'post/12e2a8de.html', slug: 'example', title: '测试文章', date: '', content: '', tags: { each() {} }, ...post },
     toc: () => '', date: () => '', wordcount: () => 0, min2read: () => 0,
-    partial: (name, locals) => name === '_partial/waline' ? render(waline, locals.post) : '',
+    partial: (name, locals) => name === '_partial/waline' ? render(waline, locals.post, locals.walinePath) : '',
   });
 }
 
@@ -107,4 +107,24 @@ test('关闭评论的文章也保留阅读量超时兜底，全站禁用时不�
   assert.match(renderPost(theme.waline, { no_comments: true }), /setTimeout/);
   const disabled = renderPost({ ...theme.waline, enable: false });
   assert.doesNotMatch(disabled, /waline-pageview-count|pageview-loading|setTimeout/);
+});
+
+// 真实执行新地址下的初始化脚本，同时检查 PV 节点，防止只保住评论却拆分计数。
+test('语义化地址沿用旧评论与阅读量标识，无旧编号的文章沿用当前路径', async () => {
+  for (const [post, expectedPath] of [
+    [{ path: 'post/go-worker-pool/index.html', abbrlink: '12e2a8de' }, '/post/12e2a8de.html'],
+    [{ path: '/post/new-article/index.html' }, '/post/new-article/index.html'],
+    [{ path: 'post/zero/index.html', abbrlink: 0 }, '/post/0.html'],
+  ]) {
+    let options;
+    let calls = 0;
+    const dom = await execute(renderPost(theme.waline, post), async () => ({
+      init(value) { options = value; calls += 1; },
+    }), 'https://www.victoryeah.com/' + post.path.replace(/^\/+/, ''));
+    assert.equal(calls, 1);
+    assert.equal(options.path, expectedPath);
+    assert.equal(options.pageview, true);
+    assert.equal(dom.window.document.querySelector('.waline-pageview-count').dataset.path, expectedPath);
+    dom.window.close();
+  }
 });
