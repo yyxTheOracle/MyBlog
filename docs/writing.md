@@ -38,5 +38,6 @@ npx hexo new "event-loop-part-2"
 - 上传后使用可直接访问的图片链接，检查页面显示，并记录备份文件与在线链接的对应关系；不要只保存外链。
 - 视频和其他附件不必放到图片图床。当前天工演示视频、日志样例在 [`source/assets/electron-tiangong/`](../source/assets/electron-tiangong/)，随网站发布，同时保留原件备份。
 - 头像和 favicon 可以继续随网站发布。
-- 文章媒体的真实像素尺寸记录在 [`media-dimensions.json`](../themes/victor-preview/media-dimensions.json)，构建时自动补齐 `width` / `height`，保留手写显示宽度。新增或替换图片、视频后同步更新此清单（值为 `[宽, 高]`），或在 HTML 标签中填写准确尺寸；构建不会请求图床测量。已知尺寸的图片默认首张立即加载、后续懒加载。
+- 正文图片遵循 [统一图片规范](images.md)：普通 Markdown 默认生效，紧凑图和图组使用短标签，替代文字必填、图注可选。`npm run build` 自动准备图片比例和正文适配资源；生成的 `source/assets/article-images/` 与 `themes/victor-preview/image-assets.json` 随文章一起提交，图片不再手动登记尺寸。日常预览允许提示缺项，发布前严格检查。
+- 视频的真实像素尺寸仍记录在 [`media-dimensions.json`](../themes/victor-preview/media-dimensions.json)，值为 `[宽, 高]`。更新视频时同步此记录；构建不会下载视频测量。
 - Mermaid 占位使用 [`diagram-dimensions.json`](../themes/victor-preview/diagram-dimensions.json) 中的源码哈希和实测 SVG 宽高。修改图表后，按渲染结果的 `viewBox` 更新对应记录；未命中的新图仍正常绘制，但不猜测占位比例。调整构建滤镜后先运行 `npm run clean` 再构建。

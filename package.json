@@ -7,7 +7,13 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "prepare": "husky",
-    "server": "hexo server"
+    "server": "hexo server",
+    "images:prepare": "node scripts/prepare-images.cjs",
+    "images:check": "node scripts/prepare-images.cjs --check",
+    "images:preview": "node scripts/prepare-images.cjs --preview",
+    "prebuild": "npm run images:prepare",
+    "predeploy": "npm run build && npm run images:check",
+    "preserver": "npm run images:preview"
   },
   "hexo": {
     "version": "6.0.0"
@@ -40,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "sharp": "0.35.5"
   }
 }

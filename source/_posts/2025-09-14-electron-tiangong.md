@@ -167,7 +167,9 @@ reaction(
 
 <details>
 <summary>查看持久化时序设计原图</summary>
-<img src="https://s3.bmp.ovh/2026/11/04/1h2UxYBK.png" alt="Account、PersistStore、MobX 和 electron-store 时序图">
+
+![Account、PersistStore、MobX 和 electron-store 时序图](https://s3.bmp.ovh/2026/11/04/1h2UxYBK.png)
+
 </details>
 
 ### 从 Excel 导入话术与 IPC 进程通信
@@ -366,7 +368,9 @@ sequenceDiagram
 
 <details>
 <summary>查看经营参谋全链路时序原图</summary>
-<img src="https://s3.bmp.ovh/2026/11/04/X0SUh2KD.png" alt="经营参谋下载时序图">
+
+![经营参谋下载时序图](https://s3.bmp.ovh/2026/11/04/X0SUh2KD.png)
+
 </details>
 
 ## 任务调度与稳定性保障

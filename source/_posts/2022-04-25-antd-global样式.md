@@ -24,10 +24,7 @@ top:
 # 前言
 　　今天做一个 Modal 的时候，需要修改 antd Form 的一些默认样式。一开始感觉没啥问题，用 Chrome DevTools 在页面上找到 antd 组件内相应的元素，修改对应的 class 达到效果后复制到了 VSCode 里，但是，**页面完全没有变化！！！！！！！** <!-- more -->
 
-<div align=center>
-  <img src="https://s3.bmp.ovh/imgs/2023/01/02/3b7d499d006810f0.jpg" />
-</div>
-<center style="color:#C0C0C0;"> less 代码</center>
+![直接覆盖 Ant Design Form 类名的 Less 样式，尚未包裹 :global](https://s3.bmp.ovh/imgs/2023/01/02/3b7d499d006810f0.jpg "less 代码")
 
 　　钻了 20 分钟没解决，赶紧去问 mentor, 津铭哥笑着和我说需要在外层加一个 `:global` 才能生效，试了下还真是！赶紧去补了下这个关键字的知识，在这里做一个记录。
 
@@ -51,6 +48,4 @@ top:
 # 解决方法
 　　如果不想要这串序列号，那么在最外层套上一层 `:global` 即可～
 
-<div align=center>
-  <img src="https://s3.bmp.ovh/imgs/2023/01/02/63710433b803b78f.jpg" />
-</div>
+![在 :global 内覆盖 Ant Design Form 及其子元素样式的 Less 代码](https://s3.bmp.ovh/imgs/2023/01/02/63710433b803b78f.jpg)

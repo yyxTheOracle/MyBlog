@@ -22,15 +22,13 @@ top:
 
 　　因为 GPT-5.6 的发布，前两天每天都会有一次额度重置，这两次重置是到点直接重置的，没法存到 reset bank 里，加上台风天没法出门，于是我开着 5.6 Sol xHigh/Ultra 疯狂蹬，蹬掉了 7.5 亿 Token。<!-- more -->
 
-<div style="text-align:center; margin:24px 0;">
-  <img src="https://s3.bmp.ovh/2026/11/05/ivNjuZze.webp" alt="GPT-5.6 Sol 额度重置与 Token 使用记录" style="width:100%; max-width:480px; height:auto;">
-</div>
+{% compact %}
+![GPT-5.6 Sol 额度重置与 Token 使用记录](https://s3.bmp.ovh/2026/11/05/ivNjuZze.webp)
+{% endcompact %}
 
 　　正好最近爆火的 Matt Pocock Skills 也更新到了 v1.1，于是蹬的时候尝试了他的 grill-with-docs -> to-spec -> to-tickets -> implement -> code-review 工作流，效果非常棒，尤其是最热门的 grill-with-docs / grill-me，会顺着你的想法一路往下挖，通过多轮的追问，把没说清楚的规则、没意识到的分支和藏在脑子里的隐含判断一个个拷打出来并收敛成一份 spec 文档，这个过程实在值得记录一下。
 
-<div style="text-align:center; margin:24px 0;">
-  <img src="https://s3.bmp.ovh/2026/11/04/RJILqpE0.jpg" alt="Matt Pocock Skills v1.1" style="width:100%; max-width:520px; height:auto;">
-</div>
+![Matt Pocock Skills v1.1](https://s3.bmp.ovh/2026/11/04/RJILqpE0.jpg)
 
 #  不是模型能力不行，而是需求根本没对齐
 
@@ -42,18 +40,14 @@ top:
     <ul>
       <li>你以为自己已经说清楚了，Agent 也以为自己听懂了，但看到结果才发现双方对目标的理解根本没有对齐，因为 “No-one knows exactly what they want.” ——《The Pragmatic Programmer》</li>
     </ul>
-    <div style="text-align:center; margin:16px 0 24px;">
-      <img src="https://s3.bmp.ovh/2026/11/04/42QeynfT.png" alt="The Agent Didn't Do What I Want" style="width:100%; max-width:560px; height:auto;">
-    </div>
+    <img src="https://s3.bmp.ovh/2026/11/04/42QeynfT.png" alt="The Agent Didn&#x27;t Do What I Want">
   </li>
   <li>
     <strong>The Agent Is Way Too Verbose.</strong>
     <ul>
       <li>开发和业务对同一个概念的口径可能不一致 & Agent 经常要在代码库中面对很多“黑话”，这两点会导致它的输出晦涩、冗余、漂移</li>
     </ul>
-    <div style="text-align:center; margin:16px 0 24px;">
-      <img src="https://s3.bmp.ovh/2026/11/05/KTapt8Hg.png" alt="The Agent Is Way Too Verbose" style="width:100%; max-width:560px; height:auto;">
-    </div>
+    <img src="https://s3.bmp.ovh/2026/11/05/KTapt8Hg.png" alt="The Agent Is Way Too Verbose">
   </li>
 </ol>
 
@@ -71,19 +65,19 @@ top:
 
 　　公司的需求大概是在某个中间节点增加一道审批，复杂点在于它会联动前面的订单数据和后续的入选履约流程，还要正确处理各种审批状态。
 
-<div style="text-align:center; margin:24px 0;">
-  <img src="https://s3.bmp.ovh/2026/11/05/BMRea65e.png" alt="公司需求的 Grilling Session" style="width:100%; max-width:680px; height:auto;">
-</div>
+![公司需求的 Grilling Session](https://s3.bmp.ovh/2026/11/05/BMRea65e.png)
 
 　　整个 grilling session 加上我的几次 challenge，一共进行了 20 多轮，我的感受是：提出的这些问题都切在非常关键的节点，要么关系到核心流程，要么藏在细节里但迟早会在开发或上线后暴露出来，并且 90% 以上的 case，给出的推荐方案就是我心中的最优想法，我直接确认就好了。
 
 　　即使是那 90% 我直接确认的 case，那些问题也非常有价值，因为 grilling 的价值并不只在于发现分歧，也在于确认共识。很多细节不可能全部体现在 PRD 中，如果不被主动问出来，就只能以隐含假设的形式存在。把它们逐一说清楚，再带到技术评审中和 PM 确认，可以显著减少开发过程中的理解偏差。
 
-<div style="display:grid; gap:16px; max-width:560px; margin:24px auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/sGdyN3R4.png" alt="审批状态问题" style="width:100%; height:auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/FFbvnPfo.png" alt="入选规则问题" style="width:100%; height:auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/y4GvsqYK.png" alt="Grilling Session 创建 CONTEXT.md" style="width:100%; height:auto;">
-</div>
+{% gallery 审批流程截图 %}
+![审批状态问题](https://s3.bmp.ovh/2026/11/05/sGdyN3R4.png "审批状态问题")
+
+![入选规则问题](https://s3.bmp.ovh/2026/11/05/FFbvnPfo.png "入选规则问题")
+
+![Grilling Session 创建 CONTEXT.md](https://s3.bmp.ovh/2026/11/05/y4GvsqYK.png "Grilling Session 创建 CONTEXT.md")
+{% endgallery %}
 
 # 一个 CONTEXT.md，解决业务和代码的口径差异
 
@@ -97,19 +91,19 @@ top:
 
 　　难怪 Matt 会说：It's hard to explain how powerful this is. It might be the single coolest technique in this repo. Try it, and see. 统一语言的价值很难在第一次看到 `CONTEXT.md` 时感受到，但只要经历过几轮 chat，就很难再回到没有它的时候。
 
-<div style="text-align:center; margin:24px 0;">
-  <img src="https://s3.bmp.ovh/2026/11/05/PRdGU6hO.png" alt="CONTEXT.md 业务术语定义" style="width:100%; max-width:680px; height:auto;">
-</div>
+![CONTEXT.md 业务术语定义](https://s3.bmp.ovh/2026/11/05/PRdGU6hO.png)
 
 # 只有一句“监控机票”，AI 能问出什么？
 
 　　我自己的需求只有一句非常模糊的描述：“我想监控机票价格。” Grilling 随后用 15 个问题，一步步拆出了监控范围、触发条件、通知机制和筛选标准，甚至把我自己都无法准确描述的“合适机票”，变成了一组可以实现和验证的规则。
 
-<div style="display:grid; gap:16px; max-width:560px; margin:24px auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/Jetl2QG0.png" alt="监控机票价格的 Grilling Session" style="width:100%; height:auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/YwjvufxF.png" alt="机票监控规则" style="width:100%; height:auto;">
-  <img src="https://s3.bmp.ovh/2026/11/05/v6HrUGMq.png" alt="机票筛选反馈" style="width:100%; height:auto;">
-</div>
+{% gallery 机票监控截图 %}
+![监控机票价格的 Grilling Session](https://s3.bmp.ovh/2026/11/05/Jetl2QG0.png "监控机票价格的 Grilling Session")
+
+![机票监控规则](https://s3.bmp.ovh/2026/11/05/YwjvufxF.png "机票监控规则")
+
+![机票筛选反馈](https://s3.bmp.ovh/2026/11/05/v6HrUGMq.png "机票筛选反馈")
+{% endgallery %}
 
 # The End
 
