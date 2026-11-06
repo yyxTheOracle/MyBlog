@@ -550,3 +550,21 @@ test('留言深链接也在正文绘图后校准，页脚锚点不受影响', as
     p.close();
   }
 });
+
+// 模拟导航换行后的实际高度，确认锚点偏移随布局更新。
+test('吸顶导航将初始高度和换行后的高度同步到滚动偏移', () => {
+  let resizeHeader;
+  let height = 91;
+  const p = page('<header class="site-header"></header>', (window) => {
+    window.document.querySelector('.site-header').getBoundingClientRect = () => ({ height });
+    window.ResizeObserver = class {
+      constructor(callback) { resizeHeader = callback; }
+      observe() {}
+    };
+  });
+  assert.equal(p.document.documentElement.style.getPropertyValue('--header-height'), '91px');
+  height = 160;
+  resizeHeader();
+  assert.equal(p.document.documentElement.style.getPropertyValue('--header-height'), '160px');
+  p.close();
+});
