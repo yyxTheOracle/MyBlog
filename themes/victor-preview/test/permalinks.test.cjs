@@ -9,7 +9,6 @@ const permalink = require('hexo/lib/plugins/filter/post_permalink');
 
 const root = resolve(__dirname, '../../..');
 const config = yaml.load(readFileSync(resolve(root, '_config.yml'), 'utf8'));
-const redirects = JSON.parse(readFileSync(resolve(root, 'source/vercel.json'), 'utf8')).redirects;
 const posts = readdirSync(resolve(root, 'source/_posts')).filter(name => name.endsWith('.md'))
   .map(name => ({ ...parse(readFileSync(resolve(root, 'source/_posts', name), 'utf8')), filename: name }));
 
@@ -34,17 +33,5 @@ test('文章链接名和评论标识有效且唯一，改标题或文件名不�
     const expected = `post/${post.url_slug}/`;
     assert.equal(postPath(post), expected);
     assert.equal(postPath(post, { title: '改过的标题', slug: 'renamed-file' }), expected);
-  }
-});
-
-test('15 个旧文章入口分别永久跳转到对应的新地址，不产生链式跳转', () => {
-  assert.equal(redirects.length, 15);
-  assert.equal(new Set(redirects.map(rule => rule.source)).size, 15);
-  for (const rule of redirects) {
-    const post = posts.find(post => `/post/${post.abbrlink}.html` === rule.source);
-    assert.ok(post, `旧地址没有对应文章：${rule.source}`);
-    assert.equal(rule.destination, '/' + postPath(post));
-    assert.equal(rule.permanent, true);
-    assert.ok(!redirects.some(other => other.source === rule.destination));
   }
 });

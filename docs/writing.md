@@ -24,7 +24,7 @@ npx hexo new "event-loop-part-2"
 
 文章永久链接使用 `/post/<url_slug>/`，在 Front Matter 中显式填写 `url_slug`（小写英文、数字和连字符，例如 `go-worker-pool`），不要使用 Hexo 会从文件名覆盖的 `slug` 字段。`hexo new` 会以传入的短标题初始化 `url_slug`；发布前检查它有效且不重复。
 
-已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变。现有 15 篇文章的旧 `/post/<abbrlink>.html` 地址由 [`source/vercel.json`](../source/vercel.json) 永久重定向；评论和阅读量继续以旧路径作为固定标识，不随公开 URL 改变。以后若必须更改公开 URL，需追加旧地址重定向并保留评论标识。
+已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变。旧 `/post/<abbrlink>.html` 不再提供文章访问或跳转，仅作为评论和阅读量的固定标识，不随公开 URL 改变。
 发布前本地检查标题、日期、分类标签、代码、图片和链接；发布步骤见 [README](../README.md#验证与发布)。
 
 ## 图片、视频与附件
