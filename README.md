@@ -25,9 +25,9 @@ npm run server
 npx hexo new "event-loop-part-2"
 ```
 
-文件名自动带上日期，例如 `2026-11-05-event-loop-part-2.md`。编辑 Front Matter 中的标题、日期、分类和标签，再编写正文。
+文件名自动带上日期，`url_slug` 初始化为 `event-loop-part-2`。编辑 Front Matter 中的标题、日期、分类和标签，再编写正文；首次构建会自动生成 `abbrlink`，不要复制其他文章的编号。
 
-已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变；公开链接为 `/post/<url_slug>/`，评论和阅读量继续按旧 `/post/<abbrlink>.html` 标识关联。
+已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变；公开链接为 `/post/<url_slug>/`，新旧文章的评论和阅读量都按 `/post/<abbrlink>.html` 标识关联。这个标识不要求有对应网页；旧 hash 地址不保留跳转。
 图片、视频和附件保留原件备份。完整规则见 [写作与资源管理](docs/writing.md)。
 
 ## 验证与发布
@@ -41,12 +41,12 @@ flowchart LR
     C -->|"Vercel 自动部署"| D["www.victoryeah.com"]
 ```
 
-在仓库根目录执行测试和构建：
+在仓库根目录先构建、再校验：首次构建会为新文章写入 `abbrlink`，检查该字段并随文章一并提交；随后测试检查链接名和评论标识是否有效、是否重复。
 
 ```sh
-node --test themes/victor-preview/test/*.test.*
 npm run clean
 npm run build
+node --test themes/victor-preview/test/*.test.*
 ```
 
 检查本地页面与 Git diff，提交本次修改并推送源码，然后发布构建产物：

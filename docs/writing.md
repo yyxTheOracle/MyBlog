@@ -24,8 +24,12 @@ npx hexo new "event-loop-part-2"
 
 文章永久链接使用 `/post/<url_slug>/`，在 Front Matter 中显式填写 `url_slug`（小写英文、数字和连字符，例如 `go-worker-pool`），不要使用 Hexo 会从文件名覆盖的 `slug` 字段。`hexo new` 会以传入的短标题初始化 `url_slug`；发布前检查它有效且不重复。
 
+新旧文章使用同一套规则：`hexo-abbrlink` 在首次构建时生成 `abbrlink` 并写回文章，后续构建复用它。创建文章时不要复制其他文章的 `abbrlink`；若文件名或初始标题使用中文，应在发布前将 `url_slug` 改为英文链接名。
+
+例如现有 Go 文章的 `url_slug: go-worker-pool` 决定公开地址 `/post/go-worker-pool/`，`abbrlink: 12e2a8de` 决定 Waline 数据标识 `/post/12e2a8de.html`。后者只是数据标识，不需要对应网页。
+
 已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变。旧 `/post/<abbrlink>.html` 不再提供文章访问或跳转，仅作为评论和阅读量的固定标识，不随公开 URL 改变。
-发布前本地检查标题、日期、分类标签、代码、图片和链接；发布步骤见 [README](../README.md#验证与发布)。
+先构建生成新文章的 `abbrlink`，再运行测试校验 `url_slug` 格式及两种标识的唯一性；发现重复时先解决再发布，不要改动已发布文章的标识。发布前本地检查标题、日期、分类标签、代码、图片和链接；发布步骤见 [README](../README.md#验证与发布)。
 
 ## 图片、视频与附件
 

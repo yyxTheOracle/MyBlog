@@ -4,6 +4,12 @@
 本文记录仓库配置与日常操作；收录数量、额度和申请结果以搜索引擎后台为准。
 原 README 的逐篇查询结果保存在 [2026-11-04 收录快照](history/2026-11-04-search-indexing.md)。
 
+## 文章链接迁移（2026-11-06）
+
+15 篇文章已统一使用 `/post/<url_slug>/`，旧 `/post/<abbrlink>.html` 地址返回 404，不保留跳转。站内链接、canonical、Open Graph、RSS、两份 Sitemap 和百度 URL 清单均使用新地址。
+
+迁移前的收录和提交记录针对旧地址，不能视为新地址已收录。本次只完成网站发布与链接验证，未重新提交搜索引擎收录申请。后续检查应使用新地址，例如 [小程序 E2E Test](https://www.victoryeah.com/post/codex-computer-use-e2e/) 和 [上海国拍付款](https://www.victoryeah.com/post/shanghai-plate-payment-pitfalls/)。
+
 ## 站点配置
 
 [`_config.yml`](../_config.yml) 的 `url` 统一配置公开地址，Open Graph、RSS 和站点地图使用这个域名，

@@ -50,9 +50,11 @@ node --test themes/victor-preview/test/waline.test.cjs
 
 ## 评论归属与计数
 
-文章通过 Front Matter 的 `url_slug` 对外使用 `/post/<url_slug>/`，已有文章的评论和计数仍按 `/post/<abbrlink>.html` 关联，不包含访问域名。
+新旧文章统一通过 Front Matter 的 `url_slug` 对外使用 `/post/<url_slug>/`，评论和计数按 `/post/<abbrlink>.html` 关联，不包含访问域名。新文章首次构建时由 `hexo-abbrlink` 生成编号，之后复用。
 文章模板统一计算这一稳定标识，同时传给评论初始化和阅读量节点，因此迁移链接不需要改写数据库。
-不要修改或删除已有文章的 `abbrlink`，否则会与原有数据分离；没有旧编号的新文章使用当前文章路径。
+不要修改或删除已有文章的 `abbrlink`，否则会与原有数据分离。模板在缺少编号时会回退到当前文章路径，但正常发布流程会生成并校验编号，不依赖这个兜底。
+
+`/post/<abbrlink>.html` 只是 Waline 的数据标识，不要求能通过 HTTP 打开。2026-11-06 迁移的 15 篇文章和以后新文章都不提供 hash 地址跳转；旧地址返回 404，不影响评论查询或阅读量累计。
 
 当前计数开关由 [Waline 模板](../themes/victor-preview/layout/_partial/waline.ejs)
 中的域名判断决定，只有 `www.victoryeah.com` 和 `victoryeah.com` 会累计阅读量；
