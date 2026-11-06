@@ -316,8 +316,12 @@ test('较慢查询不会覆盖新输入，加载失败后可以重试', async ()
 test('复制保留换行和缩进、排除行号，长代码可折叠并报告权限失败', async () => {
   const lines = Array.from({ length: 17 }, (_, index) => `<span class="line">  line ${index + 1}</span><br>`).join('');
   let copied;
+  const timers = new Map();
+  let timerId = 0;
   const p = page(`<article id="article-content"><figure class="highlight js"><table><tr><td class="gutter">123</td><td class="code"><pre>${lines}</pre></td></tr></table></figure></article>`, (window) => {
     window.navigator.clipboard = { writeText: async (text) => { copied = text; } };
+    window.setTimeout = (callback) => { timers.set(++timerId, callback); return timerId; };
+    window.clearTimeout = id => timers.delete(id);
   });
   const figure = p.document.querySelector('figure');
   const toggle = p.document.querySelector('.code-toggle');
@@ -336,6 +340,30 @@ test('复制保留换行和缩进、排除行号，长代码可折叠并报告�
   await settle();
   assert.ok(copy.textContent.includes('复制失败'));
   assert.equal(copy.disabled, false);
+  assert.equal(timers.size, 1, '重复操作取消旧反馈计时，不能提前清掉新提示');
+  [...timers.values()][0]();
+  assert.equal(copy.textContent, '复制代码');
+  p.close();
+});
+
+test('收起长代码只在开头已离屏时回到代码块，保留键盘滚动入口', () => {
+  const lines = Array.from({ length: 60 }, () => 'const value = 1;').join('<br>');
+  const p = page(`<article id="article-content"><figure class="highlight js"><table><tr><td class="code"><pre>${lines}</pre></td></tr></table></figure></article>`);
+  const figure = p.document.querySelector('figure');
+  const toggle = p.document.querySelector('.code-toggle');
+  const scrolls = [];
+  let top = 40;
+  figure.getBoundingClientRect = () => ({ top });
+  figure.scrollIntoView = options => scrolls.push({ behavior: options.behavior, block: options.block });
+  assert.equal(p.document.querySelector('.code-content').tabIndex, 0);
+  toggle.click();
+  toggle.click();
+  assert.equal(scrolls.length, 0, '代码块开头仍在屏幕内时不额外滚动');
+  toggle.click();
+  top = -900;
+  toggle.click();
+  assert.deepEqual(scrolls, [{ behavior: 'instant', block: 'start' }]);
+  assert.equal(toggle.getAttribute('aria-expanded'), 'false');
   p.close();
 });
 
