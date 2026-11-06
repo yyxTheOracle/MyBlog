@@ -7,11 +7,22 @@ const yaml = require('js-yaml');
 const { JSDOM } = require('jsdom');
 
 const template = readFileSync(path.join(__dirname, '../layout/_partial/waline.ejs'), 'utf8');
+const postTemplate = readFileSync(path.join(__dirname, '../layout/post.ejs'), 'utf8');
 const theme = yaml.load(readFileSync(path.join(__dirname, '../_config.yml'), 'utf8'));
 
 // 只渲染预览模板，不启动 Hexo 构建或访问真实评论服务。
 function render(waline = theme.waline, post = { path: 'post/12e2a8de.html' }) {
   return ejs.render(template, { theme: { waline }, post });
+}
+
+// 连同标题里的阅读量一起渲染，避免只测评论 partial 而漏掉首次显示状态。
+function renderPost(waline = theme.waline, post = {}) {
+  return ejs.render(postTemplate, {
+    theme: { waline },
+    page: { path: 'post/12e2a8de.html', slug: 'example', title: '测试文章', date: '', content: '', tags: { each() {} }, ...post },
+    toc: () => '', date: () => '', wordcount: () => 0, min2read: () => 0,
+    partial: (_, { post }) => render(waline, post),
+  });
 }
 
 // 仅替换模块加载边界，用真实生成的脚本检查 init 参数和失败反馈。
@@ -63,4 +74,37 @@ test('正式域名启用阅读量统计', async () => {
   const dom = await execute(render(), async () => ({ init(value) { options = value; } }), 'https://www.victoryeah.com/post/12e2a8de.html');
   assert.equal(options.pageview, true);
   dom.window.close();
+});
+
+test('阅读量首次显示 loading，15 秒无结果才显示占位，成功的 0 和非零读数保留', () => {
+  const html = renderPost();
+  assert.ok(html.indexOf('setTimeout') >= 0);
+  assert.ok(html.indexOf('setTimeout') < html.indexOf('dist/waline.css'), 'CDN 样式阻塞前就开始超时计时');
+  for (const value of [null, '0', '58']) {
+    const dom = new JSDOM(html, { runScripts: 'outside-only' });
+    const { document } = dom.window;
+    const count = document.querySelector('.waline-pageview-count');
+    assert.equal(count.dataset.path, '/post/12e2a8de.html');
+    assert.equal(count.getAttribute('aria-live'), 'polite');
+    assert.ok(count.querySelector('.pageview-loading[role="status"][aria-label="阅读量加载中"]'));
+    assert.equal(count.textContent, '');
+    let timeout;
+    dom.window.setTimeout = (callback, delay) => {
+      assert.equal(delay, 15000);
+      timeout = callback;
+    };
+    dom.window.eval(document.querySelector('script:not([type])').textContent);
+    assert.ok(count.querySelector('.pageview-loading'), '计时开始后仍保留 loading');
+    // Waline 用 textContent 写入读数，成功后会同时移除 spinner。
+    if (value !== null) count.textContent = value;
+    timeout();
+    assert.equal(count.textContent, value === null ? '—' : value);
+    dom.window.close();
+  }
+});
+
+test('关闭评论的文章也保留阅读量超时兜底，全站禁用时不输出计数和计时器', () => {
+  assert.match(renderPost(theme.waline, { no_comments: true }), /setTimeout/);
+  const disabled = renderPost({ ...theme.waline, enable: false });
+  assert.doesNotMatch(disabled, /waline-pageview-count|pageview-loading|setTimeout/);
 });
