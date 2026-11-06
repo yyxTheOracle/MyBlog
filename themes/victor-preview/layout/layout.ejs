@@ -27,6 +27,10 @@
     } catch (_) { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
   </script>
   <link rel="stylesheet" href="/css/site.css">
+  <% if (is_post()) { %>
+    <link rel="stylesheet" href="/css/article-media.css">
+    <script defer src="/js/media-viewer.js"></script>
+  <% } %>
   <% if (page.type === 'about') { %>
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/about.css">

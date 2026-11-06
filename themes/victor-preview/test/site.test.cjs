@@ -339,20 +339,93 @@ test('复制保留换行和缩进、排除行号，长代码可折叠并报告�
   p.close();
 });
 
-test('桌面与手机目录同步高亮，点击手机目录会收起', () => {
-  let observe;
+test('桌面与手机目录同步高亮，滚动落点跨过判定线时无需新的交叉事件', () => {
+  const frames = [];
+  let secondTop = 140;
   const p = page('<a class="toc-link" href="#第二节">桌面目录</a><details class="mobile-toc" open><a class="toc-link" href="#第二节">手机目录</a></details><article id="article-content"><h2 id="第一节">一</h2><h2 id="第二节">二</h2></article>', (window) => {
-    window.IntersectionObserver = class {
-      constructor(callback) { observe = callback; }
-      observe() {}
-    };
+    window.requestAnimationFrame = callback => frames.push(callback);
     window.document.querySelector('#第一节').getBoundingClientRect = () => ({ top: -200 });
-    window.document.querySelector('#第二节').getBoundingClientRect = () => ({ top: 100 });
+    window.document.querySelector('#第二节').getBoundingClientRect = () => ({ top: secondTop });
   });
-  observe();
+  assert.equal(p.document.querySelectorAll('[aria-current="location"]').length, 0);
+  secondTop = 76;
+  p.window.dispatchEvent(new p.window.Event('scroll'));
+  p.window.dispatchEvent(new p.window.Event('scroll'));
+  assert.equal(frames.length, 1, '同一帧的滚动事件只计算一次');
+  frames.shift()();
   assert.equal(p.document.querySelectorAll('[aria-current="location"]').length, 2);
   p.document.querySelector('details a').click();
   assert.equal(p.document.querySelector('details').open, false);
+  p.close();
+});
+
+test('当前目录项越界时只移动目录自身，已经可见时保持不动', () => {
+  const frames = [];
+  let secondTop = 140;
+  const p = page('<aside class="desktop-toc"><a class="toc-link" href="#one">一</a><a class="toc-link" href="#two">二</a></aside><article id="article-content"><h2 id="one">一</h2><h2 id="two">二</h2></article>', (window) => {
+    window.requestAnimationFrame = callback => frames.push(callback);
+    window.scrollTo = () => assert.fail('目录跟随不应滚动正文');
+    window.HTMLElement.prototype.scrollIntoView = () => assert.fail('不能通过 scrollIntoView 拉动正文');
+    window.document.querySelector('#one').getBoundingClientRect = () => ({ top: -100 });
+    window.document.querySelector('#two').getBoundingClientRect = () => ({ top: secondTop });
+    window.document.querySelector('aside').getBoundingClientRect = () => ({ top: 32, bottom: 500, height: 468 });
+    window.document.querySelector('[href="#one"]').getBoundingClientRect = () => ({ top: 90, bottom: 120 });
+    window.document.querySelector('[href="#two"]').getBoundingClientRect = () => ({ top: 540, bottom: 570 });
+  });
+  const toc = p.document.querySelector('aside');
+  assert.equal(toc.scrollTop, 0);
+  secondTop = 76;
+  p.window.dispatchEvent(new p.window.Event('scroll'));
+  frames.shift()();
+  assert.equal(toc.scrollTop, 78);
+  p.window.dispatchEvent(new p.window.Event('scroll'));
+  frames.shift()();
+  assert.equal(toc.scrollTop, 78, '同一章节不重复拉动目录');
+  p.close();
+});
+
+test('手机目录复用原有列表，关闭和选章保留背景位置并返回触发入口', () => {
+  const toc = '<ol class="toc"><li><a class="toc-link" href="#section">章节</a></li></ol>';
+  const p = page(renderPost({ content: '<h2 id="section">章节</h2>' }, toc), (window) => {
+    window.requestAnimationFrame = () => {};
+    window.scrollTo = () => assert.fail('打开或关闭目录不应滚动正文');
+    window.scrollY = 1600;
+  });
+  const dialog = p.document.querySelector('#mobile-toc-dialog');
+  const trigger = p.document.querySelector('.mobile-toc-trigger');
+  const summary = p.document.querySelector('.mobile-toc summary');
+  assert.equal(p.document.querySelector('.mobile-toc nav'), null);
+  assert.equal(p.document.querySelectorAll('.toc-link').length, 2, '只有桌面和手机各一份列表');
+  trigger.click();
+  assert.equal(dialog.open, true);
+  assert.ok(p.document.documentElement.classList.contains('toc-open'));
+  p.document.querySelector('[data-close-toc]').click();
+  assert.equal(dialog.open, false);
+  assert.equal(p.document.activeElement, trigger);
+  assert.ok(!p.document.documentElement.classList.contains('toc-open'));
+  assert.equal(p.window.scrollY, 1600);
+  summary.click();
+  assert.equal(dialog.open, true);
+  assert.equal(summary.parentElement.open, false);
+  dialog.querySelector('a').click();
+  assert.equal(dialog.open, false);
+  assert.equal(p.document.activeElement, summary);
+  p.close();
+});
+
+test('无目录文章不输出入口，缺少原生弹层支持时保留页首 details', () => {
+  const toc = '<ol class="toc"><li><a class="toc-link" href="#section">章节</a></li></ol>';
+  for (const [options, contents] of [[{}, ''], [{ no_toc: true }, toc]]) {
+    const p = page(renderPost(options, contents));
+    assert.equal(p.document.querySelector('.mobile-toc-trigger'), null);
+    assert.equal(p.document.querySelector('#mobile-toc-dialog'), null);
+    p.close();
+  }
+  const p = page(renderPost({}, toc), (window) => {
+    window.HTMLDialogElement.prototype.showModal = undefined;
+  });
+  assert.ok(p.document.querySelector('.mobile-toc nav'));
+  assert.ok(!p.document.documentElement.classList.contains('mobile-toc-ready'));
   p.close();
 });
 

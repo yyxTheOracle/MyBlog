@@ -21,7 +21,7 @@ function renderPost(waline = theme.waline, post = {}) {
     theme: { waline },
     page: { path: 'post/12e2a8de.html', slug: 'example', title: '测试文章', date: '', content: '', tags: { each() {} }, ...post },
     toc: () => '', date: () => '', wordcount: () => 0, min2read: () => 0,
-    partial: (_, { post }) => render(waline, post),
+    partial: (name, locals) => name === '_partial/waline' ? render(waline, locals.post) : '',
   });
 }
 

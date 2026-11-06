@@ -24,4 +24,11 @@
   <span class="back-top-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 19V5m-6 6 6-6 6 6"></path></svg></span>
   <span>回到顶部</span>
 </button>
+<% if (tocContent && !page.no_toc) { %>
+<button type="button" class="mobile-toc-trigger" aria-haspopup="dialog" aria-controls="mobile-toc-dialog">目录</button>
+<dialog id="mobile-toc-dialog" aria-labelledby="mobile-toc-title">
+  <div class="mobile-toc-heading"><h2 id="mobile-toc-title">本文目录</h2><button type="button" class="plain-button" data-close-toc aria-label="关闭目录">关闭</button></div>
+</dialog>
+<% } %>
+<%- partial('_partial/media-viewer') %>
 <% if (page.mathjax) { %><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><% } %>
