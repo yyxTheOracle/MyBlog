@@ -367,6 +367,27 @@ test('收起长代码只在开头已离屏时回到代码块，保留键盘滚�
   p.close();
 });
 
+test('开场不选中目录，章节到达判定线才同步高亮，回滚开场后清除', () => {
+  const frames = [];
+  let firstTop = 600;
+  const toc = '<ol class="toc"><li><a class="toc-link" href="#one">一</a></li><li><a class="toc-link" href="#two">二</a></li></ol>';
+  const p = page(renderPost({ content: '<p>开场</p><h2 id="one">一</h2><h2 id="two">二</h2>' }, toc), (window) => {
+    window.requestAnimationFrame = callback => frames.push(callback);
+    window.document.querySelector('#one').getBoundingClientRect = () => ({ top: firstTop });
+    window.document.querySelector('#two').getBoundingClientRect = () => ({ top: firstTop + 400 });
+  });
+  assert.equal(p.document.querySelectorAll('.toc-link[aria-current]').length, 0);
+
+  // 覆盖判定线前后及回滚，确保桌面和手机不会残留旧章节的高亮。
+  for (const [top, expected] of [[121, []], [120, ['#one', '#one']], [-280, ['#two', '#two']], [121, []]]) {
+    firstTop = top;
+    p.window.dispatchEvent(new p.window.Event('scroll'));
+    frames.shift()();
+    assert.deepEqual([...p.document.querySelectorAll('.toc-link[aria-current="location"]')].map(link => link.hash), expected);
+  }
+  p.close();
+});
+
 test('桌面与手机目录同步高亮，滚动落点跨过判定线时无需新的交叉事件', () => {
   const frames = [];
   let secondTop = 140;
