@@ -11,6 +11,8 @@
   const description = is_post() ? truncate(strip_html((page.excerpt || page.content || '').replace(/<(style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, '')).replace(/\s+/g,' ').trim(), {length:150}) : config.description; %>
   <%- open_graph({title:pageTitle || config.title, description, image:'/img/avatar.jpg', url:is_post() ? page.permalink : undefined}) %>
   <% if (is_post()) { %><link rel="canonical" href="<%= page.permalink %>"><% } %>
+  <% /* 标签页的 index.html 与目录地址展示相同内容；分页仍保留各自的正式地址。 */ %>
+  <% if (is_tag()) { %><link rel="canonical" href="<%= full_url_for(page.path.replace(/index\.html$/, '')) %>"><% } %>
   <link rel="icon" href="/img/favicon.ico">
   <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
   <% if (is_home() && (!page.current || page.current === 1)) { %>
