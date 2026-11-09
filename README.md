@@ -87,7 +87,6 @@ npm run deploy
 | [写作与资源管理](docs/writing.md) | 文件命名、分类标签、永久链接、图床与原件备份 |
 | [文章图片规范](docs/images.md) | 图片尺寸、图注、图组、大图浏览与自动准备流程 |
 | [评论与阅读量](docs/waline.md) | Waline 配置、服务入口、数据归属与备份恢复 |
-| [搜索引擎维护](docs/search.md) | Sitemap、站点验证与发布后的维护步骤 |
-| [2026-11-04 收录记录](docs/history/2026-11-04-search-indexing.md) | 带日期的历史快照，不代表实时状态 |
+| [搜索引擎维护](docs/search.md) | 当前收录结果、待办、Sitemap 与日常维护 |
 
 旧版主题来源于 [Yilia](https://github.com/litten/hexo-theme-yilia) 与 [new-yilia](https://github.com/jackhanyuan/hexo-theme-new-yilia)，实现保留在 `themes/new-yilia/` 供历史参考。
