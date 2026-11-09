@@ -1,5 +1,7 @@
 <%
 const tocContent = toc(page.content, {list_number:false});
+// 包含所有层级，避免子目录很多时仍按短目录放大间距。
+const tocItemCount = (tocContent.match(/class="toc-link"/g) || []).length;
 // 语义化链接迁移后沿用旧数据标识，评论初始化与阅读量查询必须使用同一路径。
 const walinePath = page.abbrlink != null && page.abbrlink !== ''
   ? '/post/' + page.abbrlink + '.html'
@@ -23,7 +25,7 @@ const walinePath = page.abbrlink != null && page.abbrlink !== ''
     <nav class="article-neighbors" aria-label="相邻文章"><% if (page.prev) { %><a href="<%= url_for(page.prev.path) %>"><span>上一篇</span><strong><%= page.prev.title %></strong></a><% } %><% if (page.next) { %><a href="<%= url_for(page.next.path) %>"><span>下一篇</span><strong><%= page.next.title %></strong></a><% } %></nav>
     <%- partial('_partial/waline', {post: page, walinePath}) %>
   </article>
-  <% if (tocContent && !page.no_toc) { %><aside class="desktop-toc"><nav aria-label="文章目录"><h2>本文目录</h2><%- tocContent %></nav></aside><% } %>
+  <% if (tocContent && !page.no_toc) { %><aside class="desktop-toc<%= tocItemCount <= 6 ? ' desktop-toc-short' : '' %>"><nav aria-label="文章目录"><h2>本文目录</h2><%- tocContent %></nav></aside><% } %>
 </div>
 <% /* 回顶入口独立于目录，无目录文章与手机端也能使用。 */ %>
 <div class="reading-layout back-top-layout">

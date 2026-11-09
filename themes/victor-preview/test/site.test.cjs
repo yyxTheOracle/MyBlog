@@ -44,6 +44,26 @@ function renderPost(overrides = {}, tocContent = '') {
   });
 }
 
+test('短目录按全部层级的 6 项分界，宽松样式仅作用于桌面', () => {
+  const tocHelper = require('hexo/lib/plugins/helper/toc');
+  for (const count of [0, 1, 6, 7]) {
+    // 仅一个一级章节，其余都是子章节，验证不会漏算嵌套条目。
+    const headings = Array.from({ length: count }, (_, i) => {
+      const level = i === 0 ? 2 : 3;
+      return `<h${level} id="section-${i}">章节 ${i}</h${level}>`;
+    }).join('');
+    const dom = new JSDOM(renderPost({}, tocHelper(headings, { list_number: false })));
+    const desktop = dom.window.document.querySelector('.desktop-toc');
+    assert.equal(Boolean(desktop), count > 0);
+    if (desktop) {
+      assert.equal(desktop.querySelectorAll('.toc-link').length, count);
+      assert.equal(desktop.classList.contains('desktop-toc-short'), count <= 6);
+      assert.equal(dom.window.document.querySelector('.mobile-toc').className, 'mobile-toc');
+    }
+    dom.window.close();
+  }
+});
+
 test('回顶入口独立于文章目录，保留可见文字，首页不输出入口', () => {
   const toc = '<ol class="toc"><li><a class="toc-link" href="#section">章节</a></li></ol>';
   for (const [options, contents] of [[{}, toc], [{}, ''], [{ no_toc: true }, toc]]) {
