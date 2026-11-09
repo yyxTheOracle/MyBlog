@@ -63,7 +63,7 @@ top:
 
 　　公司的需求大概是在某个中间节点增加一道审批，复杂点在于它会联动前面的订单数据和后续的入选履约流程，还要正确处理各种审批状态。
 
-![公司需求的 Grilling Session](https://s3.bmp.ovh/2026/11/05/BMRea65e.png)
+![公司需求的 grilling session](https://s3.bmp.ovh/2026/11/05/BMRea65e.png)
 
 　　整个 grilling session 加上我的几次 challenge，一共进行了 20 多轮，我的感受是：提出的这些问题都切在非常关键的节点，要么关系到核心流程，要么藏在细节里但迟早会在开发或上线后暴露出来，并且 90% 以上的 case，给出的推荐方案就是我心中的最优想法，我直接确认就好了。
 
@@ -74,7 +74,7 @@ top:
 
 ![入选规则问题](https://s3.bmp.ovh/2026/11/05/FFbvnPfo.png "入选规则问题")
 
-![Grilling Session 创建 CONTEXT.md](https://s3.bmp.ovh/2026/11/05/y4GvsqYK.png "Grilling Session 创建 CONTEXT.md")
+![grilling session 创建 CONTEXT.md](https://s3.bmp.ovh/2026/11/05/y4GvsqYK.png "grilling session 创建 CONTEXT.md")
 {% endgallery %}
 
 　　在第三张图中可以看到，Agent 创建了一个 `CONTEXT.md`，这正好对应 Matt 提到的第二个痛点：The Agent Is Way Too Verbose. 这里的“啰嗦”不只是话多，更深一层的原因是口径没有统一。业务、研发和代码库可能用不同的词指向同一个概念。Agent 一旦在这些口径之间来回切换，输出就容易变得晦涩、冗余，甚至逐渐漂移。
@@ -91,10 +91,10 @@ top:
 
 # Case 2：把模糊的想法梳理成具体的实施规则
 
-　　我自己的需求只有一句非常模糊的描述：“我想监控机票价格。” Grilling 随后用 15 个问题，一步步拆出了监控范围、触发条件、通知机制和筛选标准，甚至把我自己都无法准确描述的“合适机票”，变成了一组可以实现和验证的规则。
+　　我自己的需求只有一句非常模糊的描述：“我想监控机票价格。” grilling 随后用 15 个问题，一步步拆出了监控范围、触发条件、通知机制和筛选标准，甚至把我自己都无法准确描述的“合适机票”，变成了一组可以实现和验证的规则。
 
 {% gallery 机票监控截图 %}
-![监控机票价格的 Grilling Session](https://s3.bmp.ovh/2026/11/05/Jetl2QG0.png "监控机票价格的 Grilling Session")
+![监控机票价格的 grilling session](https://s3.bmp.ovh/2026/11/05/Jetl2QG0.png "监控机票价格的 grilling session")
 
 ![机票监控规则](https://s3.bmp.ovh/2026/11/05/YwjvufxF.png "机票监控规则")
 
@@ -103,6 +103,8 @@ top:
 
 # The End
 
-　　`grilling` 负责把需求问清楚，`CONTEXT.md` 负责让大家说同一种语言，后续的 spec、ticket、implement 和 review 再把这些东西变成一条可以执行、可以验证的链路。
+　　平时大家用 AI 写代码，总觉得它写得不对是因为“代码能力不行”，但其实很多时候是因为从一开始就没有把需求真正聊明白。
 
-　　前面这些事情做好了，代码反而只是最后自然长出来的结果～
+　　通过 Matt 的 skills，在前期花个半小时，让 `grilling` 把脑子里那些模糊的边界和逻辑漏洞一个个问出来，用 `CONTEXT.md` 约定好口径，看似多花了一些时间，但可以让输入和上下文更干净，让后续的任务拆解和开发更轻松，省下的是后期更多的来回 debug 和反复对齐的时间～
+
+
