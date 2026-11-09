@@ -123,10 +123,13 @@ test('整篇图库按正文顺序跨图组切换，首尾停止并保持最初�
   p.close();
 });
 
-test('显式图组只显示选中主图，缩略图保留动画与编号并把新主图顶部带入视口', () => {
+test('图组切换只重置阅读区，保留选图焦点且不滚动整页', () => {
   const p = page('<div class="article-gallery"><figure class="article-image"><img src="/first.png" width="800" height="600" alt="第一步"></figure><figure class="article-image"><img src="/second.gif" width="400" height="800" alt="第二步"></figure></div><img src="/outside.png" alt="普通连续图片">');
   const figures = p.document.querySelectorAll('.article-gallery figure');
   const buttons = p.document.querySelectorAll('.article-gallery-thumbnail');
+  const readers = p.document.querySelectorAll('.article-gallery-scroll');
+  assert.equal(readers.length, 2);
+  assert.equal(readers[1].tabIndex, 0, '阅读区支持键盘滚动');
   assert.equal(figures[0].hidden, false);
   assert.equal(figures[1].hidden, true);
   assert.equal(buttons.length, 2);
@@ -134,14 +137,32 @@ test('显式图组只显示选中主图，缩略图保留动画与编号并把�
   assert.match(buttons[1].textContent, /图 2：第二步/);
   let scroll;
   figures[1].scrollIntoView = options => { scroll = options; };
+  readers[1].scrollTop = 240;
+  buttons[1].focus();
   buttons[1].click();
   assert.equal(figures[0].hidden, true);
   assert.equal(figures[1].hidden, false);
   assert.equal(buttons[0].getAttribute('aria-pressed'), 'false');
   assert.equal(buttons[1].getAttribute('aria-pressed'), 'true');
-  assert.equal(scroll.block, 'start');
-  assert.equal(p.document.activeElement, figures[1].querySelector('img'), '切换后焦点跟随可见主图，键盘可以继续打开大图');
+  assert.equal(scroll, undefined, '切图不触发整页滚动');
+  assert.equal(readers[1].scrollTop, 0, '从新图顶部开始阅读');
+  assert.equal(p.document.activeElement, buttons[1], '可继续使用键盘选择图片');
+  assert.match(p.document.querySelector('.article-gallery-status').textContent, /2 \/ 2/);
   assert.equal(p.document.querySelector('img[alt="普通连续图片"]').hidden, false);
+  p.close();
+});
+
+test('图组阅读区保留 picture、链接和图注，单图不套阅读器', () => {
+  const p = page('<div class="article-gallery" aria-label="操作截图"><figure class="article-image"><a href="/detail"><picture><source srcset="/wide.webp"><img src="/first.png" alt="链接图"></picture></a><figcaption>原始图注</figcaption></figure><figure class="article-image"><img src="/second.png" alt="第二张"></figure></div><div class="article-gallery"><figure class="article-image"><img src="/single.png" alt="单图"></figure></div>');
+  const groups = p.document.querySelectorAll('.article-gallery');
+  assert.equal(groups[0].querySelector('.article-gallery-scroll a picture source').getAttribute('srcset'), '/wide.webp');
+  assert.equal(groups[0].querySelector('.article-gallery-scroll a').getAttribute('href'), '/detail');
+  assert.equal(groups[0].querySelector('a img').hasAttribute('role'), false);
+  assert.equal(groups[0].querySelector('figcaption').parentElement.tagName, 'FIGURE');
+  assert.equal(groups[0].querySelector('figcaption').textContent, '原始图注');
+  assert.equal(groups[0].querySelector('.article-gallery-heading strong').textContent, '操作截图');
+  assert.equal(groups[1].querySelector('.article-gallery-scroll'), null);
+  assert.equal(groups[1].querySelector('figure').hidden, false);
   p.close();
 });
 
