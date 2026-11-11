@@ -1,18 +1,8 @@
 {
-  "db3ab15de9e73687c628485c5c4cdb502df8cde006b4cfd8b31a50ef25262912": {
-    "width": 409.2265625,
-    "height": 324.171875,
-    "minWidth": 0
-  },
   "8561c231d8684548322bb53322c89e8c126a42812a127d97231ef51bfab7279f": {
     "width": 559.859375,
     "height": 361.9765625,
     "minWidth": 0
-  },
-  "2915023e9cabfca824f1b68202c2e6df80e48572410d3ff9e3237e5a22de6886": {
-    "width": 1069.5,
-    "height": 669,
-    "minWidth": 900
   },
   "3a1a6aadaf896180bfde2443917f380fc087f44048766ee78497fd7394b93ce5": {
     "width": 1202.5,
@@ -34,11 +24,6 @@
     "height": 795.7578125,
     "minWidth": 0
   },
-  "870b4f32f829fb2c657aa04d293a38c58bd37b7e5d6495be313427331de6d597": {
-    "width": 1117.5,
-    "height": 683,
-    "minWidth": 900
-  },
   "1eca9ad8297247485387b71c0515546479d09bcefdb480aa27cd5b05688cd11c": {
     "width": 1089,
     "height": 575,
@@ -54,11 +39,6 @@
     "height": 334.78125,
     "minWidth": 0
   },
-  "a80ef23fb85c7c33fc7006cfc6c74fdd665dd48516aa41b1b503e766648397f9": {
-    "width": 374.509765625,
-    "height": 692.953125,
-    "minWidth": 0
-  },
   "9b2065a3f360386752152359fa6e593964b2b2790fea82199ea0b4028e1123d5": {
     "width": 271,
     "height": 665.7578125,
@@ -72,6 +52,21 @@
   "1b3534ea7efd17381fe56c0212a00d87e863ef5f96d5afbecac16cf3611ef829": {
     "width": 502.60546875,
     "height": 638.5625,
+    "minWidth": 0
+  },
+  "acdfee10277e8a9c841dcbd5a46b8d23fd22ec095503143147dd5e627842f0da": {
+    "width": 434.71484375,
+    "height": 562.953125,
+    "minWidth": 0
+  },
+  "d14ee2295f2af4c03c7d4b7bb05f79a8e50b8fed39d89b7a05d4dc00018cb8cc": {
+    "width": 1117.5,
+    "height": 683,
+    "minWidth": 900
+  },
+  "af876db96d24a40b4838b24d1f3967899b714c0a62419ac0d501d5d3a780b987": {
+    "width": 381.3046875,
+    "height": 692.953125,
     "minWidth": 0
   }
 }
