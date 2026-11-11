@@ -6,7 +6,7 @@ const { JSDOM } = require('jsdom');
 const script = readFileSync(require.resolve('../source/js/avatar-dive.js'), 'utf8');
 
 // JSDOM 只补素材解码、视口坐标和动画调度；真实触屏与返航观感由浏览器检查。
-function page({ reduced = false, failedAsset = '' } = {}) {
+function page({ reduced = false, failedAsset = '', photoWidth = 244, dismissed = false, storageFailure = '' } = {}) {
   const dom = new JSDOM(`<header class="site-header"></header>
     <figure data-avatar-dive data-diver-src="/img/avatar-diver-v1.webp">
       <button data-avatar-dive-trigger disabled><img data-avatar-photo src="/img/avatar.jpg" style="border:7px solid black"><img data-avatar-seabed src="/img/avatar-seabed-v1.webp"></button>
@@ -38,8 +38,8 @@ function page({ reduced = false, failedAsset = '' } = {}) {
   window.HTMLImageElement.prototype.decode = function () {
     return failedAsset && this.src.includes(failedAsset) ? Promise.reject(new Error('图片解码失败')) : Promise.resolve();
   };
-  Object.defineProperties(photo, { offsetWidth: { value: 244 }, offsetHeight: { value: 260 } });
-  photo.getBoundingClientRect = () => ({ left: 650, top: 180 - window.scrollY, width: 244, height: 260 });
+  Object.defineProperties(photo, { offsetWidth: { value: photoWidth }, offsetHeight: { value: 260 } });
+  photo.getBoundingClientRect = () => ({ left: 650, top: 180 - window.scrollY, width: photoWidth, height: 260 });
   document.querySelector('header').getBoundingClientRect = () => ({ bottom: 80 });
   trigger.setPointerCapture = id => { captured = id; };
   trigger.hasPointerCapture = id => captured === id;
@@ -49,6 +49,9 @@ function page({ reduced = false, failedAsset = '' } = {}) {
     animations.add(animation);
     return animation;
   };
+  if (dismissed) window.sessionStorage.setItem('avatar-dive-hint-dismissed', '1');
+  // 分别模拟存储读取和写入受限，验证引导记忆失败不会阻断原有拖动。
+  if (storageFailure) window.Storage.prototype[storageFailure] = () => { throw new Error('存储不可用'); };
   window.eval(script);
   return {
     window, document, figure, trigger, photo, frames, animations, scrollTo,
@@ -59,7 +62,7 @@ function page({ reduced = false, failedAsset = '' } = {}) {
       frames.clear();
       pending.forEach(callback => callback(now));
     },
-    pointer(type, x = 772, y = 310) {
+    pointer(type, x = 650 + photoWidth / 2, y = 310) {
       const event = new window.Event(type);
       Object.assign(event, { button: 0, isPrimary: true, pointerId: 1, clientX: x, clientY: y });
       trigger.dispatchEvent(event);
@@ -69,15 +72,17 @@ function page({ reduced = false, failedAsset = '' } = {}) {
   };
 }
 
-test('两层素材解码完成才开放交互，任意一层失败都保留静态原照', async t => {
+test('两层素材解码完成才开放交互和引导，任意一层失败都保留静态原照', async t => {
   for (const failedAsset of ['', 'avatar-diver', 'avatar-seabed']) {
     const p = page({ failedAsset });
     t.after(p.close);
     assert.equal(p.trigger.disabled, true);
+    assert.equal(p.figure.matches('.is-ready:not(.has-dived)'), false);
     assert.equal(p.document.querySelector('.avatar-dive-float'), null);
     await p.settle();
     assert.equal(p.trigger.disabled, Boolean(failedAsset));
     assert.equal(p.figure.classList.contains('is-ready'), !failedAsset);
+    assert.equal(p.figure.matches('.is-ready:not(.has-dived)'), !failedAsset);
     if (failedAsset) {
       p.pointer('pointerdown');
       assert.equal(p.figure.classList.contains('is-diving'), false);
@@ -85,6 +90,71 @@ test('两层素材解码完成才开放交互，任意一层失败都保留静�
       assert.equal(p.document.querySelector('.avatar-dive-float'), null);
       assert.equal(p.photo.getAttribute('src'), '/img/avatar.jpg');
     }
+  }
+});
+
+test('按住和轻微位移不完成引导，真实拖过出框距离后才记住本次会话', async t => {
+  for (const [photoWidth, threshold] of [[244, 55], [102, 24]]) {
+    for (const reduced of [false, true]) {
+      const p = page({ photoWidth, reduced });
+      t.after(p.close);
+      await p.settle();
+      const centerX = 650 + photoWidth / 2;
+      p.pointer('pointerdown');
+      p.tick(600);
+      assert.equal(p.figure.classList.contains('has-dived'), false, '仅按住不能完成引导');
+      for (const distance of [4, threshold]) {
+        p.pointer('pointermove', centerX + distance, 310);
+        p.tick();
+        assert.equal(p.figure.classList.contains('has-dived'), false, '尚未越过出框距离');
+        assert.equal(p.window.sessionStorage.getItem('avatar-dive-hint-dismissed'), null);
+      }
+      p.pointer('pointermove', centerX + threshold + 1, 310);
+      p.tick();
+      assert.equal(p.figure.classList.contains('has-dived'), true);
+      assert.equal(p.window.sessionStorage.getItem('avatar-dive-hint-dismissed'), '1');
+      p.pointer('pointerup');
+      p.tick(700);
+      assert.equal(p.figure.classList.contains('has-dived'), true, '返航后不重新展示引导');
+    }
+  }
+});
+
+test('点按与键盘示范即使人物出框，也不代替读者实际拖动完成引导', async t => {
+  const p = page();
+  t.after(p.close);
+  await p.settle();
+  for (const detail of [1, 0]) {
+    p.trigger.dispatchEvent(new p.window.MouseEvent('click', { detail }));
+    p.tick(600);
+    assert.equal(p.figure.classList.contains('is-diving'), true);
+    assert.equal(p.figure.classList.contains('has-dived'), false);
+    p.tick(700);
+    assert.equal(p.figure.matches('.is-ready:not(.has-dived)'), true);
+    assert.equal(p.window.sessionStorage.getItem('avatar-dive-hint-dismissed'), null);
+  }
+});
+
+test('同一会话重进保留已完成状态，存储读写失败也不影响拖动与返航', async t => {
+  const restored = page({ dismissed: true });
+  t.after(restored.close);
+  await restored.settle();
+  assert.equal(restored.figure.classList.contains('has-dived'), true);
+  assert.equal(restored.figure.matches('.is-ready:not(.has-dived)'), false);
+  for (const storageFailure of ['getItem', 'setItem']) {
+    const p = page({ storageFailure });
+    t.after(p.close);
+    await p.settle();
+    assert.equal(p.figure.matches('.is-ready:not(.has-dived)'), true);
+    p.pointer('pointerdown');
+    p.pointer('pointermove', 300, 600);
+    p.tick();
+    assert.equal(p.figure.classList.contains('is-diving'), true);
+    assert.equal(p.figure.classList.contains('has-dived'), true);
+    p.pointer('pointerup');
+    p.tick(700);
+    assert.equal(p.document.querySelector('.avatar-dive-float').hidden, true);
+    assert.equal(p.frames.size, 0);
   }
 });
 
