@@ -30,6 +30,10 @@
     } catch (_) { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
   </script>
   <link rel="stylesheet" href="/css/site.css">
+  <% if (is_home() && (!page.current || page.current === 1)) { %>
+    <link rel="stylesheet" href="/css/avatar-dive.css">
+    <script defer src="/js/avatar-dive.js"></script>
+  <% } %>
   <% if (is_post()) { %>
     <link rel="stylesheet" href="/css/article-media.css">
     <link rel="stylesheet" href="/css/media-viewer-controls.css">
