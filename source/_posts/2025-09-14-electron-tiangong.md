@@ -148,7 +148,7 @@ class Account extends PersistStore {
 }
 ```
 
-　　基类 `PersistStore` 会找到所有打了 `@persist` 的字段：
+基类 `PersistStore` 会找到所有打了 `@persist` 的字段：
 
 1. 启动时从 `electron-store` 读数据回填到 MobX store。
 2. 用 MobX 的 `reaction` 监听变化，值变了就自动写回去。
