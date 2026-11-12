@@ -31,17 +31,38 @@ function page(content) {
   return { window, document: window.document, blobs, revoked, close: () => window.close() };
 }
 
-test('键盘打开图片、缩放和关闭后回到原焦点，正文媒体大小保持不变', () => {
+// jsdom 不加载图像，模拟浏览器已经选中并加载了正文适配图。
+function loadedImage(image, currentSrc = image.src) {
+  Object.defineProperties(image, {
+    currentSrc: { value: currentSrc },
+    complete: { value: true },
+    naturalWidth: { value: image.width || 800 },
+  });
+}
+
+// 由测试决定原图何时解码完成，模拟慢网和图床失败。
+function deferImageDecodes(window) {
+  const decodes = [];
+  window.HTMLImageElement.prototype.decode = function () {
+    return new Promise((resolve, reject) => decodes.push({ image: this, resolve, reject }));
+  };
+  return decodes;
+}
+
+test('键盘打开图片、双击或按 Z 缩放和关闭后回到原焦点，正文媒体大小保持不变', () => {
   const p = page('<img src="/sample.png" width="1600" height="1200" alt="示例截图">');
   const image = p.document.querySelector('#article-content img');
   image.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
   const viewer = p.document.querySelector('#media-viewer');
+  const viewport = viewer.querySelector('.media-viewer-viewport');
+  const frame = viewer.querySelector('.media-viewer-frame');
   const enlarged = viewer.querySelector('img');
   assert.equal(viewer.open, true);
+  assert.equal(p.document.activeElement, viewport, '开屏不强行聚焦关闭按钮');
   assert.equal(enlarged.style.width, '800px');
-  p.document.querySelector('[data-media-zoom="in"]').click();
-  assert.equal(enlarged.style.width, '1200px');
-  p.document.querySelector('[data-media-zoom="fit"]').click();
+  frame.dispatchEvent(new p.window.MouseEvent('dblclick', { bubbles: true, cancelable: true }));
+  assert.equal(enlarged.style.width, '1600px');
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
   assert.equal(enlarged.style.width, '800px');
   assert.equal(image.getAttribute('width'), '1600');
   assert.equal(image.style.width, '');
@@ -55,17 +76,19 @@ test('键盘打开图片、缩放和关闭后回到原焦点，正文媒体大�
   p.close();
 });
 
-test('图表以独立SVG打开并释放资源，尚未绘制的图不打开空弹层', () => {
+test('图表以独立SVG打开并垫干净底板、释放资源，尚未绘制的图不打开空弹层', () => {
   const p = page('<pre class="mermaid">未绘制</pre><pre class="mermaid"><svg viewBox="-8 -8 1000 500"><rect id="node" width="10" height="10"/></svg></pre>');
   const diagrams = p.document.querySelectorAll('.mermaid');
   diagrams[0].click();
   assert.equal(p.document.querySelector('#media-viewer').open, false);
   diagrams[1].click();
   assert.equal(p.document.querySelector('#media-viewer').open, true);
+  assert.equal(p.document.querySelector('.media-viewer-frame').classList.contains('is-diagram'), true);
   assert.equal(p.document.querySelector('#media-viewer img').src, 'blob:diagram');
   assert.equal(p.document.querySelectorAll('#node').length, 1, '弹层不复制到正文SVG id空间');
   assert.equal(p.blobs[0].type, 'image/svg+xml');
   p.document.querySelector('#media-viewer').close();
+  assert.equal(p.document.querySelector('.media-viewer-frame').classList.contains('is-diagram'), false);
   assert.deepEqual(p.revoked, ['blob:diagram']);
   p.close();
 });
@@ -95,29 +118,36 @@ test('独立图表保留正文的暗色节点覆盖样式', async () => {
   p.close();
 });
 
-test('整篇图库按正文顺序跨图组切换，首尾停止并保持最初触发焦点', () => {
+test('整篇图库按正文顺序跨图组切换，默认显示胶片条并支持点击跳转，保持最初触发焦点', () => {
   const p = page('<a href="/linked"><img src="/linked.png"></a><pre><code><img src="/example.png"></code></pre><img src="/one-preview.webp" data-original-src="/one.png" data-original-width="1600" data-original-height="1200" alt="第一张"><div class="article-gallery"><figure class="article-image"><img src="/two.png" width="800" height="600" alt="第二张"><figcaption>图 1：审批状态</figcaption></figure><figure class="article-image"><img src="/three.gif" width="400" height="800" alt="第三张"><figcaption>图 2：演示动画</figcaption></figure></div>');
+  deferImageDecodes(p.window);
   const origin = p.document.querySelector('img[alt="第一张"]');
+  loadedImage(origin);
   let restored;
   origin.focus = options => { restored = options.preventScroll; };
   origin.click();
   const counter = p.document.querySelector('.media-viewer-counter');
   const previous = p.document.querySelector('[data-media-step="-1"]');
   const next = p.document.querySelector('[data-media-step="1"]');
-  assert.equal(counter.textContent, '1 / 3', '链接、代码与缩略图均不加入图库');
-  assert.equal(p.document.querySelector('#media-viewer img').getAttribute('src'), '/one.png');
+  const filmstrip = p.document.querySelector('.media-viewer-filmstrip');
+  const thumbs = filmstrip.querySelectorAll('.media-viewer-thumb');
+  assert.equal(counter.textContent, '01 / 03', '链接、代码与图组缩略图均不加入图库');
+  assert.equal(filmstrip.hidden, false);
+  assert.equal(p.document.querySelector('[data-media-strip-toggle]'), null);
+  assert.equal(thumbs.length, 3);
+  assert.equal(thumbs[0].getAttribute('aria-current'), 'true');
+  assert.equal(p.document.querySelector('#media-viewer img').src, origin.src);
   assert.equal(previous.disabled, true);
   next.click();
-  assert.equal(counter.textContent, '2 / 3');
-  assert.match(p.document.querySelector('.media-viewer-caption').textContent, /图 1：审批状态/);
-  p.document.querySelector('[data-media-zoom="in"]').click();
-  next.click();
-  assert.equal(counter.textContent, '3 / 3');
+  assert.equal(counter.textContent, '02 / 03');
+  assert.equal(p.document.querySelector('.media-viewer-caption').textContent, '图 1：审批状态');
+  thumbs[2].click();
+  assert.equal(counter.textContent, '03 / 03');
   assert.equal(p.document.querySelector('.media-viewer-viewport').dataset.fitted, 'true');
   assert.equal(p.document.querySelector('#media-viewer img').getAttribute('src'), 'https://example.com/three.gif');
   assert.equal(next.disabled, true);
   next.click();
-  assert.equal(counter.textContent, '3 / 3');
+  assert.equal(counter.textContent, '03 / 03');
   p.document.querySelector('[data-media-close]').click();
   assert.equal(restored, true);
   p.close();
@@ -173,35 +203,41 @@ test('方向键在适应窗口时切图，放大后只平移，图表不串入�
   const press = key => viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }));
   p.document.querySelector('#article-content img').click();
   press('ArrowRight');
-  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '2 / 2');
-  p.document.querySelector('[data-media-zoom="in"]').click();
+  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '02 / 02');
+  press('z');
   const left = viewport.scrollLeft;
   press('ArrowLeft');
-  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '2 / 2');
+  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '02 / 02');
   assert.equal(viewport.scrollLeft, left - 80);
-  p.document.querySelector('[data-media-zoom="fit"]').click();
+  press('z');
   press('ArrowLeft');
-  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '1 / 2');
+  assert.equal(p.document.querySelector('.media-viewer-counter').textContent, '01 / 02');
   viewer.close();
   p.document.querySelector('.mermaid').click();
   press('ArrowRight');
   assert.equal(viewer.querySelector('img').src, 'blob:diagram');
-  assert.equal(p.document.querySelector('.media-viewer-navigation').hidden, true);
+  assert.equal(p.document.querySelector('[data-media-step="-1"]').hidden, true);
+  assert.equal(p.document.querySelector('.media-viewer-filmstrip').hidden, true);
+  assert.equal(p.document.querySelector('.media-viewer-counter').hidden, true);
   p.close();
 });
 
-test('长图可按宽度阅读并继续放到原始像素，换图重置视口与缩放', () => {
+test('超长图默认按宽度顶部对齐阅读，可切换适应全貌与继续放大，换图重置视口', () => {
   const p = page('<img src="/long-preview.webp" width="400" height="4000" data-original-src="/long.png" data-original-width="1000" data-original-height="10000"><img src="/next.png" width="1600" height="1200">');
+  const viewer = p.document.querySelector('#media-viewer');
   const viewport = p.document.querySelector('.media-viewer-viewport');
   p.document.querySelector('#article-content img').click();
   const enlarged = p.document.querySelector('#media-viewer img');
-  assert.equal(enlarged.style.width, '60px');
-  p.document.querySelector('[data-media-zoom="width"]').click();
   assert.equal(enlarged.style.width, '800px');
   assert.equal(enlarged.style.height, '8000px');
-  p.document.querySelector('[data-media-zoom="in"]').click();
-  assert.ok(Math.abs(parseFloat(enlarged.style.width) - 1000) < 0.001);
-  assert.equal(p.document.querySelector('[data-media-zoom="in"]').disabled, true);
+  assert.equal(viewport.dataset.alignTop, 'true');
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
+  assert.equal(enlarged.style.width, '60px');
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
+  assert.equal(enlarged.style.width, '800px');
+  const wheelZoom = new p.window.WheelEvent('wheel', { deltaY: -120, ctrlKey: true, bubbles: true, cancelable: true });
+  viewport.dispatchEvent(wheelZoom);
+  assert.ok(parseFloat(enlarged.style.width) > 800);
   viewport.scrollTop = 4000;
   p.document.querySelector('[data-media-step="1"]').click();
   assert.equal(viewport.scrollTop, 0);
@@ -211,8 +247,9 @@ test('长图可按宽度阅读并继续放到原始像素，换图重置视口�
   p.close();
 });
 
-test('单指横滑仅在适应窗口切图，竖滑、双指与放大后手势不切图', () => {
+test('单指横滑仅在无横向溢出时切图，竖滑、双指与放大后手势不切图', () => {
   const p = page('<img src="/one.png" width="1600" height="1200"><img src="/two.png" width="1600" height="1200">');
+  const viewer = p.document.querySelector('#media-viewer');
   const viewport = p.document.querySelector('.media-viewer-viewport');
   const counter = p.document.querySelector('.media-viewer-counter');
   const pointer = (type, x, y, primary = true) => {
@@ -223,30 +260,55 @@ test('单指横滑仅在适应窗口切图，竖滑、双指与放大后手势�
   p.document.querySelector('#article-content img').click();
   pointer('pointerdown', 200, 100);
   pointer('pointerup', 120, 110);
-  assert.equal(counter.textContent, '2 / 2');
+  assert.equal(counter.textContent, '02 / 02');
   pointer('pointerdown', 100, 100);
   pointer('pointerup', 170, 300);
-  assert.equal(counter.textContent, '2 / 2');
+  assert.equal(counter.textContent, '02 / 02');
   pointer('pointerdown', 100, 100);
   pointer('pointerdown', 200, 100, false);
   pointer('pointerup', 200, 100);
-  assert.equal(counter.textContent, '2 / 2');
-  p.document.querySelector('[data-media-zoom="in"]').click();
+  assert.equal(counter.textContent, '02 / 02');
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
   pointer('pointerdown', 100, 100);
   pointer('pointerup', 200, 100);
-  assert.equal(counter.textContent, '2 / 2');
-  p.document.querySelector('[data-media-zoom="fit"]').click();
+  assert.equal(counter.textContent, '02 / 02');
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
   pointer('pointerdown', 100, 100);
   pointer('pointerup', 200, 100);
-  assert.equal(counter.textContent, '1 / 2');
+  assert.equal(counter.textContent, '01 / 02');
   p.close();
 });
 
-test('行内图片优先使用独立图注，单张图片不展示无效切图导航', () => {
+test('行内图片优先使用独立图注，单张图片隐藏侧边切图与胶片条', () => {
   const p = page('<p>正文<img src="/inline.png" width="800" height="600" alt="按钮的界面截图" data-caption="点击提交后出现确认提示"></p>');
   p.document.querySelector('#article-content img').click();
-  assert.match(p.document.querySelector('.media-viewer-caption').textContent, /点击提交后出现确认提示/);
-  assert.equal(p.document.querySelector('.media-viewer-navigation').hidden, true);
+  assert.equal(p.document.querySelector('.media-viewer-caption').textContent, '点击提交后出现确认提示');
+  assert.equal(p.document.querySelector('[data-media-step="-1"]').hidden, true);
+  assert.equal(p.document.querySelector('[data-media-step="1"]').hidden, true);
+  assert.equal(p.document.querySelector('.media-viewer-filmstrip').hidden, true);
+  assert.equal(p.document.querySelector('.media-viewer-counter').hidden, true);
+  p.close();
+});
+
+test('点击画布留白处关闭，放大拖拽松手不误关', () => {
+  const p = page('<img src="/sample.png" width="1600" height="1200" alt="示例截图">');
+  const viewer = p.document.querySelector('#media-viewer');
+  const viewport = p.document.querySelector('.media-viewer-viewport');
+  p.document.querySelector('#article-content img').click();
+  viewer.dispatchEvent(new p.window.KeyboardEvent('keydown', { key: 'z', bubbles: true, cancelable: true }));
+  const down = new p.window.Event('pointerdown', { bubbles: true });
+  Object.assign(down, { pointerType: 'mouse', button: 0, clientX: 200, clientY: 200 });
+  viewport.dispatchEvent(down);
+  const move = new p.window.Event('pointermove', { bubbles: true });
+  Object.assign(move, { pointerType: 'mouse', clientX: 120, clientY: 200 });
+  viewport.dispatchEvent(move);
+  const up = new p.window.Event('pointerup', { bubbles: true });
+  Object.assign(up, { pointerType: 'mouse', clientX: 120, clientY: 200 });
+  viewport.dispatchEvent(up);
+  viewport.dispatchEvent(new p.window.MouseEvent('click', { bubbles: true }));
+  assert.equal(viewer.open, true, '拖拽后的 click 不能误关预览');
+  viewport.dispatchEvent(new p.window.MouseEvent('click', { bubbles: true }));
+  assert.equal(viewer.open, false);
   p.close();
 });
 
@@ -259,11 +321,74 @@ test('不支持原生弹层时保留图组全部原图和图注', () => {
   dom.window.close();
 });
 
-test('动画大图复用本地完整动画资源，静态图仍读取原件', () => {
-  const p = page('<img src="/assets/animation.gif" data-original-src="https://images.example/remote.gif" data-media-animated="true" width="400" height="300" alt="动画演示"><img src="/assets/photo.webp" data-original-src="https://images.example/original.png" width="800" height="600" alt="静态截图">');
+test('动画大图复用本地完整动画资源', () => {
+  const p = page('<img src="/assets/animation.gif" data-original-src="https://images.example/remote.gif" data-media-animated="true" width="400" height="300" alt="动画演示">');
   p.document.querySelector('#article-content img').click();
   assert.equal(p.document.querySelector('#media-viewer img').src, 'https://example.com/assets/animation.gif');
-  p.document.querySelector('[data-media-step="1"]').click();
-  assert.equal(p.document.querySelector('#media-viewer img').src, 'https://images.example/original.png');
   p.close();
+});
+
+test('静态图立即显示正文已加载的适配图，原图解码后保留缩放和长图阅读位置', async (t) => {
+  const p = page('<img src="/photo-760.webp" width="760" height="3040" data-original-src="https://images.example/original.png" data-original-width="1600" data-original-height="6400" alt="操作长图">');
+  t.after(p.close);
+  const decodes = deferImageDecodes(p.window);
+  const origin = p.document.querySelector('#article-content img');
+  const viewport = p.document.querySelector('.media-viewer-viewport');
+  loadedImage(origin, 'https://example.com/photo-480.webp');
+  origin.click();
+  const preview = viewport.querySelector('img');
+  assert.equal(preview.src, 'https://example.com/photo-480.webp');
+  assert.equal(decodes[0].image.src, 'https://images.example/original.png');
+  viewport.dispatchEvent(new p.window.WheelEvent('wheel', { deltaY: -120, ctrlKey: true, cancelable: true }));
+  const zoomedWidth = preview.style.width;
+  viewport.scrollTop = 1600;
+  decodes[0].resolve();
+  await new Promise(setImmediate);
+  const original = viewport.querySelector('img');
+  assert.equal(original.src, 'https://images.example/original.png');
+  assert.equal(original.alt, '操作长图');
+  assert.equal(original.style.width, zoomedWidth);
+  assert.equal(viewport.scrollTop, 1600);
+  assert.equal(p.document.activeElement, viewport);
+});
+
+test('图床原件的宽高比变化时按实际比例显示', async (t) => {
+  const p = page('<img src="/preview.webp" width="800" height="600" data-original-src="/original.png">');
+  t.after(p.close);
+  const decodes = deferImageDecodes(p.window);
+  const body = p.document.querySelector('#article-content img');
+  loadedImage(body);
+  body.click();
+  Object.defineProperties(decodes[0].image, {
+    naturalWidth: { value: 600 }, naturalHeight: { value: 800 },
+  });
+  decodes[0].resolve();
+  await new Promise(setImmediate);
+  const original = p.document.querySelector('#media-viewer img');
+  assert.equal(parseFloat(original.style.width) / parseFloat(original.style.height), 600 / 800);
+});
+
+test('原图失败保留适配图，切走再返回时忽略上一次解码结果', async (t) => {
+  const p = page('<img src="/preview.webp" data-original-src="https://images.example/original.png" alt="第一张"><img src="/next-preview.webp" data-original-src="/next.png" alt="第二张">');
+  t.after(p.close);
+  const decodes = deferImageDecodes(p.window);
+  const origin = p.document.querySelector('#article-content img');
+  const frame = p.document.querySelector('.media-viewer-frame');
+  loadedImage(origin);
+  origin.click();
+  assert.equal(frame.querySelector('img').src, origin.src);
+  decodes[0].reject(new Error('图床无法访问'));
+  await new Promise(setImmediate);
+  assert.equal(frame.querySelector('img').src, origin.src);
+  assert.equal(p.document.querySelector('.media-viewer-caption').textContent, '第一张');
+
+  p.document.querySelector('#media-viewer').close();
+  origin.click();
+  p.document.querySelector('[data-media-step="1"]').click();
+  assert.equal(frame.querySelector('img').src, 'https://example.com/next.png', '正文未加载的图片直接取原图');
+  p.document.querySelector('[data-media-step="-1"]').click();
+  decodes[1].resolve();
+  await new Promise(setImmediate);
+  assert.equal(frame.querySelector('img').src, origin.src);
+  assert.equal(p.document.querySelector('.media-viewer-caption').textContent, '第一张');
 });
