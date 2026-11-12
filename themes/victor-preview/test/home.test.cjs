@@ -93,6 +93,18 @@ test('精选展示校庆随笔配图并保留完整摘要，项目视频独立�
     assert.equal(video.getAttribute('preload'), 'none');
     assert.equal(video.querySelector('source').getAttribute('src'), '/assets/electron-tiangong/reply-demo.mp4');
     assert.equal(document.querySelectorAll('script[src="/js/project-video.js"]').length, 1);
+
+    const socialLinks = [...document.querySelectorAll('.social-inline-group a.social-link')];
+    assert.deepEqual(socialLinks.map(link => link.textContent.trim()), ['GitHub', '小红书', 'Instagram']);
+    assert.deepEqual(socialLinks.map(link => link.getAttribute('href')), [
+      'https://github.com/yyxTheOracle',
+      'https://www.xiaohongshu.com/user/profile/5bffbf6a51783a6fd2c762bb',
+      'https://www.instagram.com/victorye0106/',
+    ]);
+    for (const link of socialLinks) {
+      assert.equal(link.getAttribute('target'), '_blank');
+      assert.equal(link.getAttribute('rel'), 'noopener noreferrer');
+    }
   } finally {
     dom.window.close();
   }
