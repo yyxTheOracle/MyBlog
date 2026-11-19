@@ -366,6 +366,24 @@ test('复制保留换行和缩进、排除行号，长代码可折叠并报告�
   p.close();
 });
 
+test('代码块语言显示完整名称并规范兜底与无障碍标签', () => {
+  const p = page(`
+    <article id="article-content">
+      <figure class="highlight ts"><table><tr><td class="code"><pre>const x: number = 1;</pre></td></tr></table></figure>
+      <figure class="highlight tsx"><table><tr><td class="code"><pre>export const App = () => &lt;div /&gt;;</pre></td></tr></table></figure>
+      <figure class="highlight zig"><table><tr><td class="code"><pre>const std = @import("std");</pre></td></tr></table></figure>
+      <figure class="highlight"><table><tr><td class="code"><pre>plain text</pre></td></tr></table></figure>
+    </article>
+  `);
+  const languages = [...p.document.querySelectorAll('.code-language')].map((el) => el.textContent);
+  assert.deepEqual(languages, ['TypeScript', 'TSX', 'Zig', 'Text']);
+
+  const contents = [...p.document.querySelectorAll('.code-content')];
+  assert.equal(contents[0].getAttribute('aria-label'), 'TypeScript 代码内容');
+  assert.equal(contents[3].getAttribute('aria-label'), 'Text 代码内容');
+  p.close();
+});
+
 test('收起长代码只在开头已离屏时回到代码块，保留键盘滚动入口', () => {
   const lines = Array.from({ length: 60 }, () => 'const value = 1;').join('<br>');
   const p = page(`<article id="article-content"><figure class="highlight js"><table><tr><td class="code"><pre>${lines}</pre></td></tr></table></figure></article>`);

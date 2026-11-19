@@ -493,6 +493,64 @@
     return clone.textContent.replace(/\n$/, '');
   }
 
+  const languageNames = {
+    ts: 'TypeScript',
+    typescript: 'TypeScript',
+    tsx: 'TSX',
+    js: 'JavaScript',
+    javascript: 'JavaScript',
+    jsx: 'JSX',
+    py: 'Python',
+    python: 'Python',
+    html: 'HTML',
+    css: 'CSS',
+    scss: 'SCSS',
+    less: 'Less',
+    vue: 'Vue',
+    json: 'JSON',
+    yaml: 'YAML',
+    yml: 'YAML',
+    toml: 'TOML',
+    xml: 'XML',
+    sql: 'SQL',
+    sh: 'Shell',
+    bash: 'Bash',
+    zsh: 'Zsh',
+    shell: 'Shell',
+    go: 'Go',
+    golang: 'Go',
+    rs: 'Rust',
+    rust: 'Rust',
+    java: 'Java',
+    c: 'C',
+    cpp: 'C++',
+    'c++': 'C++',
+    cs: 'C#',
+    csharp: 'C#',
+    'c#': 'C#',
+    php: 'PHP',
+    rb: 'Ruby',
+    ruby: 'Ruby',
+    swift: 'Swift',
+    kt: 'Kotlin',
+    kotlin: 'Kotlin',
+    md: 'Markdown',
+    markdown: 'Markdown',
+    diff: 'Diff',
+    dockerfile: 'Dockerfile',
+    docker: 'Dockerfile',
+    text: 'Text',
+    plaintext: 'Text',
+    txt: 'Text',
+  };
+
+  function formatLanguageName(rawName) {
+    if (!rawName) return 'Text';
+    const key = rawName.toLowerCase();
+    if (languageNames[key]) return languageNames[key];
+    return rawName.charAt(0).toUpperCase() + rawName.slice(1);
+  }
+
   article?.querySelectorAll('figure.highlight').forEach((figure, index) => {
     const code = figure.querySelector('td.code');
     const table = figure.querySelector('table');
@@ -503,7 +561,8 @@
     toolbar.className = 'code-toolbar';
     const language = document.createElement('span');
     language.className = 'code-language';
-    language.textContent = [...figure.classList].find((name) => name !== 'highlight') || 'code';
+    const rawLanguage = [...figure.classList].find((name) => name !== 'highlight');
+    language.textContent = formatLanguageName(rawLanguage);
     const copy = document.createElement('button');
     copy.type = 'button';
     copy.className = 'code-copy';
