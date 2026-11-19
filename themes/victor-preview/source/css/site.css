@@ -93,7 +93,6 @@ kbd { font:11px ui-monospace,SFMono-Regular,Consolas,monospace; color:var(--mute
 .profile-portrait figcaption span { white-space:nowrap; }
 .section-heading { display:flex; justify-content:space-between; align-items:baseline; gap:20px; margin-bottom:24px; }
 .section-heading h2 { margin:0; font-size:24px; letter-spacing:-.5px; }
-.section-heading>a { margin:0; font-size:14px; color:var(--muted); }
 .featured-grid { display:grid; grid-template-columns:1.1fr 1fr; grid-template-rows:1fr 1fr; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
 .featured-post { display:flex; flex-direction:column; padding:30px; min-width:0; }
 a.featured-post:hover { background:var(--accent-soft); }
@@ -125,7 +124,7 @@ a.featured-post:is(:hover,:focus-visible) h3,.featured-main-copy:is(:hover,:focu
 /* 回应目录只移动共享底色，文章行高与排序保持稳定。 */
 .cursor-list { position:relative; isolation:isolate; }
 .cursor-marker { position:absolute; z-index:0; top:0; left:0; width:100%; height:var(--marker-height,0px); transform:translateY(var(--marker-y,0px)); border-radius:12px; background:var(--soft); pointer-events:none; opacity:var(--marker-opacity,0); transition:transform 300ms cubic-bezier(.16,1,.3,1),opacity 140ms ease; }
-.cursor-row { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1fr) 112px; align-items:center; gap:32px; min-height:120px; padding:24px 28px; border-radius:12px; }
+.cursor-row { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1fr) 112px; align-items:center; gap:32px; min-height:96px; padding:16px 28px; border-radius:12px; }
 .cursor-copy { min-width:0; }
 .cursor-row h3 { margin:0; font:700 21px/1.55 'Victor Serif','Songti SC',serif; letter-spacing:0; overflow-wrap:break-word; text-wrap:pretty; transition:transform 230ms cubic-bezier(.16,1,.3,1),color 150ms ease; }
 .cursor-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px 18px; margin:11px 0 0; color:color-mix(in srgb,var(--muted) 80%,var(--text)); font-size:12px; line-height:1.6; }
@@ -398,7 +397,6 @@ mark { color:var(--accent); background:var(--accent-soft); border-radius:2px; }
   .primary-link { gap:16px; padding:8px 12px; }
   .section-heading { gap:12px; margin-bottom:18px; }
   .section-heading h2 { font-size:21px; }
-  .section-heading>a { font-size:12px; }
   .featured-post h3 { font-size:19px; }
   .featured-main h3 { font-size:23px; }
   .featured-main .post-summary { font-size:14px; margin-bottom:20px; }
@@ -458,7 +456,7 @@ mark { color:var(--accent); background:var(--accent-soft); border-radius:2px; }
 /* 触屏直接打开文章，不用第一次点击模拟悬停。 */
 @media (max-width:700px),(hover:none) {
   .cursor-marker { display:none; }
-  .cursor-row { grid-template-columns:minmax(0,1fr) 22px; gap:16px; min-height:0; padding:25px 0; }
+  .cursor-row { grid-template-columns:minmax(0,1fr) 22px; gap:16px; min-height:0; padding:18px 0; }
   .cursor-row h3 { font-size:19px; }
   .cursor-row.is-active h3 { color:var(--text); transform:none; }
   .cursor-open span { display:none; }

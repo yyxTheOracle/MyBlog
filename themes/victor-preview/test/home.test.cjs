@@ -6,6 +6,34 @@ const { JSDOM } = require('jsdom');
 const { stripHTML } = require('hexo-util');
 const imageAssets = require('../image-assets.json');
 
+test('首页按发布日期倒序列出每篇文章，目录中不再显示归档入口和篇数', () => {
+  // 用 16 篇验证新增文章也会出现，避免把当前总数写成显示上限。
+  const posts = Array.from({ length: 16 }, (_, index) => ({
+    date: new Date(Date.UTC(2026, 0, index + 1)), title: `文章 ${index + 1}`,
+    path: `/post/${index + 1}/`, tags: { toArray: () => [] },
+  }));
+  const html = ejs.render(readFileSync(require.resolve('../layout/index.ejs'), 'utf8'), {
+    page: { current: 1 }, site: { posts: {
+      sort: (field, direction) => ({
+        toArray: () => [...posts].sort((a, b) => direction * (a[field] - b[field])),
+      }),
+    } },
+    partial: () => '', url_for: value => value, date: value => value.toISOString().slice(0, 10),
+  });
+  const dom = new JSDOM(html);
+  try {
+    const section = dom.window.document.querySelector('#latest');
+    const links = [...section.querySelectorAll('a[href^="/post/"]')];
+    assert.deepEqual(links.map(link => [link.querySelector('h3').textContent, link.getAttribute('href')]),
+      [...posts].reverse().map(post => [post.title, post.path]));
+    assert.equal(section.querySelector('h2').textContent, '全部文章');
+    assert.equal(section.querySelector('a[href="/archives/"]'), null);
+    assert.doesNotMatch(section.textContent, /\d+\s*篇/);
+  } finally {
+    dom.window.close();
+  }
+});
+
 test('精选摘要去掉小标题，保留正文里的“背景”和行内技术词', () => {
   const post = {
     abbrlink: 'db62fe35', title: 'Matt Pocock Skills v1.1 使用体验', path: 'post/matt-pocock-skills-v1-1/',
