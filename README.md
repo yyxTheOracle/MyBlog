@@ -30,7 +30,7 @@ npx hexo new "event-loop-part-2"
 
 已发布文章保持 `date`、`url_slug` 和 `abbrlink` 不变；公开链接为 `/post/<url_slug>/`，新旧文章的评论和阅读量都按 `/post/<abbrlink>.html` 标识关联。这个标识不要求有对应网页；旧 hash 地址不保留跳转。
 图片、视频和附件保留原件备份。完整规则见 [写作与资源管理](docs/writing.md)。
-普通图片继续写 Markdown，紧凑图使用 `compact` 标签，同组图片使用 `gallery` 标签；具体示例见 [文章图片规范](docs/images.md)。构建会自动准备尺寸与正文适配图，GIF 保留动画；生成的图片资源和清单需要随文章一起提交。
+新增配图见 [文章配图 SOP](docs/images.md#文章配图-sop)，包含 ImgURL 上传、原件备份、Markdown 排版和发布验收。
 
 ## 验证与发布
 
