@@ -84,7 +84,8 @@ test('本地资源读取不能越过网站source目录', () => {
 
 test('图组不能藏入正文，手写图片style会成为发布错误', async t => {
   const figure = '<figure><img src="/a.png" alt="说明"><figcaption>图 1：说明</figcaption></figure>';
-  assert.equal(galleryErrors(`<div class="article-gallery">${figure}${figure}</div>`, 'post.md').length, 0);
+  const numberOnly = '<figure><img src="/b.png" alt="另一张截图"><figcaption>图 2</figcaption></figure>';
+  assert.equal(galleryErrors(`<div class="article-gallery">${figure}${numberOnly}</div>`, 'post.md').length, 0);
   assert.equal(galleryErrors(`<div class="article-gallery">${figure}<p>应保留的正文</p></div>`, 'post.md').length, 1);
   assert.deepEqual(galleryErrors('<pre><code><div class="article-gallery">示例</div></code></pre>', 'post.md'), []);
   const sourceDir = await directory(t);

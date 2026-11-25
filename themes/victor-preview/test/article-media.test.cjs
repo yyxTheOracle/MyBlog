@@ -48,6 +48,15 @@ test('图组编号尊重顺序，保留已有图注、链接图片及行内正�
   assert.equal(document.querySelector('.article-gallery img').getAttribute('src'), '/a.gif');
 });
 
+test('只显示图号的图组仍保留替代文字，正文和大图共用相同图号', () => {
+  const html = prepareArticleMedia('<div class="article-gallery" data-captions="number"><p><img src="/photo.png" alt="表格旁附有对话截图"></p><p><img src="/photo.png" alt="表格列出了各项耗时"></p></div>', sizes, {});
+  const document = new JSDOM(html).window.document;
+  assert.deepEqual([...document.querySelectorAll('figcaption')].map(node => node.textContent), ['图 1', '图 2']);
+  assert.deepEqual([...document.querySelectorAll('img')].map(image => [image.alt, image.dataset.caption]), [
+    ['表格旁附有对话截图', '图 1'], ['表格列出了各项耗时', '图 2'],
+  ]);
+});
+
 test('嵌套行内图片不拆开段落，picture 的 source 与 img 保持直接相邻', () => {
   const html = prepareArticleMedia('<p>文字 <strong><img src="/photo.png" alt="截图" title="说明"></strong> 结尾</p><p><picture><source srcset="/alternate.webp" type="image/webp"><img src="/photo.png" alt="响应图"></picture></p>', sizes, {});
   const document = new JSDOM(html).window.document;

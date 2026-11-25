@@ -59,3 +59,12 @@ html[data-theme] .diagram-placeholder { display:grid; place-items:center; margin
 .diagram-placeholder::after { content:"图表加载中…"; font:13px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--muted); }
 /* 占位与 SVG 使用同一块级尺寸，避免 inline SVG 的基线额外撑高容器。 */
 .article-prose .mermaid svg { display:block; margin:auto; }
+
+/* 对照图表时可直接选择适宽或原始像素；触屏按钮保留足够的点按面积。 */
+.media-viewer-zoom:not([hidden]) { display:inline-flex; align-items:center; gap:2px; padding:2px; margin-left:auto; border:1px solid var(--line); border-radius:7px; background:var(--surface); }
+.media-viewer-zoom:not([hidden]) + .media-viewer-close { margin-left:0; }
+.media-viewer-zoom button { min-width:50px; min-height:34px; padding:4px 8px; border:0; border-radius:4px; background:transparent; color:var(--muted); font-size:13px; line-height:1.4; }
+.media-viewer-zoom button[aria-pressed="true"] { background:var(--soft); color:var(--text); font-weight:650; }
+@media (pointer:coarse) {
+  .media-viewer-zoom button { min-height:44px; }
+}

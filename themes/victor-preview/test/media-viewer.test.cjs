@@ -182,6 +182,44 @@ test('图组切换只重置阅读区，保留选图焦点且不滚动整页', ()
   p.close();
 });
 
+test('正文阅读区箭头与缩略图同步，在图组首尾停止，仅切换本组图片', () => {
+  const gallery = '<div class="article-gallery"><figure class="article-image"><img src="/one.png" alt="第一步"></figure><figure class="article-image"><img src="/two.png" alt="第二步"></figure></div>';
+  const p = page(gallery + gallery);
+  const [first, second] = p.document.querySelectorAll('.article-gallery');
+  const previous = first.querySelector('.article-gallery-stage > button.article-gallery-step.prev');
+  const next = first.querySelector('.article-gallery-stage > button.article-gallery-step.next');
+  assert.ok(previous && next, '两个切图按钮都在正文阅读区上');
+  assert.equal(previous.getAttribute('aria-label') || previous.textContent.trim(), '上一张');
+  assert.equal(next.getAttribute('aria-label') || next.textContent.trim(), '下一张');
+  const thumbnails = first.querySelectorAll('.article-gallery-thumbnail');
+  const figures = first.querySelectorAll('figure');
+  const status = first.querySelector('.article-gallery-status');
+  const secondReader = figures[1].querySelector('.article-gallery-scroll');
+
+  previous.click();
+  assert.equal(previous.disabled, true);
+  assert.equal(status.textContent, '1 / 2');
+  secondReader.scrollTop = 170;
+  next.click();
+  assert.equal(status.textContent, '2 / 2');
+  assert.equal(figures[0].hidden, true);
+  assert.equal(figures[1].hidden, false);
+  assert.equal(thumbnails[1].getAttribute('aria-pressed'), 'true');
+  assert.equal(secondReader.scrollTop, 0);
+  assert.equal(next.disabled, true);
+  next.click();
+  assert.equal(status.textContent, '2 / 2');
+  assert.equal(second.querySelector('.article-gallery-status').textContent, '1 / 2');
+  assert.equal(p.document.querySelector('#media-viewer').open, false);
+
+  previous.click();
+  assert.equal(status.textContent, '1 / 2');
+  thumbnails[1].click();
+  assert.equal(previous.disabled, false);
+  assert.equal(next.disabled, true, '底部选图也会更新阅读区箭头');
+  p.close();
+});
+
 test('图组阅读区保留 picture、链接和图注，单图不套阅读器', () => {
   const p = page('<div class="article-gallery" aria-label="操作截图"><figure class="article-image"><a href="/detail"><picture><source srcset="/wide.webp"><img src="/first.png" alt="链接图"></picture></a><figcaption>原始图注</figcaption></figure><figure class="article-image"><img src="/second.png" alt="第二张"></figure></div><div class="article-gallery"><figure class="article-image"><img src="/single.png" alt="单图"></figure></div>');
   const groups = p.document.querySelectorAll('.article-gallery');
@@ -391,4 +429,58 @@ test('原图失败保留适配图，切走再返回时忽略上一次解码结�
   await new Promise(setImmediate);
   assert.equal(frame.querySelector('img').src, origin.src);
   assert.equal(p.document.querySelector('.media-viewer-caption').textContent, '第一张');
+});
+
+test('图组大图可切换适宽和原始像素，高清原图到达后仍保持 100% 和按钮焦点', async (t) => {
+  const p = page('<div class="article-gallery"><figure class="article-image"><img alt="长表" src="/preview.webp" width="480" height="1920" data-original-src="/full.png" data-original-width="1600" data-original-height="6400"></figure><figure class="article-image"><img alt="横表" src="/table.png" width="1600" height="800"></figure></div><img alt="普通图片" src="/photo.png" width="1000" height="600">');
+  t.after(p.close);
+  const decodes = deferImageDecodes(p.window);
+  const source = p.document.querySelector('figure img[alt="长表"]');
+  const dialog = p.document.querySelector('#media-viewer');
+  const viewport = dialog.querySelector('.media-viewer-viewport');
+  const controls = dialog.querySelector('.media-viewer-zoom');
+  const actual = controls.querySelector('[data-zoom="actual"]');
+  const fitWidth = controls.querySelector('[data-zoom="width"]');
+  const shown = () => viewport.querySelector('img');
+  loadedImage(source);
+  source.click();
+  assert.equal(controls.hidden, false);
+  assert.equal(fitWidth.getAttribute('aria-pressed'), 'true');
+  assert.equal(shown().style.width, '800px');
+
+  // jsdom 没有排版引擎；模拟一张距画布上下左右各 16px 的可滚动长图。
+  viewport.scrollTop = 180;
+  const preview = shown();
+  preview.getBoundingClientRect = () => ({
+    left: 16 - viewport.scrollLeft, top: 16 - viewport.scrollTop,
+    width: parseFloat(preview.style.width), height: parseFloat(preview.style.height),
+  });
+  actual.focus();
+  actual.click();
+  assert.equal(shown().style.width, '1600px');
+  assert.equal(viewport.scrollTop, 660, '图片放大两倍后，将同一行重新对齐到视口中央');
+  // 图床原件即使与清单宽高比相同，100% 仍要采用实际解码出的像素尺寸。
+  Object.defineProperties(decodes[0].image, {
+    naturalWidth: { value: 2400 }, naturalHeight: { value: 9600 },
+  });
+  decodes[0].resolve();
+  await new Promise(setImmediate);
+  assert.equal(shown().getAttribute('src'), '/full.png');
+  assert.equal(shown().style.width, '2400px');
+  assert.equal(actual.getAttribute('aria-pressed'), 'true');
+  assert.equal(p.document.activeElement, actual);
+  viewport.dispatchEvent(new p.window.WheelEvent('wheel', { deltaY: 120, ctrlKey: true }));
+  assert.equal(actual.getAttribute('aria-pressed'), 'false', '手动缩放后更新按钮状态');
+  fitWidth.click();
+  assert.equal(shown().style.width, '800px');
+  assert.equal(fitWidth.getAttribute('aria-pressed'), 'true');
+
+  const next = dialog.querySelector('[data-media-step="1"]');
+  next.click();
+  assert.equal(controls.hidden, false);
+  next.click();
+  assert.equal(controls.hidden, true);
+  assert.equal(p.document.activeElement, viewport, '跨到普通图片时不把焦点留在隐藏按钮上');
+  dialog.close();
+  assert.equal(p.document.activeElement, source);
 });

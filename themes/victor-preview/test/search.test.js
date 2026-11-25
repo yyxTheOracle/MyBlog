@@ -42,6 +42,7 @@ test('真实 Go 和 Electron 文章经 Hexo 6 渲染后可搜索，并定位正�
   require('hexo/lib/plugins/filter')(hexo);
   require('hexo/lib/plugins/tag')(hexo);
   await hexo.loadPlugin(require.resolve('hexo-renderer-marked'));
+  await hexo.loadPlugin(path.resolve(__dirname, '../scripts/article-media.js'));
   await hexo.loadPlugin(path.resolve(__dirname, '../scripts/search.js'));
 
   /** 使用仓库原文和真实渲染器，检验高亮 span 与中文标题的兼容性。 */

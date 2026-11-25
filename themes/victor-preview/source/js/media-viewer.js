@@ -43,6 +43,8 @@
   article.querySelectorAll('.article-gallery').forEach((gallery) => {
     const figures = [...gallery.children].filter(child => child.matches('figure.article-image') && child.querySelector('img'));
     if (figures.length < 2) return;
+    const sources = figures.map(figure => figure.querySelector('img'));
+    let currentIndex = 0;
     const heading = document.createElement('div');
     heading.className = 'article-gallery-heading';
     const title = document.createElement('strong');
@@ -51,14 +53,29 @@
     status.className = 'article-gallery-status';
     status.setAttribute('aria-live', 'polite');
     status.setAttribute('aria-atomic', 'true');
-    status.textContent = `1 / ${figures.length} · 长图可在阅读区内滚动`;
-    heading.append(title, status);
+    const openButton = document.createElement('button');
+    openButton.type = 'button';
+    openButton.className = 'article-gallery-open';
+    openButton.setAttribute('aria-haspopup', 'dialog');
+    openButton.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg>放大阅读';
+    openButton.addEventListener('click', () => openPicture(sources[currentIndex], openButton));
+    heading.append(title, status, openButton);
+    const hint = document.createElement('span');
+    hint.className = 'article-gallery-hint';
+    hint.textContent = '向下滚动读长图 ↓';
+    hint.setAttribute('aria-hidden', 'true');
+    // 箭头放在滚动区外，阅读长图时始终留在图片两侧。
+    const stage = document.createElement('div');
+    stage.className = 'article-gallery-stage';
+    const previousStep = createStepButton(-1, previous);
+    const nextStep = createStepButton(1, next);
+    stage.append(...figures, previousStep, nextStep);
     const thumbnails = document.createElement('div');
     thumbnails.className = 'article-gallery-thumbnails';
     thumbnails.setAttribute('role', 'group');
     thumbnails.setAttribute('aria-label', '选择图组图片');
     const buttons = figures.map((figure, position) => {
-      const source = figure.querySelector('img');
+      const source = sources[position];
       const reader = document.createElement('div');
       reader.className = 'article-gallery-scroll';
       reader.tabIndex = 0;
@@ -75,7 +92,7 @@
       thumbnail.src = source.currentSrc || source.src;
       if (source.srcset) {
         thumbnail.srcset = source.srcset;
-        thumbnail.sizes = '124px';
+        thumbnail.sizes = '57px';
       }
       thumbnail.alt = '';
       thumbnail.loading = 'lazy';
@@ -83,23 +100,72 @@
       const label = document.createElement('span');
       label.textContent = description(source);
       if (!/^图\s*\d/.test(label.textContent)) label.textContent = `图 ${position + 1}：${label.textContent}`;
+      // 图注可以只写图号；辅助技术仍可通过替代文字了解图片的具体内容。
+      if (/^图\s*\d+$/.test(label.textContent) && source.alt) {
+        button.setAttribute('aria-description', source.alt);
+        source.setAttribute('aria-description', source.alt);
+      }
       button.append(thumbnail, label);
       button.addEventListener('click', () => {
-        figures.forEach((item, itemIndex) => { item.hidden = itemIndex !== position; });
-        buttons.forEach((item, itemIndex) => item.setAttribute('aria-pressed', String(itemIndex === position)));
-        // 只重置当前阅读区；保留选图焦点，让连续切换不再带动整篇文章。
-        reader.scrollTop = 0;
-        status.textContent = `${position + 1} / ${figures.length} · 长图可在阅读区内滚动`;
+        if (position !== currentIndex) selectImage(position);
         button.focus({ preventScroll: true });
       });
-      figure.hidden = position !== 0;
+      reader.addEventListener('scroll', updateHint, { passive: true });
+      source.addEventListener('load', updateHint);
       return button;
     });
     thumbnails.append(...buttons);
-    // DOM 顺序与手机布局一致：先选图，再通过 Tab 进入可见阅读区。
-    gallery.prepend(heading, thumbnails);
+    gallery.prepend(heading);
+    gallery.append(stage, thumbnails);
     gallery.classList.add('is-enhanced');
+
+    /** 复用大图查看器的图标，点击只切换当前图组。 */
+    function createStepButton(step, viewerButton) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'article-gallery-step ' + (step < 0 ? 'prev' : 'next');
+      button.setAttribute('aria-label', step < 0 ? '上一张' : '下一张');
+      button.append(viewerButton.querySelector('svg').cloneNode(true));
+      button.addEventListener('click', () => {
+        const hadFocus = document.activeElement === button;
+        selectImage(currentIndex + step);
+        // 到达首尾时，把焦点留给仍可操作的方向，方便键盘用户原路返回。
+        if (hadFocus && button.disabled) {
+          (step < 0 ? nextStep : previousStep).focus({ preventScroll: true });
+        }
+      });
+      return button;
+    }
+
+    /** 只重置新图的阅读区；保留图组高度和选图焦点，避免整篇文章跳动。 */
+    function selectImage(position) {
+      currentIndex = position;
+      figures.forEach((item, index) => { item.hidden = index !== position; });
+      buttons.forEach((button, index) => button.setAttribute('aria-pressed', String(index === position)));
+      const figure = figures[position];
+      figure.append(hint);
+      figure.querySelector('.article-gallery-scroll').scrollTop = 0;
+      status.textContent = `${position + 1} / ${figures.length}`;
+      previousStep.disabled = position === 0;
+      nextStep.disabled = position === figures.length - 1;
+      // 带链接的图片保留作者指定的目标，组内查看按钮只作用于可放大的图片。
+      openButton.hidden = !images.includes(sources[position]);
+      updateHint();
+    }
+
+    /** 提示只出现在明显超出阅读区的长图顶部；滚动、切图和尺寸变化时重算。 */
+    function updateHint() {
+      const reader = figures[currentIndex].querySelector('.article-gallery-scroll');
+      hint.hidden = !reader.clientHeight || reader.scrollTop > 20 || reader.scrollHeight < reader.clientHeight * 1.35;
+    }
+
+    selectImage(0);
+    if (window.ResizeObserver) new ResizeObserver(updateHint).observe(gallery);
   });
+
+  const zoomControls = dialog.querySelector('.media-viewer-zoom');
+  const fitWidthButton = zoomControls.querySelector('[data-zoom="width"]');
+  const actualSizeButton = zoomControls.querySelector('[data-zoom="actual"]');
 
   function showToast(text) {
     if (!statusToast || !text) return;
@@ -167,11 +233,18 @@
     const centerX = (viewport.scrollLeft + viewport.clientWidth / 2) / (viewport.scrollWidth || 1);
     const centerY = (viewport.scrollTop + viewport.clientHeight / 2) / (viewport.scrollHeight || 1);
     const { rawAvailW, availH, plateX, plateY, fit, maximum, widthScale } = canvasMetrics();
-    scale = Math.max(1, Math.min(maximum, mode === 'width' ? widthScale : nextScale));
+    // 旋转屏幕或载入新尺寸的原图后，两档仍分别对应阅读区宽度和真实像素。
+    if (mode === 'width') nextScale = widthScale;
+    if (mode === 'actual') nextScale = 1 / fit;
+    scale = Math.max(1, Math.min(maximum, nextScale));
     const drawW = Math.max(1, width * fit * scale);
     const drawH = Math.max(1, height * fit * scale);
     picture.style.width = `${drawW}px`;
     picture.style.height = `${drawH}px`;
+    if (!zoomControls.hidden) {
+      fitWidthButton.setAttribute('aria-pressed', String(Math.abs(scale / widthScale - 1) < 0.001));
+      actualSizeButton.setAttribute('aria-pressed', String(Math.abs(fit * scale - 1) < 0.001));
+    }
     const isOverflowX = drawW + plateX > rawAvailW + 2;
     const isOverflowY = drawH + plateY > availH + 2;
     viewport.dataset.fitted = String(mode === 'fit' && scale <= 1.001);
@@ -192,6 +265,27 @@
 
   function isTallImage() {
     return Boolean(width && height && height / width >= 2.5);
+  }
+
+  /** 按钮缩放时，视口中央的表格行和列应尽可能停在原位。 */
+  function selectZoomMode(selectedMode) {
+    if (zoomControls.hidden || !picture || !width || !height) return;
+    const before = picture.getBoundingClientRect();
+    const view = viewport.getBoundingClientRect();
+    const centerX = view.left + viewport.clientWidth / 2;
+    const centerY = view.top + viewport.clientHeight / 2;
+    // 即时应用目标尺寸，让下面测得的是缩放后的坐标，而非动画的中间帧。
+    picture.style.transition = 'none';
+    mode = selectedMode;
+    resizePicture(scale);
+    const after = picture.getBoundingClientRect();
+    if (before.width && before.height) {
+      const relativeX = Math.max(0, Math.min(1, (centerX - before.left) / before.width));
+      const relativeY = Math.max(0, Math.min(1, (centerY - before.top) / before.height));
+      viewport.scrollLeft += after.left + relativeX * after.width - centerX;
+      viewport.scrollTop += after.top + relativeY * after.height - centerY;
+    }
+    picture.style.removeProperty('transition');
   }
 
   function toggleZoom(clientX, clientY) {
@@ -229,6 +323,9 @@
     objectURL = null;
     clearToast();
     index = images.indexOf(target);
+    const groupedImage = !svg && target.closest('.article-gallery');
+    if (!groupedImage && zoomControls.contains(document.activeElement)) viewport.focus({ preventScroll: true });
+    zoomControls.hidden = !groupedImage;
     frame.classList.toggle('is-diagram', Boolean(svg));
     picture = document.createElement('img');
     picture.draggable = false;
@@ -328,8 +425,8 @@
         height = original.naturalHeight || height;
         picture = original;
         frame.replaceChildren(original);
-        // 图床在原地址换图时，重新适配实际比例，避免拉伸。
-        if (width / height !== previewRatio) resizePicture(scale);
+        // 比例改变要重新排版；100% 还需按解码后的真实尺寸校准。
+        if (width / height !== previewRatio || mode === 'actual') resizePicture(scale);
         if (caption.textContent !== captionText) caption.textContent = captionText;
       }, () => {});
     }
@@ -337,9 +434,9 @@
   }
 
   /** 每次打开只记住最初触发点，跨图浏览后关闭仍回到原阅读位置。 */
-  function openPicture(target) {
+  function openPicture(target, trigger = target) {
     if (!showPicture(target)) return;
-    origin = target;
+    origin = trigger;
     document.documentElement.classList.add('media-viewer-open');
     dialog.showModal();
     viewport.focus({ preventScroll: true });
@@ -370,6 +467,8 @@
   previous.addEventListener('click', () => changePicture(-1));
   next.addEventListener('click', () => changePicture(1));
   closeButton.addEventListener('click', () => dialog.close());
+  fitWidthButton.addEventListener('click', () => selectZoomMode('width'));
+  actualSizeButton.addEventListener('click', () => selectZoomMode('actual'));
 
   frame.addEventListener('dblclick', (event) => {
     event.preventDefault();
@@ -416,6 +515,7 @@
 
   dialog.addEventListener('close', () => {
     document.documentElement.classList.remove('media-viewer-open');
+    zoomControls.hidden = true;
     clearToast();
     frame.replaceChildren();
     frame.classList.remove('is-diagram');

@@ -54,7 +54,10 @@ function formatArticleImages(html, assets) {
     if (group) {
       const number = (groupCounts.get(group) || 0) + 1;
       groupCounts.set(group, number);
-      caption = `图 ${number}：${caption || attributes.alt || '图片'}`;
+      // 仅编号的图组仍保留 img 的替代文字，供屏幕阅读器描述截图。
+      caption = group.attribs['data-captions'] === 'number'
+        ? `图 ${number}`
+        : `图 ${number}：${caption || attributes.alt || '图片'}`;
     }
     // title 作为显式图注，不再重复显示浏览器悬浮提示。
     if (attributes.title) delete attributes.title;
@@ -158,7 +161,9 @@ if (typeof hexo !== 'undefined') {
     return `<div data-image-size="compact">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
   }, { ends: true });
   hexo.extend.tag.register('gallery', function(args, content) {
-    return `<div class="article-gallery" aria-label="${escapeText(args.join(' ') || '文章图组')}">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
+    const numberOnly = args[0] === '--number-only';
+    const label = (numberOnly ? args.slice(1) : args).join(' ') || '文章图组';
+    return `<div class="article-gallery"${numberOnly ? ' data-captions="number"' : ''} aria-label="${escapeText(label)}">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
   }, { ends: true });
   hexo.extend.filter.register('after_post_render', (data) => {
     if (data.layout === 'post') data.content = prepareArticleMedia(data.content);
