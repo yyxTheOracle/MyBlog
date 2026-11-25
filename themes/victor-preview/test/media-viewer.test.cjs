@@ -159,12 +159,13 @@ test('图组切换只重置阅读区，保留选图焦点且不滚动整页', ()
   const buttons = p.document.querySelectorAll('.article-gallery-thumbnail');
   const readers = p.document.querySelectorAll('.article-gallery-scroll');
   assert.equal(readers.length, 2);
-  assert.equal(readers[1].tabIndex, 0, '阅读区支持键盘滚动');
+  assert.equal(readers[1].tabIndex, -1, '普通 2:1 竖图不增加滚动焦点');
   assert.equal(figures[0].hidden, false);
   assert.equal(figures[1].hidden, true);
   assert.equal(buttons.length, 2);
   assert.equal(buttons[1].querySelector('img').getAttribute('src'), 'https://example.com/second.gif');
-  assert.match(buttons[1].textContent, /图 2：第二步/);
+  assert.equal(buttons[1].querySelector('span').textContent, '图 2');
+  assert.equal(buttons[1].getAttribute('aria-label'), '图 2：第二步');
   let scroll;
   figures[1].scrollIntoView = options => { scroll = options; };
   readers[1].scrollTop = 240;
@@ -172,6 +173,8 @@ test('图组切换只重置阅读区，保留选图焦点且不滚动整页', ()
   buttons[1].click();
   assert.equal(figures[0].hidden, true);
   assert.equal(figures[1].hidden, false);
+  assert.equal(p.document.querySelector('figure:not([hidden]) > figcaption').textContent, '图 2：第二步',
+    '图注缺失时，当前主图下展示图号及原图替代文字');
   assert.equal(buttons[0].getAttribute('aria-pressed'), 'false');
   assert.equal(buttons[1].getAttribute('aria-pressed'), 'true');
   assert.equal(scroll, undefined, '切图不触发整页滚动');
@@ -180,6 +183,49 @@ test('图组切换只重置阅读区，保留选图焦点且不滚动整页', ()
   assert.match(p.document.querySelector('.article-gallery-status').textContent, /2 \/ 2/);
   assert.equal(p.document.querySelector('img[alt="普通连续图片"]').hidden, false);
   p.close();
+});
+
+test('普通证书完整展示，迟到的长图尺寸只在实际溢出时启用滚动阅读', (t) => {
+  const p = page(`<div class="article-gallery">
+    <figure class="article-image"><img alt="资格证书" src="/certificate.png" data-original-width="1000" data-original-height="1480"></figure>
+    <figure class="article-image"><img alt="工时长图" src="/record.png"></figure>
+  </div>`);
+  t.after(p.close);
+  const [certificate, record] = p.document.querySelectorAll('.article-gallery-scroll');
+  const buttons = p.document.querySelectorAll('.article-gallery-thumbnail');
+  const hint = p.document.querySelector('.article-gallery-hint');
+
+  // jsdom 不排版。即使宽度撑满时证书会溢出，也不能按内容溢出量把普通竖图判成长图。
+  Object.defineProperties(certificate, { clientHeight: { value: 300 }, scrollHeight: { value: 670 } });
+  certificate.querySelector('img').dispatchEvent(new p.window.Event('load'));
+  assert.equal(certificate.classList.contains('is-long-image'), false);
+  assert.equal(certificate.tabIndex, -1);
+  assert.doesNotMatch(certificate.getAttribute('aria-label') || '', /滚动/);
+  assert.equal(hint.hidden, true);
+
+  buttons[1].click();
+  const image = record.querySelector('img');
+  let contentHeight = 300;
+  Object.defineProperties(record, { clientHeight: { value: 300 }, scrollHeight: { get: () => contentHeight } });
+  assert.equal(record.classList.contains('is-long-image'), false, '加载前的未知尺寸不触发长图模式');
+  Object.defineProperties(image, { naturalWidth: { value: 400 }, naturalHeight: { value: 1000 } });
+  image.dispatchEvent(new p.window.Event('load'));
+  assert.equal(record.classList.contains('is-long-image'), true, '高宽比恰为 2.5 时也属于长图');
+  assert.equal(record.tabIndex, -1, '长图仍能放入阅读区时不增加键盘焦点');
+  assert.equal(hint.hidden, true);
+
+  contentHeight = 750;
+  buttons[0].click();
+  buttons[1].click();
+  assert.equal(record.tabIndex, 0);
+  assert.match(record.getAttribute('aria-label'), /滚动/);
+  assert.equal(hint.hidden, false);
+  record.scrollTop = 100;
+  record.dispatchEvent(new p.window.Event('scroll'));
+  assert.equal(hint.hidden, true);
+  buttons[0].click();
+  assert.equal(certificate.tabIndex, -1);
+  assert.equal(hint.hidden, true);
 });
 
 test('正文阅读区箭头与缩略图同步，在图组首尾停止，仅切换本组图片', () => {
@@ -221,17 +267,37 @@ test('正文阅读区箭头与缩略图同步，在图组首尾停止，仅切�
 });
 
 test('图组阅读区保留 picture、链接和图注，单图不套阅读器', () => {
-  const p = page('<div class="article-gallery" aria-label="操作截图"><figure class="article-image"><a href="/detail"><picture><source srcset="/wide.webp"><img src="/first.png" alt="链接图"></picture></a><figcaption>原始图注</figcaption></figure><figure class="article-image"><img src="/second.png" alt="第二张"></figure></div><div class="article-gallery"><figure class="article-image"><img src="/single.png" alt="单图"></figure></div>');
+  const p = page('<div class="article-gallery" aria-label="操作截图"><figure class="article-image"><a href="/detail"><picture><source srcset="/wide.webp"><img src="/first.png" alt="链接图"></picture></a><figcaption>图 1：<em>原始图注</em></figcaption></figure><figure class="article-image"><img src="/second.png" alt="第二张"></figure></div><div class="article-gallery"><figure class="article-image"><img src="/single.png" alt="单图"></figure></div>');
   const groups = p.document.querySelectorAll('.article-gallery');
   assert.equal(groups[0].querySelector('.article-gallery-scroll a picture source').getAttribute('srcset'), '/wide.webp');
   assert.equal(groups[0].querySelector('.article-gallery-scroll a').getAttribute('href'), '/detail');
   assert.equal(groups[0].querySelector('a img').hasAttribute('role'), false);
   assert.equal(groups[0].querySelector('figcaption').parentElement.tagName, 'FIGURE');
-  assert.equal(groups[0].querySelector('figcaption').textContent, '原始图注');
+  const caption = groups[0].querySelector('figure:not([hidden]) > figcaption');
+  assert.equal(caption.textContent, '图 1：原始图注');
+  assert.equal(caption.querySelector('em').textContent, '原始图注', '保留作者在原图注中的标记');
+  const thumbnail = groups[0].querySelector('.article-gallery-thumbnail');
+  assert.equal(thumbnail.querySelector('span').textContent, '图 1');
+  assert.equal(thumbnail.getAttribute('aria-label'), '图 1：原始图注');
   assert.equal(groups[0].querySelector('.article-gallery-heading strong').textContent, '操作截图');
   assert.equal(groups[1].querySelector('.article-gallery-scroll'), null);
   assert.equal(groups[1].querySelector('figure').hidden, false);
   p.close();
+});
+
+test('仅编号图组保留图片描述，按钮与主图不重复生成说明', (t) => {
+  const p = page(`<div class="article-gallery" data-captions="number">
+    <figure class="article-image"><img src="/a.png" alt="自动下载开发记录"><figcaption>图 1</figcaption></figure>
+    <figure class="article-image"><img src="/b.png" alt="门店筛选工时表"><figcaption>图 2</figcaption></figure>
+  </div>`);
+  t.after(p.close);
+  const button = p.document.querySelectorAll('.article-gallery-thumbnail')[1];
+  button.click();
+  assert.equal(button.querySelector('span').textContent, '图 2');
+  assert.equal(button.getAttribute('aria-label') || button.textContent.trim(), '图 2');
+  const visible = p.document.querySelector('.article-gallery figure:not([hidden])');
+  assert.equal(visible.querySelector('img').alt, '门店筛选工时表');
+  assert.deepEqual([...visible.querySelectorAll('figcaption')].map(caption => caption.textContent), ['图 2']);
 });
 
 test('方向键在适应窗口时切图，放大后只平移，图表不串入整篇图片', () => {
