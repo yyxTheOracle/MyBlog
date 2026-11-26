@@ -12,14 +12,13 @@
 | Google 标题搜索 | 11 月 11 日按完整标题抽查 Electron、Go Worker Pool 和小程序 E2E Test，第一页均出现正文新地址。上海国拍在 11 月 10 日的检查中也命中新地址。 |
 | Google Sitemap | 最近一次读取于 11 月 10 日成功，发现 33 个页面。 |
 | Google 标签页告警 | JavaScript 标签页已补齐 canonical，实际网址测试通过。重复页面告警仍显示修复前 11 月 4 日的抓取结果。Skills 已合并到 AI，旧入口保留跳转和 noindex，两份 Sitemap 均排除了旧入口。 |
-| 百度文章提交 | 11 月 11 日手动提交成功 10/15 条文章新地址，包括 Electron、Go Worker Pool 和小程序 E2E Test。最后 5 条触发当日提交上限，待补交。 |
-| 百度实际收录 | 截至 11 月 10 日，站点索引量仍为 3。11 月 11 日抽查 Electron 和小程序 E2E Test 的完整标题，第一页均未见正文链接，E2E 仅命中博客首页。已提交的 10 条新地址待核对实际收录。 |
-| 百度 Sitemap | 11 月 11 日提交上限和余额均为 0，尚未登记。 |
+| 百度文章提交 | 11 月 26 日最后 5 条新地址提交成功，15/15 篇文章的新地址均已提交。 |
+| 百度实际收录 | 11 月 24 日全站索引量为 3，较前一天持平。具体收录了哪些文章仍待确认。最近一次标题抽查是 11 月 11 日，Electron 和小程序 E2E Test 的正文均未出现在第一页。 |
+| 百度 Sitemap | 11 月 26 日提交上限和余额均为 0，尚未登记。 |
 | 百度 API 推送 | 未启用。 |
 
 ### 待办
 
-- 百度手动提交额度恢复后，补交剩余 5 条新地址：[人生 setback](https://www.victoryeah.com/post/graduation-setback/)、[antd 样式覆盖](https://www.victoryeah.com/post/antd-style-overrides/)、[antd Table 组件外全选](https://www.victoryeah.com/post/antd-table-external-selection/)、[上海国拍](https://www.victoryeah.com/post/shanghai-plate-payment-pitfalls/)、[东詹与西詹](https://www.victoryeah.com/post/two-james-two-fates/)。
 - 继续核对百度已提交文章的实际收录和标题搜索结果。
 - 百度 Sitemap 额度开放后登记 `baidusitemap.xml`，并核对抓取结果。
 
