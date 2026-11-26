@@ -2,9 +2,9 @@
 
 正式地址使用 [www.victoryeah.com](https://www.victoryeah.com/)。
 本文记录仓库配置与日常操作；收录数量、额度和申请结果以搜索引擎后台为准。
-## 当前结果（更新于 2026-11-11）
+## 当前结果（更新于 2026-11-26）
 
-本次复查两篇新地址的 Google 收录和三篇文章的标题搜索，并核对百度提交回执。
+11 月 26 日核对了 Google 报告中的全部 21 个未收录网址（数据截至 11 月 16 日）。其中没有文章现用地址，唯一的文章旧地址已下线。这 21 项已结案。
 
 | 项目 | 已确认结果 |
 | --- | --- |
@@ -22,13 +22,12 @@
 - 百度手动提交额度恢复后，补交剩余 5 条新地址：[人生 setback](https://www.victoryeah.com/post/graduation-setback/)、[antd 样式覆盖](https://www.victoryeah.com/post/antd-style-overrides/)、[antd Table 组件外全选](https://www.victoryeah.com/post/antd-table-external-selection/)、[上海国拍](https://www.victoryeah.com/post/shanghai-plate-payment-pitfalls/)、[东詹与西詹](https://www.victoryeah.com/post/two-james-two-fates/)。
 - 继续核对百度已提交文章的实际收录和标题搜索结果。
 - 百度 Sitemap 额度开放后登记 `baidusitemap.xml`，并核对抓取结果。
-- 等待 Google 重新抓取 JavaScript 标签页后，复查重复页面告警。
 
 ## 当前文章地址
 
 15 篇文章统一使用 `/post/<url_slug>/`。仓库现有迁移记录说明旧 `/post/<abbrlink>.html` 地址返回 404，不保留跳转；站内链接、canonical、Open Graph、RSS、两份 Sitemap 和百度 URL 清单均使用新地址。
 
-后续提交与检查应使用新地址，例如 [小程序 E2E Test](https://www.victoryeah.com/post/codex-computer-use-e2e/) 和 [上海国拍付款](https://www.victoryeah.com/post/shanghai-plate-payment-pitfalls/)。迁移前的提交及收录记录不能视为新地址已收录；本次未重新核验旧地址 HTTP 状态。
+后续提交与检查应使用新地址，例如 [小程序 E2E Test](https://www.victoryeah.com/post/codex-computer-use-e2e/) 和 [上海国拍付款](https://www.victoryeah.com/post/shanghai-plate-payment-pitfalls/)。新地址的收录状态以该地址的检查结果为准。
 
 ## 站点配置
 
