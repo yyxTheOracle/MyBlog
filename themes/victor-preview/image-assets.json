@@ -1507,6 +1507,27 @@
     "original": "https://s3.bmp.ovh/2026/11/27/5xKIzAjq.png",
     "animated": false
   },
+  "https://s3.bmp.ovh/2026/11/27/Hx0G1Fyx.png": {
+    "width": 3024,
+    "height": 1890,
+    "src": "/assets/article-images/fbb3ca272c0ca4ccbe39-760.webp",
+    "variants": [
+      {
+        "src": "/assets/article-images/fbb3ca272c0ca4ccbe39-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/article-images/fbb3ca272c0ca4ccbe39-760.webp",
+        "width": 760
+      },
+      {
+        "src": "/assets/article-images/fbb3ca272c0ca4ccbe39-1520.webp",
+        "width": 1520
+      }
+    ],
+    "original": "https://s3.bmp.ovh/2026/11/27/Hx0G1Fyx.png",
+    "animated": false
+  },
   "https://s3.bmp.ovh/2026/11/27/WK3VmpUN.png": {
     "width": 1238,
     "height": 1430,
