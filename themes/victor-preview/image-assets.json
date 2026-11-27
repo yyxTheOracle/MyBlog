@@ -1486,6 +1486,69 @@
     "original": "https://s3.bmp.ovh/2026/11/25/ryturGld.jpg",
     "animated": false
   },
+  "https://s3.bmp.ovh/2026/11/27/5xKIzAjq.png": {
+    "width": 1346,
+    "height": 1526,
+    "src": "/assets/article-images/29aa7be153d42fb0f34e-760.webp",
+    "variants": [
+      {
+        "src": "/assets/article-images/29aa7be153d42fb0f34e-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/article-images/29aa7be153d42fb0f34e-760.webp",
+        "width": 760
+      },
+      {
+        "src": "/assets/article-images/29aa7be153d42fb0f34e-1346.webp",
+        "width": 1346
+      }
+    ],
+    "original": "https://s3.bmp.ovh/2026/11/27/5xKIzAjq.png",
+    "animated": false
+  },
+  "https://s3.bmp.ovh/2026/11/27/WK3VmpUN.png": {
+    "width": 1238,
+    "height": 1430,
+    "src": "/assets/article-images/f6203889c3421257af31-760.webp",
+    "variants": [
+      {
+        "src": "/assets/article-images/f6203889c3421257af31-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/article-images/f6203889c3421257af31-760.webp",
+        "width": 760
+      },
+      {
+        "src": "/assets/article-images/f6203889c3421257af31-1238.webp",
+        "width": 1238
+      }
+    ],
+    "original": "https://s3.bmp.ovh/2026/11/27/WK3VmpUN.png",
+    "animated": false
+  },
+  "https://s3.bmp.ovh/2026/11/27/XUynbbNj.png": {
+    "width": 1770,
+    "height": 818,
+    "src": "/assets/article-images/86ccc55ebc323abd54cf-760.webp",
+    "variants": [
+      {
+        "src": "/assets/article-images/86ccc55ebc323abd54cf-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/article-images/86ccc55ebc323abd54cf-760.webp",
+        "width": 760
+      },
+      {
+        "src": "/assets/article-images/86ccc55ebc323abd54cf-1520.webp",
+        "width": 1520
+      }
+    ],
+    "original": "https://s3.bmp.ovh/2026/11/27/XUynbbNj.png",
+    "animated": false
+  },
   "https://s3.bmp.ovh/imgs/2023/01/01/348a1c73b181211b.jpg": {
     "width": 1214,
     "height": 796,

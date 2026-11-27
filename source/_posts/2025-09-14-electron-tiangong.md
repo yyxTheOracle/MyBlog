@@ -45,30 +45,30 @@ date: 2025-09-14 12:00:00
 
 　　这是我第一次接触 [Electron](https://www.electronjs.org/) 和 [Puppeteer](https://pptr.dev/)，整个开发过程都是和 Cursor & Claude Sonnet 4 协作完成的，当时团队正好刚开始全面推广 AI Coding，需要量化提效成果，下面这两张图是当时的记录：
 
-{% gallery --number-only 天工的 AI 辅助开发工时记录 %}
-![工时表逐项对照实际耗时与估计节省的时间，旁边附有和 AI 对话的截图](https://s3.bmp.ovh/2026/11/25/0W8gu5sZ.webp)
+{% gallery --caption-only 天工的 AI Coding 提效记录 %}
+![AI Coding 提效记录 1](https://s3.bmp.ovh/2026/11/25/0W8gu5sZ.webp "提效记录 1")
 
-![另一份工时表中，报错截图这一项记录为实际耗时 8 小时、节省 16 小时](https://s3.bmp.ovh/2026/11/25/cgL5Fsej.png)
+![AI Coding 提效记录 2](https://s3.bmp.ovh/2026/11/25/cgL5Fsej.png "提效记录 2")
 {% endgallery %}
 
 　　在 Cursor 和 Claude 的加持下，第一版下载链路只花了一个下午就跑通了。看着 Electron 窗口自动跳转页面、选择日期范围、勾选指定指标、等待 loading 结束、点击下载按钮、把报表 Excel 下载到 Download 里的指定文件夹——运营平日里要花好几个小时去重复干的活，脚本几十秒就跑完了，那种感觉简直妙不可言！
 
-　　内测期间，试用的几位运营完全是把天工当宝贝，每天都在高强度使用，反馈了一大堆边界 case 和体验问题。这个月月初，团队 leader 在群里兴奋地说：79 个账号，3 天的经营参谋数据，只用了 17 分钟！
+　　内测期间，试用的几位运营完全是把天工当宝贝，每天都在高强度使用，反馈了一大堆边界 case 和体验问题。这个月月初，团队 leader 在群里进行了一个表扬：79 个账号，3 天的经营参谋数据，只用了 17 分钟！
 
-![2025 年 9 月 4 日，运营支持团队在群里对天工下载速度和准确率的反馈](https://s3.bmp.ovh/2026/11/04/XH1gRbVN.jpg)
+![2025 年 9 月 4 日，运营支持团队在群里对天工下载速度和准确率的反馈](https://s3.bmp.ovh/2026/11/04/XH1gRbVN.jpg "运营同学在群里的夸夸：「79 个账号，3 天的经营参谋数据，只用了 17 分钟！」")
 
 　　看到这些反馈的时候，那种 sense of achievement 真的拉满了。但 drama 的是，天工刚全量推广没多久，这位 leader 和整个运营支持团队就被优化了......这个工具最终替代的，恰恰是这群帮我们打磨它的人。
 
-　　天工毫无疑问是一次非常成功的业务提效实践，写下这篇复盘，除了记录这个工具从零搭起来的工程细节，也是为了纪念这支曾经和我们并肩走过这段路的运营支持团队。在公司的组织架构里，他们或许只是被打上“已离职”标签、轻描淡写翻过的一页，但在天工的来时路上，他们是绝对绕不开的战友与同行者。
+　　天工毫无疑问是一次非常成功的业务提效实践，写下这篇复盘，除了记录这个工具从零搭起来的工程细节，也是为了纪念这支曾经和我们并肩走过这段路的运营支持团队。在公司的组织架构里，他们或许只是被打上“已离职”标签轻描淡写翻过的一页，但在天工的来时路上，他们是绝对绕不开的战友与同行者。
 
 # 2026.2.2 更新
 
-　　今天公司开年会，在 CEO 捷哥的年度成果汇报里，天工也有幸占了一隅。在台下看到 55 万这个数字的时候还挺恍惚的——当初一下午跑通的脚本，下载量居然到了几十万的量级。天工也是我获得年度优秀员工的重要原因，放几张照片留个纪念～
+　　今天公司开年会，在 CEO 捷哥的年度成果汇报里，天工也有幸占有了一隅。在台下看到 55 万这个数字的时候还挺恍惚的，当初一下午跑通的脚本，下载量居然到了几十万的量级。天工也是我获得年度优秀员工的重要原因，放几张照片留个纪念～
 
-![年会大屏上的麒麟和天工成果页，右下角蓝框标出「55 万+ 数据文件自动流转」](https://s3.bmp.ovh/2026/11/25/RMJY4BnD.jpg)
+![“55 万+ 数据文件自动流转”](https://s3.bmp.ovh/2026/11/25/RMJY4BnD.jpg "「55 万+ 数据文件自动流转」")
 
-{% gallery 年会表彰现场 %}
-![舞台大屏上写着给我的颁奖词「痴迷代码技艺精，热忱助人好队友」](https://s3.bmp.ovh/2026/11/25/03bGM42C.jpg "我的颁奖词😀")
+{% gallery --caption-only 年会表彰现场 %}
+![我的颁奖词😀](https://s3.bmp.ovh/2026/11/25/03bGM42C.jpg "我的颁奖词😀")
 
 ![从观众席望向舞台，大屏上并排放着颁奖词和我的照片](https://s3.bmp.ovh/2026/11/25/j6eaOjvN.jpg "照片还是在 The Eras Tour 墨尔本站拍的")
 
@@ -79,22 +79,20 @@ date: 2025-09-14 12:00:00
 
 # 天工长什么样
 
-　　天工的顶部有四个菜单项：
+　　天工有四个菜单项：
 
-| 菜单 | 负责的工作 | 界面形式 |
+| 菜单项 | 负责的工作 | 界面形式 |
 | --- | --- | --- |
 | 账号管理 | 添加和切换商户账号，查看对应的开店宝后台 | 左侧开店宝网页，右侧账号面板 |
 | 话术管理 | 导入和选择回复话术，在评价页面批量填写 | 左侧开店宝网页，右侧话术面板 |
 | 下载数据 | 选择报表类型、日期范围和账号，发起批量下载 | 独立的下载配置页面 |
 | 下载中心 | 查看任务进度、账号结果和文件信息，处理需要重试的账号 | 独立的任务管理页面 |
 
-　　「账号管理」长这样，左侧就是运营同学熟悉的开店宝，右侧是天工的账号列表。切到「话术管理」右侧变成话术面板，两个下载页面则是天工自己的独立界面。
+　　「账号管理」如下图所示，左侧嵌入了运营同学熟悉的美团开店宝页面，右侧是账号列表。切到「话术管理」的时候，右侧会变成话术面板，「下载数据」和「下载中心」则是天工自己的独立界面，分别用于开启下载任务和查看任务进度。
 
-![天工的账号管理页面：左侧嵌入开店宝，右侧展示账号列表](https://s3.bmp.ovh/2026/11/04/zKLZ7XJG.png)
+![天工的账号管理页面：左侧嵌入开店宝，右侧展示账号列表](https://s3.bmp.ovh/2026/11/04/RKK9Cqsc.png "天工的「账号管理」页")
 
-　　回复好评就是切账号 → 选话术 → 批量填写 → 人工确认发布；下载报表就是在「下载数据」配好任务 → 去「下载中心」看结果，文件下到本地就完事了，上传公司内部系统还是后续操作。
-
-　　技术栈是 **Electron + React + TypeScript + MobX + Puppeteer**，React + MobX 管页面和状态，Electron 管窗口和文件，Puppeteer 负责操控网页。
+　　使用的主要技术栈是 Electron + React + TypeScript + MobX + Puppeteer。
 
 ```mermaid
 flowchart TB
@@ -112,25 +110,50 @@ flowchart TB
 ```
 
 
-# 多账号管理与本地状态保存
+# 多账号管理与本地状态存储
 
-　　要干活，第一步肯定是把账号登上去。
+　　要让天工开始干活，首先要登录美团开店宝账号。
 
-## 基于 partition 的会话隔离
+## 多账号隔离：一个 partition 配置就够了
 
-　　运营同学手里几十个账号，总不能每切一个就退出重新扫码吧。
+　　每个运营手里都有几十个开店宝账号，不可能每次切账号都让他们重新登录，所以第一步得先解决登录态保持 & 隔离的问题。
 
-　　天工用 Electron 的 [`<webview>`](https://www.electronjs.org/docs/latest/api/webview-tag) 来嵌入开店宝页面，关键就是给每个账号设一个独立的 `partition`：
+　　一开始我以为要自己去写一套代码维护 Cookie 和本地存储，但是让 AI 调研了一下，发现 `<webview>` 标签的 [partition](https://www.electronjs.org/docs/latest/api/webview-tag/#partition) 属性似乎天然就支持会话隔离。
+
+![Electron 官方文档通过两个 webview 示例说明带 persist: 前缀的会话会持久保存，无前缀的会话只存在于内存中](https://s3.bmp.ovh/2026/11/27/XUynbbNj.png "Electron 官方文档对 partition 的说明")
+
+　　于是我立刻写了个 demo 试了一下，分别在 `account-1` 和 `account-3` 登录不同门店，`account-2` 保持未登录，来回切了几次，各自的登录态居然真的互不干扰：
+
+<video controls playsinline preload="metadata" style="width: 100%; height: auto;" aria-label="天工切换开店宝账号并保留各自登录态的演示">
+  <source src="/assets/electron-tiangong/partition-demo.mp4" type="video/mp4">
+  你的浏览器不支持视频播放，可以<a href="/assets/electron-tiangong/partition-demo.mp4">下载原视频</a>查看。
+</video>
+
+　　本来我都做好要写一堆复杂逻辑的预期了，结果一个 `partition` 配置就把这个核心需求点跑通了，这种四两拨千斤的感觉真的让人着迷～
+
+{% compact %}
+![飞书群聊中，账号切换的演示视频下方有运营同学回复「wow好酷！」](https://s3.bmp.ovh/2026/11/27/WK3VmpUN.png "「wow好酷！」")
+{% endcompact %}
+
+　　还有个很有意思的小插曲，在我把 demo 发到群里之后，后端开发友哥也来私聊问我这个账号隔离是怎么这么快实现的：
+
+{% compact %}
+![飞书私聊中，友哥发来账号切换演示并询问实现原理，回复中提到了 webview 和 partition](https://s3.bmp.ovh/2026/11/27/5xKIzAjq.png "友哥的好奇👻")
+{% endcompact %}
+
+　　其实核心代码就这么几行——给每个账号的 `<webview>` 配上独立的 `partition` 和 `key`：
 
 ```tsx
 <webview
   key={currentAccount.id}
-  src="https://ecom.meituan.com/meishi/"
   partition={`persist:${currentAccount.id}`}
+  src="https://xxxxxx.com/"
 />
 ```
 
-　　每个账号一个 `partition`，Cookie 和 LocalStorage 就自动隔开了：
+　　通过 `partition` 配置，Chromium 底层会把不同账号 `<webview>` 的 Cookie 和 LocalStorage 在内存里自动隔离，如果再加上 `persist:` 前缀，数据就会写到本地磁盘持久化存储，下次重新打开天工也可以直接复用登录态了。
+
+　　`key` 也是有说法的，`<webview>` 的 `partition` 一旦生效就无法动态修改，所以这里还需要借助 React 的 `key` 机制，在切换账号的时候重新创建 `<webview>` 实例。
 
 ```mermaid
 flowchart TB
@@ -141,18 +164,6 @@ flowchart TB
     PA --> VA["webview (账号 A 登录态)"]
     PB --> VB["webview (账号 B 登录态)"]
 ```
-
-　　加了 `persist:` 前缀，会话数据就会写到磁盘，下次打开应用还能接着用，不用重新扫码。
-
-　　选中账号 A，左侧就是 A 的门店后台：
-
-![选中账号 A 后，webview 使用对应的开店宝登录态](https://s3.bmp.ovh/2026/11/04/RKK9Cqsc.png)
-
-　　切到账号 B：
-
-![切换到账号 B，页面里的门店和经营数据随账号改变](https://s3.bmp.ovh/2026/11/04/2ux2YQNJ.png)
-
-　　没想到一个 `partition` 就把多账号隔离和快速切换全搞定了，Chromium 这个能力确实强😁。
 
 ## MobX 与 electron-store 的状态持久化
 
@@ -236,7 +247,7 @@ reaction(
 
 　　前期的做法比较朴素：直接导出 `Partitions` 目录，在另一台电脑导入，顺便把天工的账号列表也同步过去。
 
-![天工账号管理区的"输出账号信息文件夹到桌面"入口](https://s3.bmp.ovh/2026/11/04/pF0jL6O0.png)
+![天工账号管理区的"输出账号信息文件夹到桌面"入口](https://s3.bmp.ovh/2026/11/04/pF0jL6O0.png "在账号管理页点「输出账号信息文件夹到桌面」，就能把账号打包带走")
 
 　　主进程用 `app.getPath('userData')` 拿到路径，剔除 `Cache`、`Code Cache` 这些没用的目录后打包到桌面；另一边用 `commander` + `chalk` 做了个导入 CLI，走一遍大概是这样：
 
@@ -260,7 +271,7 @@ yarn import-partitions --source '/path/to/Partitions_Export_...' --dry-run
 yarn import-partitions --source '/path/to/Partitions_Export_...'
 ```
 
-![CLI 导入示例：共 8 个账号，成功 8 个，跳过 0 个，失败 0 个](https://s3.bmp.ovh/2026/11/04/Ft6ZkmaH.png)
+![CLI 导入示例：共 8 个账号，成功 8 个，跳过 0 个，失败 0 个](https://s3.bmp.ovh/2026/11/04/Ft6ZkmaH.png "换台电脑，用 CLI 把刚导出的 8 个账号全部导入成功")
 
 　　用法就是先集中扫码登录，然后导给同事。不过目录复制成功不代表登录态还在，导入后还是得实际打开确认一下。
 
@@ -560,7 +571,7 @@ await taskContext.run(mainTaskId, async () => {
 
 　　任务结束后把日志文件传上去，埋点里带上任务 ID 和下载链接，在 Metabase 按任务 ID 就能查到，不用再找运营同学远程要文件了。
 
-![Metabase 中的任务日志查询：创建时间、用户、版本、操作名称和日志下载地址](https://s3.bmp.ovh/2026/11/04/65UzaCZv.png)
+![Metabase 中的任务日志查询：创建时间、用户、版本、操作名称和日志下载地址](https://s3.bmp.ovh/2026/11/04/65UzaCZv.png "在 Metabase 按任务 ID 找到这次下载，就能拿到对应的日志文件")
 
 ## 失败截图与现场信息上报
 

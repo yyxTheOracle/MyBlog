@@ -51,7 +51,10 @@ function formatArticleImages(html, assets) {
     }
     const group = ancestor(image, node => node.attribs?.class?.split(/\s+/).includes('article-gallery'));
     let caption = attributes.title || '';
-    if (group) {
+    if (group?.attribs['data-captions'] === 'caption') {
+      // 正文和大图直接共用这句说明，组内顺序由翻图控件显示。
+      caption ||= attributes.alt || '';
+    } else if (group) {
       const number = (groupCounts.get(group) || 0) + 1;
       groupCounts.set(group, number);
       // 仅编号的图组仍保留 img 的替代文字，供屏幕阅读器描述截图。
@@ -160,10 +163,11 @@ if (typeof hexo !== 'undefined') {
     if (args.length) throw new Error('compact 标签无需参数；普通图片直接写 Markdown。');
     return `<div data-image-size="compact">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
   }, { ends: true });
+  const galleryCaptionModes = new Map([['--number-only', 'number'], ['--caption-only', 'caption']]);
   hexo.extend.tag.register('gallery', function(args, content) {
-    const numberOnly = args[0] === '--number-only';
-    const label = (numberOnly ? args.slice(1) : args).join(' ') || '文章图组';
-    return `<div class="article-gallery"${numberOnly ? ' data-captions="number"' : ''} aria-label="${escapeText(label)}">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
+    const mode = galleryCaptionModes.get(args[0]);
+    const label = (mode ? args.slice(1) : args).join(' ') || '文章图组';
+    return `<div class="article-gallery"${mode ? ` data-captions="${mode}"` : ''} aria-label="${escapeText(label)}">${hexo.render.renderSync({ text: content, engine: 'markdown' })}</div>`;
   }, { ends: true });
   hexo.extend.filter.register('after_post_render', (data) => {
     if (data.layout === 'post') data.content = prepareArticleMedia(data.content);

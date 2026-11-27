@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const { test } = require('node:test');
 const { JSDOM } = require('jsdom');
 const prepareArticleMedia = require('../scripts/article-media');
+const { galleryErrors } = require('../../../scripts/prepare-images.cjs');
 
 const sizes = { '/photo.png': [800, 600], '/demo.mp4': [2560, 1550] };
 
@@ -55,6 +56,26 @@ test('只显示图号的图组仍保留替代文字，正文和大图共用相�
   assert.deepEqual([...document.querySelectorAll('img')].map(image => [image.alt, image.dataset.caption]), [
     ['表格旁附有对话截图', '图 1'], ['表格列出了各项耗时', '图 2'],
   ]);
+});
+
+test('纯文字图注优先采用 title，缺省时使用 alt，两者都能通过发布检查', () => {
+  const html = prepareArticleMedia(`<div class="article-gallery" data-captions="caption">
+    <p><img src="/a.png" alt="对照表中的工时和 AI 对话" title="报表下载的开发工时"></p>
+    <p><img src="/b.png" alt="下载报错时自动上传截图"></p>
+  </div>`, {}, {});
+  const gallery = new JSDOM(html).window.document.querySelector('.article-gallery');
+  const captions = [...gallery.querySelectorAll('figcaption')];
+  const expected = ['报表下载的开发工时', '下载报错时自动上传截图'];
+  assert.deepEqual(captions.map(caption => caption.textContent), expected);
+  assert.deepEqual([...gallery.querySelectorAll('img')].map(image => image.dataset.caption), expected);
+  assert.deepEqual(galleryErrors(html, 'post.md'), []);
+
+  // 普通图组仍需有编号；纯文字图组也不能用空白充当说明。
+  gallery.removeAttribute('data-captions');
+  assert.equal(galleryErrors(gallery.outerHTML, 'post.md').length, 1);
+  gallery.dataset.captions = 'caption';
+  captions[0].textContent = ' ';
+  assert.equal(galleryErrors(gallery.outerHTML, 'post.md').length, 1);
 });
 
 test('嵌套行内图片不拆开段落，picture 的 source 与 img 保持直接相邻', () => {

@@ -44,10 +44,12 @@ function galleryErrors(html, source) {
   }, document.children);
   return galleries.flatMap((gallery, index) => {
     const children = gallery.children.filter(node => node.type !== 'comment' && !(node.type === 'text' && !node.data.trim()));
+    // 纯文字图注由翻图控件单独编号，发布检查只要求说明非空。
+    const captionPattern = gallery.attribs['data-captions'] === 'caption' ? /\S/ : /^图\s*\d+(?:\s*：.+)?$/s;
     const valid = children.length >= 2 && children.every(node => node.name === 'figure'
       && getElementsByTagName('img', node.children, true).length === 1
-      && getElementsByTagName('figcaption', node.children, true).some(caption => /^图\s*\d+(?:\s*：.+)?$/s.test(textContent(caption).trim())));
-    return valid ? [] : [`${source}：第 ${index + 1} 个图组必须只包含至少两张图片，每张有编号说明；正文请放到图组外。`];
+      && getElementsByTagName('figcaption', node.children, true).some(caption => captionPattern.test(textContent(caption).trim())));
+    return valid ? [] : [`${source}：第 ${index + 1} 个图组必须只包含至少两张图片，每张有符合图组格式的图注；正文请放到图组外。`];
   });
 }
 
